@@ -10,6 +10,7 @@
 
     <meta name="description" content="Sample Bootstrap Site">
     <meta name="author" content="Web Developer">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
     <!-- AMP boilerplate -->
     <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
@@ -50,10 +51,99 @@
         h3{
             font-size:18px;
         }
+        .centered
+        {
+            display: flex;
+            justify-content: center;
+        }
+        .con-header
+        {
+            margin-bottom: 10px;
+        }
+        #frmSearch
+        {
+            text-align: center;
+        }
+        .input-search
+        {
+            height: 44px;
+            border-bottom-left-radius: 24px;
+            border-top-left-radius: 24px;
+            border-right: none;
+            width: 238px;
+            border-color: #ddd;
+        }
+        .border-right-radius
+        {
+            height: 44px;
+        }
+        .input-group[class*=col-] {
+            float: none;
+            padding-right: 0;
+            padding-left: 0;
+        }
+        .input-group {
+            position: relative;
+            border-collapse: separate;
+        }
+        .input-group-btn {
+            position: relative;
+            font-size: 0;
+            white-space: nowrap;
+        }
+        .input-group-btn {
+            width: 1%;
+            white-space: nowrap;
+            vertical-align: middle;
+        }
+        .input-group-btn {
+            display: table-cell;
+        }
+        .input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+            z-index: 2;
+            margin-left: -1px;
+        }
+        .input-group-btn>.btn {
+            position: relative;
+        }
+        .border-right-radius
+        {
+            border: 2px solid #ddd;
+        }
+        .border-right-radius {
+            border-radius: 0 20px 20px 0;
+            border-left: none;
+            color: #4285f4;
+
+        }
+        .logo
+        {
+            width: 240px;
+        }
     </style>
 </head>
 
 <body>
+<div class="home-box-search head">
+    <div class="col-xs-12">
+        <div class="col-md-8 con-header">
+            <div class="col-md-6 centered">
+                <a href="{{ url('/') }}">
+                    <img src="{{ asset('/images/'.$GLOBALS['asset_domain'].'/logo.png') }}" class="logo">
+                </a>
+            </div>
+            <div class="input-group search-box head col-md-6 centered ">
+                <form id="frmSearch" autocomplete="off" style="display: inherit">
+                    <input type="text" class="form-control input-search" placeholder="" id="q">
+                    <span class="input-group-btn">
+                <button class="btn btn-default border-right-radius" type="submit" id="btnSearch"><i class="fas fa-search"></i></button>
+                </span>
+                </form>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="">
         <div class="">

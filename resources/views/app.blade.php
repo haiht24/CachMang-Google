@@ -21,6 +21,7 @@
     <!-- JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     {{--<script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>--}}
     @yield('js')
     <script>
@@ -73,6 +74,7 @@
 //                    if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
                     /*create a DIV element for each matching element:*/
                     b = document.createElement("DIV");
+                    b.setAttribute("class","padding-left");
                     /*make the matching letters bold:*/
                     b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
                     b.innerHTML += arr[i].substr(val.length);
