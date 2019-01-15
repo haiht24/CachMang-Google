@@ -9,6 +9,7 @@
         "fabpot/goutte": "^3.2",
         "fideloper/proxy": "^3.3",
         "guzzlehttp/psr7": "^1.4",
+        "jenssegers/agent": "^2.6",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "serps/http-client-curl": "^0.2.0",

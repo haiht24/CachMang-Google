@@ -1,5 +1,9 @@
-$color-link: #609;
+$color-link: #1a0dab;
 $black: #222;
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
 
 .npd-lr {
     padding-left: 0;
@@ -20,8 +24,8 @@ body {
 }
 
 .home-box-search.head {
-    background-color: #eee;
     margin-bottom: 15px;
+    border-bottom: 1px solid #ebebeb;
     .logo {
         height: 44px;
     }
@@ -108,7 +112,7 @@ body {
         color: $color-link;
         font-size: 18px;
     }
-    .result-url a {
+    .result-url {
         color: #006621;
         font-size: 14px;
     }

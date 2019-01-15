@@ -7,18 +7,13 @@ use DB;
 use App\CachMangResults;
 use App\CachMangKeyword;
 use Illuminate\Support\Facades\Input;
-use Carbon\Carbon;
 
-use Serps\Exception;
 use Serps\SearchEngine\Google\GoogleClient;
 use Serps\HttpClient\CurlClient;
 use Serps\SearchEngine\Google\GoogleUrl;
 use Serps\Core\Browser\Browser;
-use Serps\SearchEngine\Google\NaturalResultType;
 use Serps\Core\Http\Proxy;
-use Goutte\Client;
-use App\SearchEngine;
-
+use Jenssegers\Agent\Agent;
 class CachMangController extends Controller
 {
 
@@ -158,61 +153,12 @@ class CachMangController extends Controller
     }
 
     public function query($q) {
-//        $data = [];
-//        $data['hiddenSearchHeader'] = 0;
-//        return view('results')->with($data);
-
         if(empty($q))
             return redirect('/' . $q);
         $q = $this->cleanSpecialChars($q);
-        /* Find this keyword in db and updated_at < 24h */
-        $find = CachMangKeyword::where('kw_slug', '=', $q)
-            ->whereDate('updated_at', '>', Carbon::now()->subDay(1)->format('Y-m-d'))
-            ->first();
-        $find = false;
-        if($find){
-            /* Get from DB */
-            $results = CachMangResults::where('keyword_id','=',$find->id)->get(['title','description','url','updated_at']);
-
-            /* Trường hợp bot google vào và thoát ra nhanh => chưa kịp ghi dữ liệu vào DB hoặc quá ít dữ liệu trong db, vd < 10 => chuyển sang lấy dữ liệu từ Search engine */
-            if($results->count() < 10){
-                $data = $this->getFromSearchEngine($q);
-            }else{
-                // Neu do data tu dong vao db thi chua co search result nen phai lay ket qua moi tu google va do vao
-                if($find->fill_auto === 1){
-                    /*if(env('API') === 'bing'){
-                        $data = $this->_bing($q);
-                    }elseif (env('API') === 'google'){
-                        $data = $this->_google($q);
-                    }*/
-                    $data = $this->getFromSearchEngine($q);
-                    // update relate keyword after get new result from google
-                    if( !empty($data['related']) ){
-                        $temp = [];
-                        if(count($data['related']) > 0){
-                            foreach ($data['related'] as $datum) {
-                                array_push($temp, $datum['title']);
-                            }
-                        }
-                        CachMangKeyword::where('id', $find->id)->update(['related_keywords' => implode(',', $temp)]);
-                    }
-                    // set fill_auto = 0 sau khi da co du lieu results
-                    CachMangKeyword::where('id', $find->id)->update(['fill_auto' => 0]);
-                }else{
-                    CachMangKeyword::where('id', $find->id)->update(['number_search' => $find->number_search + 1]);
-                    $data = [
-                        'related' => explode(',', $find->related_keywords),
-                        'results' => $results,
-                        'q' => str_replace('-', ' ', $q),
-                        'from' => 'DB'
-                    ];
-                }
-            }
-
-        }else{
-            $data = $this->getFromSearchEngine($q);
-        }
-
+        $data = $this->getFromSearchEngine($q);
+//        $data['bing'] = $this->_bing($q);
+//        echo "<pre>";var_dump($data);die;
         /* SEO */
         $seo = [
             'title' => ucwords(str_replace('-', ' ', $q)) . ' - GetCouponNow',
@@ -227,10 +173,17 @@ class CachMangController extends Controller
         $data['recentlySearch'] = CachMangKeyword::orderBy('updated_at', 'DESC')->limit(9)->get(['keyword_text','kw_slug']);
         $data['topSearch'] = CachMangKeyword::orderBy('number_search', 'DESC')->limit(9)->get(['keyword_text','kw_slug','number_search']);
 
-        $date = new Carbon();
-        $date->subDay(1);
-        $data['lastSearch24h'] = CachMangKeyword::where('updated_at', '>', $date->toDateTimeString() )->limit(9)->orderBy('updated_at','DESC')->get(['keyword_text','kw_slug','updated_at']);
+//        $date = new Carbon();
+//        $date->subDay(1);
+//        $data['lastSearch24h'] = CachMangKeyword::where('updated_at', '>', $date->toDateTimeString() )->limit(9)->orderBy('updated_at','DESC')->get(['keyword_text','kw_slug','updated_at']);
         $data['hiddenSearchHeader'] = 0;
+
+        $agent = new Agent();
+        $isPhone = $agent->isPhone();
+        $isTablet = $agent->isTablet();
+        if($isPhone || $isTablet){
+            return view('results-amp')->with($data);
+        }
         return view('results')->with($data);
     }
 
@@ -245,22 +198,9 @@ class CachMangController extends Controller
 //                $data = (array)json_decode(file_get_contents($randomOneServer . '/api/' . $q));
 //                $data['seo'] = $seo;
 //            }
+        */
 
-            /* Get from ASK.com */
-//            $data = $this->_ask($q);
-//            $data['seo'] = $seo;
-
-        /* Get from Bing.com */
-//            if(env('API') === 'bing'){
-//                $data = $this->_bing($q);
-//            }elseif (env('API') === 'google'){
-//                $data = $this->_google($q);
-//            }
-
-//            $data['bing'] = $this->_bing($q);
-
-
-        $data['ask'] = $this->_ask($q);
+//        $data['ask'] = $this->_ask($q);
         $data['bing'] = $this->_bing($q);
         /*$data['dogpile'] = $this->getData('dogpile.com', $q);
         $data['netfind'] = $this->getData('netfind.com', $q);
@@ -294,8 +234,7 @@ class CachMangController extends Controller
         $data = [
             'related' => $arrSuggest,
             'results' => $items,
-            'q' => str_replace('-', ' ', $q),
-            'from' => 'ASK'
+            'q' => str_replace('-', ' ', $q)
         ];
         return $data;
     }
@@ -367,8 +306,7 @@ class CachMangController extends Controller
         }
 
         $arrRelate = [];
-        foreach ($html->find('.b_vList') as $list) {
-            $a = [];
+        foreach ($html->find('.b_rich .b_vlist2col') as $list) {
             foreach ($list->find('li') as $li){
                 if($li->plaintext){
                     array_push($arrRelate, $li->plaintext);

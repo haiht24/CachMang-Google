@@ -1,3 +1,6 @@
+body {
+  font-family: 'Roboto', sans-serif; }
+
 .npd-lr {
   padding-left: 0;
   padding-right: 0; }
@@ -13,8 +16,8 @@ body {
   padding-bottom: 15px; }
 
 .home-box-search.head {
-  background-color: #eee;
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ebebeb; }
   .home-box-search.head .logo {
     height: 44px; }
   .home-box-search.head .con-header {
@@ -34,7 +37,7 @@ body {
   color: #222;
   font-size: 18px; }
 .body-content .related-keywords a {
-  color: #609; }
+  color: #1a0dab; }
 .body-content .home-box-search {
   height: 100%; }
   .body-content .home-box-search .container {
@@ -76,9 +79,9 @@ body {
   .box-result p {
     margin-bottom: 0; }
   .box-result .result-title a {
-    color: #609;
+    color: #1a0dab;
     font-size: 18px; }
-  .box-result .result-url a {
+  .box-result .result-url {
     color: #006621;
     font-size: 14px; }
   .box-result .result-description {

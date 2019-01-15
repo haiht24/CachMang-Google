@@ -1,6 +1,6 @@
 @if(isset($hiddenSearchHeader) && $hiddenSearchHeader === 0)
-<div class="col-xs-12 home-box-search head">
-    <div class="container">
+<div class="home-box-search head">
+    <div class="col-xs-12">
         <div class="col-md-8 con-header">
             <div class="col-md-4">
                 <a href="{{ url('/') }}">
