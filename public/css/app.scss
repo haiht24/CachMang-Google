@@ -5,6 +5,19 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
+.autocomplete-items
+{
+    display: table-footer-group;
+}
+.autocomplete-items:hover
+{
+    cursor: pointer;
+}
+.padding-left
+{
+    padding-left: 13px;
+}
+
 .npd-lr {
     padding-left: 0;
     padding-right: 0;
@@ -13,6 +26,27 @@ body{
 .input-search {
     height: 44px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
+}
+
+.input-search
+{
+    border-bottom-left-radius: 24px;
+    border-top-left-radius: 24px;
+    border-right: none;
+    margin-bottom: 10px;
+}
+.border-right-radius
+{
+    border-radius: 0 20px 20px 0;
+    border-left: none;
+    color: #4285f4;
+    height: 44px;
+
+}
+.fa-search
+{
+    padding-right: 13px;
+    font-size: 21px;
 }
 
 body {
