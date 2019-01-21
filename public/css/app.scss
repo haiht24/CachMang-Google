@@ -29,6 +29,9 @@ body {
 
 .input-search-home {
     height: 44px;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+    border-left: none;
 }
 
 .input-search {
@@ -59,11 +62,18 @@ body {
     padding-bottom: 15px;
 }
 
+.padding-right-0
+{
+    padding-right: 0;
+    color: #4285f4;
+    border-left: none;
+}
+
 .home-box-search.head {
     margin-bottom: 15px;
     border-bottom: 1px solid #ebebeb;
     .logo {
-        height: 44px;
+        max-width: 100%;
     }
 
     .con-header {
@@ -168,6 +178,11 @@ body {
     }
 }
 
+.container-padding-left
+{
+    padding-left: 6%;
+}
+
 //.col-lg-
 @media (max-width: 1199px) {
 
@@ -180,7 +195,7 @@ body {
     }
     .logo.home-pos {
         img {
-            width: 100%;
+            max-width: 100%;
         }
     }
 }
