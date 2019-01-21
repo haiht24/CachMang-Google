@@ -16,7 +16,10 @@ body {
 
 .input-search {
   height: 44px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important; }
+  -webkit-box-shadow: unset; }
+
+.input-search-home {
+  height: 44px; }
 
 .input-search {
   border-bottom-left-radius: 24px;

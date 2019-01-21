@@ -10,7 +10,7 @@
                 <form id="frmSearch" autocomplete="off" style="display: inherit">
                     <input type="text" class="form-control input-search" placeholder="" id="q">
                     <span class="input-group-btn">
-                        <button class="btn btn-default input-search" type="submit" id="btnSearch">Search</button>
+                        <button class="btn btn-default input-search-home" type="submit" id="btnSearch">Search</button>
                     </span>
                 </form>
             </div>
