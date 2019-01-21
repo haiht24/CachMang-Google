@@ -70,8 +70,15 @@
             border-top-left-radius: 24px;
             border-right: none;
             width: 238px;
-            border-color: #ddd;
+            padding-left: 7px;
         }
+
+        input {
+            border-top: solid 1px #dfe1e5;
+            border-left: solid 1px #dfe1e5;
+            border-bottom: solid 1px #dfe1e5;
+        }
+
         .border-right-radius
         {
             height: 44px;
@@ -107,7 +114,7 @@
         }
         .border-right-radius
         {
-            border: 2px solid #ddd;
+            border: solid 1px #dfe1e5;
         }
         .border-right-radius {
             border-radius: 0 20px 20px 0;
