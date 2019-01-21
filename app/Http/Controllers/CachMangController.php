@@ -152,6 +152,12 @@ class CachMangController extends Controller
         return redirect('/' . $q);
     }
 
+    public function searchMobile(Request $request) {
+        $q = $request->all()['q'];
+        $q = $this->cleanSpecialChars($q);
+        return redirect('/' . $q);
+    }
+
     public function query($q) {
         if(empty($q))
             return redirect('/' . $q);

@@ -1,20 +1,19 @@
 $color-link: #1a0dab;
 $black: #222;
 
-body{
+body {
     font-family: 'Roboto', sans-serif;
 }
 
-.autocomplete-items
-{
+.autocomplete-items {
     display: table-footer-group;
 }
-.autocomplete-items:hover
-{
+
+.autocomplete-items:hover {
     cursor: pointer;
 }
-.padding-left
-{
+
+.padding-left {
     padding-left: 13px;
 }
 
@@ -28,28 +27,26 @@ body{
     -webkit-box-shadow: unset;
 }
 
-.input-search-home
-{
+.input-search-home {
     height: 44px;
 }
 
-.input-search
-{
+.input-search {
     border-bottom-left-radius: 24px;
     border-top-left-radius: 24px;
     border-right: none;
     margin-bottom: 10px;
 }
-.border-right-radius
-{
+
+.border-right-radius {
     border-radius: 0 20px 20px 0;
     border-left: none;
     color: #4285f4;
     height: 44px;
 
 }
-.fa-search
-{
+
+.fa-search {
     padding-right: 13px;
     font-size: 21px;
 }
@@ -87,12 +84,17 @@ body {
 
 .body-content {
     .related-keywords {
-        h3 {
+        .title-related-keywords h3 {
             color: $black;
-            font-size: 18px;
+            font-size: 14px;
         }
         a {
             color: $color-link;
+            h3 {
+                margin-bottom: 15px;
+                margin-top: 0;
+                font-size: 14px;
+            }
         }
     }
     .home-box-search {
@@ -147,9 +149,15 @@ body {
     p {
         margin-bottom: 0;
     }
-    .result-title a {
-        color: $color-link;
-        font-size: 18px;
+    .result-title {
+        h3 {
+            font-size: 18px;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+        a {
+            color: $color-link;
+        }
     }
     .result-url {
         color: #006621;

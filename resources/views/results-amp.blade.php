@@ -36,8 +36,13 @@
         .result-title {
             margin-bottom:0;
         }
+        .result-title h3{
+            margin-bottom:5px;
+            margin-top:0;
+            font-weight:400;
+        }
         a{
-            color: #1967D2;
+            color: #1a0dab;
             font-size:16px;
         }
         .result-url{
@@ -138,8 +143,8 @@
                 </a>
             </div>
             <div class="input-group search-box head col-md-6 centered ">
-                <form id="frmSearch" autocomplete="off" style="display: inherit">
-                    <input type="text" class="form-control input-search" placeholder="" id="q">
+                <form id="frmSearch" action="{{ url('/query') }}" autocomplete="off" style="display: inherit">
+                    <input type="text" class="form-control input-search" placeholder="" name="q">
                     <span class="input-group-btn">
                 <button class="btn btn-default border-right-radius" type="submit" id="btnSearch"><i class="fas fa-search"></i></button>
                 </span>
@@ -161,8 +166,12 @@
                             </div>
                         @endif
                         <div class="box-result">
-                            <p class="result-title"><a target="_blank" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</a></p>
-                            <p class="result-url">{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}</p>
+                            <div class="result-title">
+                                <a target="_blank" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}">
+                                    <h3>{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</h3>
+                                </a>
+                            </div>
+                            <p class="result-url">{{ strpos($result['url'],'http') === false ? substr('http://'.$result['url'],0,35).'...' : substr($result['url'],0,35).'...' }}</p>
                             <hr>
                             @if(!empty($result['description']))
                                 <p class="result-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['description'])) !!}</p>

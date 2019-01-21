@@ -12,6 +12,5 @@ Route::get('/sitemap/keywords_{page}.xml', 'SitemapController@keywords');
 Route::post('/save', 'CachMangController@save');
 Route::post('/save/save-many', 'CachMangController@saveMany');
 Route::get('/api/{q}', 'CachMangController@api');
+Route::get('/query', 'CachMangController@searchMobile');
 Route::get('/{q}', 'CachMangController@query');
-
-

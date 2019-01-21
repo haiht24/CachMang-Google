@@ -12,7 +12,11 @@
                             {{--</div>--}}
                         @endif
                         <div class="box-result">
-                            <p class="result-title"><a target="_blank" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</a></p>
+                            <div class="result-title">
+                                <h3>
+                                <a target="_blank" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</a>
+                                </h3>
+                            </div>
                             <p class="result-url">
                                 {{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}
                             </p>
@@ -27,11 +31,13 @@
 
                 @if(!empty($related))
                     <div class="col-md-12 col-sm-6 col-xs-12 npd-lr related-keywords">
-                        <h3>Searches related to <b>{{ $q }}</b></h3>
+                        <h3 class="title-related-keywords">Searches related to <b>{{ $q }}</b></h3>
                         @foreach($related as $r)
                             @if(!empty($r))
                                 <div class="col-md-6 npd-lr">
-                                    <a href="{{ url('/') . '/' . str_ireplace(' ', '-', str_ireplace('%','',$r)) }}">{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $r )) !!}</a>
+                                    <a href="{{ url('/') . '/' . str_ireplace(' ', '-', str_ireplace('%','',$r)) }}">
+                                        <h3>{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $r )) !!}</h3>
+                                    </a>
                                 </div>
                             @endif
                         @endforeach
