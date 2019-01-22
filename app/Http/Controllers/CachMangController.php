@@ -14,6 +14,8 @@ use Serps\SearchEngine\Google\GoogleUrl;
 use Serps\Core\Browser\Browser;
 use Serps\Core\Http\Proxy;
 use Jenssegers\Agent\Agent;
+use Cache;
+
 class CachMangController extends Controller
 {
 
@@ -162,12 +164,17 @@ class CachMangController extends Controller
         if(empty($q))
             return redirect('/' . $q);
         $q = $this->cleanSpecialChars($q);
-        $data = $this->getFromSearchEngine($q);
+
+//        $data = $this->getFromSearchEngine($q);
+
+        $data = Cache::remember('kw_' . $q, 60*24, function() use ($q){
+            return $this->getFromSearchEngine($q);
+        });
 //        $data['bing'] = $this->_bing($q);
 //        echo "<pre>";var_dump($data);die;
         /* SEO */
         $seo = [
-            'title' => ucwords(str_replace('-', ' ', $q)) . ' - GetCouponNow',
+            'title' => ucwords(str_replace('-', ' ', $q)),
             'description' => env('SEO_META_DESCRIPTION')
         ];
         if(!empty($data[0])){
@@ -176,8 +183,8 @@ class CachMangController extends Controller
 
         $data['seo'] = $seo;
         /* Get recently search keywords */
-        $data['recentlySearch'] = CachMangKeyword::orderBy('updated_at', 'DESC')->limit(9)->get(['keyword_text','kw_slug']);
-        $data['topSearch'] = CachMangKeyword::orderBy('number_search', 'DESC')->limit(9)->get(['keyword_text','kw_slug','number_search']);
+//        $data['recentlySearch'] = CachMangKeyword::orderBy('updated_at', 'DESC')->limit(9)->get(['keyword_text','kw_slug']);
+//        $data['topSearch'] = CachMangKeyword::orderBy('number_search', 'DESC')->limit(9)->get(['keyword_text','kw_slug','number_search']);
 
 //        $date = new Carbon();
 //        $date->subDay(1);
@@ -236,6 +243,10 @@ class CachMangController extends Controller
                 $arrSuggest = array_merge($arrSuggest, explode(',',$item));
             }
         }
+        /* Get more suggest kw from Google api */
+        $suggestFromGoogleApi = $this->getGoogleSuggestSearch($q, false);
+        $arrSuggest = array_merge($arrSuggest, $suggestFromGoogleApi);
+        /* remove duplicate from array */
         $arrSuggest = array_unique($arrSuggest);
         $data = [
             'related' => $arrSuggest,
@@ -312,14 +323,13 @@ class CachMangController extends Controller
         }
 
         $arrRelate = [];
-        foreach ($html->find('.b_rich .b_vlist2col') as $list) {
+        foreach ($html->find('.b_vList') as $list) {
             foreach ($list->find('li') as $li){
                 if($li->plaintext){
                     array_push($arrRelate, $li->plaintext);
                 }
             }
         }
-
         $data = [
             'items' => $arrResults,
             'block' => [

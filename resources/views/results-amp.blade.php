@@ -187,7 +187,7 @@
                     <h3>Searches related to <b>{{ $q }}</b></h3>
                     @foreach($related as $r)
                         @if(!empty($r))
-                            <div class="">
+                            <div class="amp-related-kw">
                                 <a href="{{ url('/') . '/' . str_ireplace(' ', '-', str_ireplace('%','',$r)) }}">{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $r )) !!}</a>
                             </div>
                         @endif
