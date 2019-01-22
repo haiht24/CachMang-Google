@@ -1,8 +1,8 @@
 @extends('app')
 @section('content')
-    <div class="container">
+    <div class="col-lg-offset-1 col-md-offset-1 container-padding-left">
         <div class="col-md-12">
-            <div class="col-md-9 con-results">
+            <div class="col-md-8 con-results">
                 @if(count($results) > 0)
                     @foreach($results as $k=>$result)
                         @if(!empty($result['url']))
