@@ -14,7 +14,29 @@ body {
 }
 
 .padding-left {
-    padding-left: 13px;
+    margin-left: 13px;
+    margin-right: -47px;
+    padding-top: 9px;
+}
+.padding-left:last-child
+{
+    padding-bottom: 6px;
+}
+.padding-left:first-child
+{
+    border-top: 1px solid #ccc;
+}
+
+#frmSearch
+{
+    border: 1px solid #ccc;
+    border-radius: 24px 24px 24px 24px;
+}
+
+.form-control:focus
+{
+    box-shadow:none;
+    -webkit-box-shadow:none;
 }
 
 .npd-lr {
@@ -32,6 +54,7 @@ body {
     border-top-right-radius: 24px;
     border-bottom-right-radius: 24px;
     border-left: none;
+    color: #4285f4;
 }
 
 .input-search {
@@ -42,11 +65,10 @@ body {
 }
 
 .border-right-radius {
-    border-radius: 0 20px 20px 0;
+    border-radius: 0 24px 24px 0;
     border-left: none;
     color: #4285f4;
     height: 44px;
-
 }
 
 .fa-search {

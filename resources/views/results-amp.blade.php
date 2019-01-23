@@ -130,6 +130,18 @@
         {
             width: 240px;
         }
+        .site-footer {
+            background-color: #eee;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-left: 0;
+            padding-right: 0;
+            margin-top: 15px;
+        }
+        .npd-lr {
+            padding-left: 0;
+            padding-right: 0;
+        }
     </style>
 </head>
 
@@ -200,6 +212,16 @@
         </div>
     </div>
 
+</div>
+<div class="col-xs-12 site-footer">
+    <div class="container">
+        <div class="col-xs-12 con-footer npd-lr">
+            <div class="col-xs-12">2018 {{ env('SITE_NAME') }}. All Rights Reserved</div>
+            {{--<div class="col-xs-12 alert-link">--}}
+            {{--<a href="{{ url('/contact') }}">Contact us</a> | <a href="{{ url('/term') }}">Term</a> | <a href="{{ url('/policy') }}">Policy</a> | <a href="https://www.couponsplusdeals.com" title="CouponsPlusDeals.com" target="_blank">Coupon codes</a> | <a href="https://www.couponmarathon.com/" title="CouponMarathon.com" target="_blank">CouponMarathon.com</a> | {{ config('domains.' . $GLOBALS['asset_domain'])['emailContact'] }}--}}
+            {{--</div>--}}
+        </div>
+    </div>
 </div>
 <input type="hidden" class="keyword" data-value="{{ $q }}">
 </body>
