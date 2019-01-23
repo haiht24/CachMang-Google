@@ -74,6 +74,8 @@
                     /*create a DIV element for each matching element:*/
                     b = document.createElement("DIV");
                     b.setAttribute("class","padding-left");
+                    $('.input-search').css("border-color","#fff");
+                    $('.border-right-radius').css("border-color","#fff");
                     /*make the matching letters bold:*/
                     b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
                     b.innerHTML += arr[i].substr(val.length);
