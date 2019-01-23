@@ -175,7 +175,7 @@ class CachMangController extends Controller
         /* SEO */
         $seo = [
             'title' => ucwords(str_replace('-', ' ', $q)),
-            'description' => env('SEO_META_DESCRIPTION')
+            'description' => 'Search results for keyword ' . $q
         ];
         if(!empty($data[0])){
             $seo['description'] = $data[0]['description'];

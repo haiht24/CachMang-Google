@@ -14,7 +14,7 @@
                         <div class="box-result">
                             <div class="result-title">
                                 <h3>
-                                <a target="_blank" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}">{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $result['title'])) !!}</a>
+                                <a target="_blank" title="{{ $result['title'] }}" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}">{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $result['title'])) !!}</a>
                                 </h3>
                             </div>
                             <p class="result-url">
@@ -37,7 +37,7 @@
                 @foreach($related as $r)
                     @if(!empty($r))
                         <div class="npd-lr">
-                            <a href="{{ url('/') . '/' . str_ireplace(' ', '-', str_ireplace('%','',$r)) }}">
+                            <a href="{{ url('/') . '/' . str_ireplace(' ', '-', str_ireplace('%','',$r)) }}" title="{{ $q }}">
                                 <h3>{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $r )) !!}</h3>
                             </a>
                         </div>

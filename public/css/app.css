@@ -31,6 +31,7 @@ body {
   padding-right: 0; }
 
 .input-search {
+  border: none;
   height: 44px;
   -webkit-box-shadow: unset; }
 
