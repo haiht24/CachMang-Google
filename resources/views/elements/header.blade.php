@@ -4,7 +4,7 @@
         <div class="col-md-8 con-header">
             <div class="col-md-3">
                 <a href="{{ url('/') }}">
-                <img src="{{ asset('/images/'.$GLOBALS['asset_domain'].'/logo.png') }}" class="logo">
+                <img src="{{ asset('/images/logo.png') }}" class="logo">
                 </a>
             </div>
             <div class="input-group search-box head col-md-9">

@@ -2,7 +2,12 @@ $color-link: #1a0dab;
 $black: #222;
 
 body {
+    height: 100%;
     font-family: 'Roboto', sans-serif;
+}
+
+#btnSearch{
+    border: none;
 }
 
 .autocomplete-items {
@@ -73,10 +78,6 @@ body {
 .fa-search {
     padding-right: 13px;
     font-size: 21px;
-}
-
-body {
-    height: 100%;
 }
 
 .logo.home-pos {
