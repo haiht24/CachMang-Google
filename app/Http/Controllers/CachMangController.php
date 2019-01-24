@@ -166,7 +166,7 @@ class CachMangController extends Controller
         $q = $this->cleanSpecialChars($q);
 
         $data = $this->getFromSearchEngine($q);
-
+//        echo "<pre>";var_dump($data);die;
 //        $data = Cache::remember('kw_' . $q, 60*24, function() use ($q){
 //            return $this->getFromSearchEngine($q);
 //        });
@@ -215,6 +215,7 @@ class CachMangController extends Controller
 
 //        $data['ask'] = $this->_ask($q);
         $data['bing'] = $this->_bing($q);
+//        return $data;
         /*$data['dogpile'] = $this->getData('dogpile.com', $q);
         $data['netfind'] = $this->getData('netfind.com', $q);
         $data['norton'] = $this->getData('search.norton.com', $q);
@@ -306,6 +307,8 @@ class CachMangController extends Controller
         $q = str_replace('-','+',$q);
         $path = 'https://www.bing.com/search?q=' . $q;
         $html = $this->getHtml($path);
+//        $html = file_get_contents($path);
+//        return $html;
 
         $arrResults = [];
         foreach($html->find('.b_algo') as $result){
@@ -323,7 +326,7 @@ class CachMangController extends Controller
         }
 
         $arrRelate = [];
-        foreach ($html->find('.b_vList') as $list) {
+        foreach ($html->find('.b_rrsr .b_vList') as $list) {
             foreach ($list->find('li') as $li){
                 if($li->plaintext){
                     array_push($arrRelate, $li->plaintext);
