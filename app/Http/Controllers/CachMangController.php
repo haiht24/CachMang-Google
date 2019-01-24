@@ -165,11 +165,11 @@ class CachMangController extends Controller
             return redirect('/' . $q);
         $q = $this->cleanSpecialChars($q);
 
-        $data = $this->getFromSearchEngine($q);
+//        $data = $this->getFromSearchEngine($q);
 //        echo "<pre>";var_dump($data);die;
-//        $data = Cache::remember('kw_' . $q, 60*24, function() use ($q){
-//            return $this->getFromSearchEngine($q);
-//        });
+        $data = Cache::remember('kw_' . $q, 60*24, function() use ($q){
+            return $this->getFromSearchEngine($q);
+        });
 //        $data['bing'] = $this->_bing($q);
 //        echo "<pre>";var_dump($data);die;
         /* SEO */
