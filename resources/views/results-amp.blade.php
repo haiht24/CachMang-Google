@@ -215,7 +215,7 @@
                         @endif
                         <div class="box-result">
                             <div class="result-title">
-                                <a target="_blank" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}">
+                                <a rel="nofollow" target="_blank" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}">
                                     <h3>{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</h3>
                                 </a>
                             </div>

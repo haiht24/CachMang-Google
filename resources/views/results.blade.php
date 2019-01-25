@@ -14,7 +14,7 @@
                         <div class="box-result">
                             <div class="result-title">
                                 <h3>
-                                <a target="_blank" title="{{ $result['title'] }}" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}">{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $result['title'])) !!}</a>
+                                <a rel="nofollow" target="_blank" title="{{ $result['title'] }}" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}">{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $result['title'])) !!}</a>
                                 </h3>
                             </div>
                             <p class="result-url">
