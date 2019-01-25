@@ -157,6 +157,9 @@ body {
 .container-padding-left {
   padding-left: 6%; }
 
+@media (max-width: 1199px) {
+  .con-results {
+    padding-left: 10px; } }
 @media (max-width: 991px) {
   .body-content .home-box-search .search-box {
     width: 100%; }
@@ -171,7 +174,13 @@ body {
     padding: 13px 0; }
 
   .frmSearch-home {
-    max-width: 90%; } }
+    max-width: 90%; }
+
+  .con-results {
+    padding-left: 7px; } }
+@media (max-width: 767px) {
+  .con-results {
+    padding-left: 1px; } }
 @media (max-width: 467px) {
   .con-header {
     margin-top: 5px;
