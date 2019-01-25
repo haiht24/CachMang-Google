@@ -162,7 +162,16 @@ body {
     width: 100%; }
 
   .logo.home-pos img {
-    max-width: 100%; } }
+    max-width: 100%; }
+
+  .centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 13px 0; }
+
+  .frmSearch-home {
+    max-width: 90%; } }
 @media (max-width: 467px) {
   .con-header {
     margin-top: 5px;
