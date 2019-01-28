@@ -11,6 +11,8 @@ class SitemapController extends Controller
         $data = [];
         $keywordsLength = CachMangKeyword::count();
         $page = $keywordsLength / 1000;
+        if($page < 1)
+            $page = 1;
         $data['page'] = (Int)$page;
         return view('sitemap-index')->with($data);
     }
