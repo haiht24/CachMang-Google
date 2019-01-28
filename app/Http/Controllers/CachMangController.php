@@ -513,6 +513,8 @@ class CachMangController extends Controller
     /* Save to keyword */
     public function save(Request $request) {
         $relatedKeywords = Input::get('relatedKeywords');
+        if(sizeof($relatedKeywords) === 0)
+            return '0';
         $findExistedRecords = CachMangKeyword::whereIn('keyword_text', $relatedKeywords)->pluck('keyword_text')->all();
         $insertThem = [];
         // find records not exist in db
