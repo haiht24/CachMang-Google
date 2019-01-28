@@ -21,126 +21,11 @@ class CachMangController extends Controller
 
     public function index() {
         $seo = [
-            'title' => config('domains.' . $GLOBALS['asset_domain'])['seo']['title'],
-            'description' => config('domains.' . $GLOBALS['asset_domain'])['seo']['description']
+            'title' => "Today's best deals for savyy - Searchdealtoday.com",
+            'description' => "Searchdealtoday is thrilled to be your deal searcher every single day. Whatever you want to buy from clothes, beauty products, home items and so on, we are here update all latest deals, hot deals or top discounts for budget saving."
         ];
         $data['seo'] = $seo;
-        $data['trendingSearch'][1] = [
-            'argos promotional code 2018',
-            'billie discount code',
-            'black friday online shopping',
-            'circuit laundry promotional code 2017',
-            'debenhams promotional code 2018',
-            'direct line landlord insurance promotional code',
-            'fortnite discount code',
-            'john lewis partnership card',
-            'lyft promo code 2018',
-            'online shopping for women fitsiri',
-            'playstation store discount code 2018',
-            'ps4 discount code 2018',
-            'psn discount code 2018',
-            'railcard promotional code nus',
-            'stockx discount code 2018',
-//            'uber discount code 2018',
-        ];
-        $data['trendingSearch'][2] = [
-            'wish promo code 2018',
-            'wonderbly discount code',
-            'wonders of wildlife discount code',
-            'amazon discount code',
-            'amazon promo code',
-            'hobby lobby coupon',
-            'michaels coupons',
-            'promo code target',
-            'promotional code amazon',
-            'tire discount',
-            'debenhams promotional code',
-            'target promo code',
-            'jcpenney coupons',
-            'kohls coupons',
-            'promotional code argos',
-        ];
-        $data['trendingSearch'][3] = [
-            'screwfix promotional code',
-            'ps4 discount code',
-            'stubhub',
-            'uber promo code',
-            'papa johns',
-            'promo code papa johns',
-            'stubhub discount code',
-            'papa johns promo code',
-            'playstation',
-            'playstation discount code',
-            'asda promotional code',
-            'john lewis promotional code',
-            'printable coupons',
-            'pizza hut coupons',
-            'target coupons',
-        ];
-        $data['trendingSearch'][4] = [
-            'walmart coupons',
-            'michaels coupon',
-            'groupon discount code',
-            'groupon promo code',
-            'lyft promo',
-            'lyft promo code',
-            'online coupons',
-            'railcard promotional code',
-            'kohls coupon',
-            'bed bath beyond coupon',
-            'promotional code sports direct',
-            'aaa discount code',
-            'discount code for stockx',
-            'psn discount code'
-        ];
-        $data['holiday'][1] = [
-            '4th of July',
-            'After Christmas',
-            'Amazon Prime Day',
-            'Back to School',
-            'Beauty Brands',
-            'Black Friday',
-            'Boxing Day',
-            'Christmas',
-            'Columbus Day',
-            'Cyber Monday',
-        ];
-        $data['holiday'][2] = [
-            'Easter Sale',
-            'Father\'s Day',
-            'Flash Sales',
-            'Free Shipping Day',
-            'Gift Card Deals',
-            'Graduation Deals',
-            'Green Monday',
-            'Halloween',
-            'Hanukkah Day',
-            'Happy Birthday',
-        ];
-        $data['holiday'][3] = [
-            'Holiday Deals',
-            'Labor Day',
-            'Memorial Day',
-            'Mother\'s Day',
-            'Moving Deals',
-            'New Year\'s',
-            'Outdoor Living',
-            'Pi Day',
-            'Presidents Day',
-            'Spring Break Deals',
-        ];
-        $data['holiday'][4] = [
-            'Student Discounts',
-            'Summer Savings',
-            'Super Bowl Day',
-            'Thanksgiving',
-            'Travel Deals',
-            'Valentine\'s Day',
-            'Veterans Day',
-            'Wedding Deals',
-            'Weekly Ads',
-            'Small Business Day'
-        ];
+
         $data['hiddenSearchHeader'] = 1;
         return view('home')->with($data);
     }
@@ -627,7 +512,30 @@ class CachMangController extends Controller
 
     /* Save to keyword */
     public function save(Request $request) {
-        $currentKeyword = Input::get('currentKeyword');
+        $relatedKeywords = Input::get('relatedKeywords');
+        $findExistedRecords = CachMangKeyword::whereIn('keyword_text', $relatedKeywords)->pluck('keyword_text')->all();
+        $insertThem = [];
+        // find records not exist in db
+        foreach ($relatedKeywords as $r) {
+            if(!in_array($r, $findExistedRecords)){
+                array_push($insertThem, $r);
+            }
+        }
+        if(count($insertThem) > 0){
+            foreach ($insertThem as $item) {
+                $charges[] = [
+                    'keyword_text' => $item,
+                    'kw_slug' => str_slug($item),
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s')
+                ];
+            }
+            $rs = CachMangKeyword::insert($charges);
+            return count($insertThem);
+        }
+        return '0';
+        /*  */
+        /*$currentKeyword = Input::get('currentKeyword');
         $relatedKeywords = Input::get('relatedKeywords');
         $relatedKeywords = !empty($relatedKeywords) ? join(',',$relatedKeywords) : '';
         $parentKeywordId = $this->saveKeyword($currentKeyword, $relatedKeywords);
@@ -660,7 +568,7 @@ class CachMangController extends Controller
             $rs = CachMangResults::insert($charges);
             return count($insertThem) . ' records inserted';
         }
-        return '0 records inserted';
+        return '0 records inserted';*/
     }
 
     public function saveMany(Request $request) {

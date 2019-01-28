@@ -37,7 +37,7 @@
                 @foreach($related as $r)
                     @if(!empty($r))
                         <div class="npd-lr">
-                            <a href="{{ url('/') . '/' . str_ireplace(' ', '-', str_ireplace('%','',$r)) }}" title="{{ $q }}">
+                            <a class="related_keywords" href="{{ url('/') . '/' . str_ireplace(' ', '-', str_ireplace('%','',$r)) }}" title="{{ $q }}">
                                 <h3>{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $r )) !!}</h3>
                             </a>
                         </div>
@@ -75,7 +75,7 @@
 
                 $('.related_keywords').each(function () {
                     var t = $(this);
-                    relatedKeywords.push(t.text());
+                    relatedKeywords.push(t.text().trim());
                 });
                 $.post(url + '/save', {results: JSON.stringify(results), currentKeyword: currentKeyword, relatedKeywords: relatedKeywords}, function (response) {
                     console.log(response);
