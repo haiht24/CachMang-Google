@@ -179,6 +179,19 @@
             right: 3px;
         }
     </style>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <amp-analytics type="gtag" data-credentials="include">
+        <script type="application/json">
+        {
+            "vars" : {
+                "gtag_id": "UA-133319068-1",
+                "config" : {
+                    "UA-133319068-1": { "groups": "default" }
+                }
+            }
+        }
+    </script>
+    </amp-analytics>
 </head>
 
 <body>
