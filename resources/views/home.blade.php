@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="col-xs-12 home-box-search">
-        <div class="container">
+        <div class="container right-13">
             <div class="col-xs-12 logo home-pos">
                 <img src="{{ asset('/images/logo.png') }}" class="logo">
             </div>
