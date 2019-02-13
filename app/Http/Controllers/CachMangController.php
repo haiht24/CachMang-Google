@@ -50,11 +50,11 @@ class CachMangController extends Controller
             return redirect('/' . $q);
         $q = $this->cleanSpecialChars($q);
 
-//        $data = $this->getFromSearchEngine($q);
+        $data = $this->getFromSearchEngine($q);
 //        echo "<pre>";var_dump($data);die;
-        $data = Cache::remember('kw_' . $q, 60*24, function() use ($q){
-            return $this->getFromSearchEngine($q);
-        });
+//        $data = Cache::remember('kw_' . $q, 60*24, function() use ($q){
+//            return $this->getFromSearchEngine($q);
+//        });
 //        $data['bing'] = $this->_bing($q);
 //        echo "<pre>";var_dump($data);die;
         /* SEO */
@@ -99,7 +99,8 @@ class CachMangController extends Controller
         */
 
 //        $data['ask'] = $this->_ask($q);
-        $data['bing'] = $this->_bing($q);
+//        $data['bing'] = $this->_bing($q);
+        $data['bing'] = $this->_yahoo($q);
 //        return $data;
         /*$data['dogpile'] = $this->getData('dogpile.com', $q);
         $data['netfind'] = $this->getData('netfind.com', $q);
@@ -188,7 +189,47 @@ class CachMangController extends Controller
     }
 
     /* Search engines */
-    public function _bing($q) {
+    public function _yahoo($q) {
+        $q = str_replace('-','+',$q);
+        $path = 'https://search.yahoo.com/search?p=' . $q;
+        $html = $this->getHtml($path);
+//        $html = file_get_contents($path);
+//        return $html;
+
+        $arrResults = [];
+        foreach($html->find('.algo') as $result){
+            $a = [];
+            if($result->find('h3', 0)){
+                $a['title'] = trim($result->find('h3', 0)->plaintext);
+                if($result->find('.compText', 0)){
+                    $a['description'] = trim($result->find('.compText', 0)->plaintext);
+                }else{
+                    $a['description'] = '';
+                }
+                $a['url'] = trim($result->find('.fz-ms', 0)->plaintext);
+                array_push($arrResults, $a);
+            }
+        }
+
+        $arrRelate = [];
+        foreach ($html->find('.b_rrsr .b_vList') as $list) {
+            foreach ($list->find('li') as $li){
+                if($li->plaintext){
+                    array_push($arrRelate, $li->plaintext);
+                }
+            }
+        }
+        $data = [
+            'items' => $arrResults,
+            'block' => [
+                'suggestion' => join(',',$arrRelate)
+            ],
+//            'q' => str_replace('+', ' ', $q),
+//            'from' => 'BING'
+        ];
+        return $data;
+    }
+    /*public function _bing($q) {
         $q = str_replace('-','+',$q);
         $path = 'https://www.bing.com/search?q=' . $q;
         $html = $this->getHtml($path);
@@ -227,7 +268,7 @@ class CachMangController extends Controller
 //            'from' => 'BING'
         ];
         return $data;
-    }
+    }*/
 
     public function _google($q) {
         /* Get random proxy */
