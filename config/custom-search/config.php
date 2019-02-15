@@ -185,7 +185,7 @@ return [
                     'description' => 'So many code for you! Never miss this chance.'
                 ], [
                     'title' => 'GunDeals Special Offer',
-                    'description' => 'Get a 5$ Credit with code "GUN*****" at checkout. Steel AR500 Gong Target Sale'
+                    'description' => 'Get a 5$ Credit with code GUN***** at checkout. Steel AR500 Gong Target Sale'
                 ],
             ]
         ],
@@ -303,7 +303,7 @@ Save with coupon, discount & promo code'
             'extend_url' => [
                 [
                     'title' => 'CouponsPlusDeals 2019',
-                    'description' => '"Provied 100% working code. Save with coupon, discount & promo code"'
+                    'description' => 'Provied 100% working code. Save with coupon, discount & promo code'
                 ], [
                     'title' => '40% OFF Shytobuy UK',
                     'description' => 'Updated Shy To Buy coupons, promos and voucher codes'
@@ -346,12 +346,12 @@ Get it now'
             'extend_url' => [
                 [
                     'title' => 'Best Coupons Site 2019',
-                    'description' => '"Provied 100% working code
-Save with coupon, discount & promo code"'
+                    'description' => 'Provied 100% working code
+Save with coupon, discount & promo code'
                 ], [
                     'title' => '40% Off Visahq.com',
-                    'description' => '"Never say never to this discount
-40% Off Your Order"'
+                    'description' => 'Never say never to this discount
+40% Off Your Order'
                 ], [
                     'title' => '30% Off All Items',
                     'description' => '100% Updated & Verified Code'
@@ -379,7 +379,7 @@ Save with coupon, discount & promo code"'
         'cp' => [
             'url' => 'https://www.couponpublish.com/visahq-coupons',
             'title' => 'Spend up to 35% less at checkout by using this VisaHQ promo now!',
-            'description' => 'No minimum spending required but only for selected items. Remember that VisaHQ coupon are hard to come by! Don"t eye it any longer. Check out now!'
+            'description' => 'No minimum spending required but only for selected items. Remember that VisaHQ coupon are hard to come by! Dont eye it any longer. Check out now!'
         ]
     ],
     'eyeline-golf-coupons' => [
@@ -390,15 +390,15 @@ Save with coupon, discount & promo code"'
             'extend_url' => [
                 [
                     'title' => 'CouponsPlusDeals 2019',
-                    'description' => '"Provied 100% working code
-Save with coupon, discount & promo code"'
+                    'description' => 'Provied 100% working code
+Save with coupon, discount & promo code'
                 ], [
                     'title' => 'Working Promo Codes 2019',
                     'description' => 'Hunders codes just for you - all verifed.'
                 ], [
                     'title' => '$10 Off Offer',
-                    'description' => '"$10 Off all your purchase
-Get $10 Off Your Next Order"'
+                    'description' => '$10 Off all your purchase
+Get $10 Off Your Next Order'
                 ], [
                     'title' => 'Special Deals',
                     'description' => '5+ active EyeLine Golf coupons, promo codes & deals for Feb. 2019.'
@@ -434,8 +434,8 @@ Get $10 Off Your Next Order"'
             'extend_url' => [
                 [
                     'title' => 'Best Coupons Site 2019',
-                    'description' => '"Provied 100% working code
-Save with coupon, discount & promo code"'
+                    'description' => 'Provied 100% working code
+Save with coupon, discount & promo code'
                 ], [
                     'title' => 'Free Shipping Deals',
                     'description' => 'Free Shipping on all your order, from $50'
@@ -466,7 +466,7 @@ Save with coupon, discount & promo code"'
         'cp' => [
             'url' => 'https://www.couponpublish.com/q-link-coupons',
             'title' => 'Steal the amazing discounts up to 30% OFF by this Q-Link promo',
-            'description' => 'Take this great opportunity to save big with Q-Link promo code! Up to 25% discount available for picks on selected products. Don"t wait any longer!'
+            'description' => 'Take this great opportunity to save big with Q-Link promo code! Up to 25% discount available for picks on selected products. Dont wait any longer!'
         ]
     ],
     'seatylock-coupons' => [
@@ -477,8 +477,8 @@ Save with coupon, discount & promo code"'
             'extend_url' => [
                 [
                     'title' => 'CouponsPlusDeals 2019',
-                    'description' => '"Provied 100% working code
-Save with coupon, discount & promo code"'
+                    'description' => 'Provied 100% working code
+Save with coupon, discount & promo code'
                 ], [
                     'title' => '35% Off on Seaty Lock',
                     'description' => 'Don\'t miss out!'

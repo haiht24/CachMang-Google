@@ -157,7 +157,8 @@ body {
   .box-result .result-description {
     color: #545454; }
   .box-result .ext-result {
-    padding-top: 10px; }
+    padding-top: 10px;
+    min-height: 75px; }
     .box-result .ext-result .ext-title a {
       color: #1a0dab;
       font-size: 18px;
