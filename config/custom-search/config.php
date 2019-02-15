@@ -7,7 +7,7 @@ return [
             'description' => 'Save with Udemy Coupons & Promo codes coupons and promo codes for February, 2019. Today\'s top Udemy Coupons & Promo codes discount: 10% on All ...',
             'extend_url' => [
                 [
-                    'title' => 'Upto 99% for all courses',
+                    'title' => 'Up to 99% Off for all courses',
                     'description' => 'Sales Training - 100% working code'
                 ], [
                     'title' => 'Valentine’s Day Sale',
@@ -24,7 +24,7 @@ return [
         'bbbd' => [
             'url' => 'https://www.bestbuybestdeals.com/udemy-coupons',
             'title' => '60% Off Udemy Coupons, Discount Codes and Deals Saving Money',
-            'description' => '100% FREE VisaHQ coupon codes and discounts upto 70% OFF are weekly updated here. Check out these VisaHQ best deals and discount codes in 2019.'
+            'description' => '100% FREE Udemy coupon codes and discounts up to 70% OFF are weekly updated here. Check out these Udemy best deals and discount codes in 2019.'
         ],
         'mrt' => [
             'url' => 'https://couponmarathon.com/udemy-coupons',
@@ -66,7 +66,7 @@ return [
         'bbbd' => [
             'url' => 'https://www.bestbuybestdeals.com/alidropship-coupons',
             'title' => '60% Off AliDropship Coupons, Discount Codes and Deals Saving Money',
-            'description' => '100% FREE AliDropship coupon codes and discounts upto 70% OFF are weekly updated here. Check out these AliDropship best deals and ...'
+            'description' => '100% FREE AliDropship coupon codes and discounts up to 70% OFF are weekly updated here. Check out these AliDropship best deals and ...'
         ],
         'mrt' => [
             'url' => 'https://couponmarathon.com/alidropship-coupons',
@@ -81,7 +81,7 @@ return [
         'cp' => [
             'url' => 'https://www.couponpublish.com/alidropship-coupons',
             'title' => 'AliDropship Coupons And Deals - up to 85% OFF',
-            'description' => 'Dont miss this exclusive AliDropship coupon because it\'ll give you upto 85% OFF.'
+            'description' => 'Dont miss this exclusive AliDropship coupon because it\'ll give you up to 85% OFF.'
         ]
     ],
     'active-campaign-coupons' => [
@@ -139,7 +139,7 @@ return [
                     'title' => 'CBD Coupon Deals',
                     'description' => 'Find the best Kat\'s Naturals promo codes, coupons, deals and discounts for 2019.'
                 ], [
-                    'title' => 'Upto 50% Off today',
+                    'title' => 'Up to 50% Off today',
                     'description' => 'Visit site and get more Coupon & Promo codes, 100% Verified'
                 ], [
                     'title' => 'CouponsPlusDeals 2019',
@@ -165,7 +165,7 @@ return [
         'cp' => [
             'url' => 'https://www.couponpublish.com/kats-naturals-coupons',
             'title' => 'Enjoy 50% Off - Kat\'s Naturals coupons, promo & discount codes',
-            'description' => 'The Seedling Truck is proud to present to you the newest additions to our top 420 related discount codes and deals. Find vouchers for Kats Naturals!'
+            'description' => 'Coupon Publish is proud to present to you the newest additions to our top 420 related discount codes and deals. Find vouchers for Kats Naturals!'
         ]
     ],
     'shootingtargets7-coupons' => [
@@ -309,7 +309,7 @@ Save with coupon, discount & promo code'
                     'description' => 'Updated Shy To Buy coupons, promos and voucher codes'
                 ], [
                     'title' => 'Shytobuy Coupons Feb 2019',
-                    'description' => '100% working code Discount upto 50%'
+                    'description' => '100% working code Discount up to 50%'
                 ], [
                     'title' => '50% Off',
                     'description' => 'Exclusive Shytobuy promo code
@@ -367,19 +367,192 @@ Save with coupon, discount & promo code"'
             'description' => 'Use VisaHQ Coupon Code for 50% OFF and free shipping |  100% Valid promo code for all customers | Save Immediately at the check out | Hurry up!'
         ],
         'mrt' => [
-            'url' => '',
-            'title' => '',
-            'description' => ''
+            'url' => 'https://couponmarathon.com/visahq-coupons',
+            'title' => 'Best Deals Available at Coupon Marathon | 50% OFF VisaHQ coupons',
+            'description' => 'Click here for free VisaHQ coupon codes and hot deals | Get up to 50% OFF on your next purchase | All Coupons Tested | 24/7 Available. Daily Updated.'
         ],
         'cfs' => [
+            'url' => 'https://www.couponsforsave.com/visahq-coupons',
+            'title' => 'Special offer is coming! Grab up to 30% OFF by using VisaHQ coupon!',
+            'description' => 'During the flash sale, VisaHQ gives many interesting gifts for all users. Apply this promo code to get the promotion pricing. This sale will end soon!'
+        ],
+        'cp' => [
+            'url' => 'https://www.couponpublish.com/visahq-coupons',
+            'title' => 'Spend up to 35% less at checkout by using this VisaHQ promo now!',
+            'description' => 'No minimum spending required but only for selected items. Remember that VisaHQ coupon are hard to come by! Don"t eye it any longer. Check out now!'
+        ]
+    ],
+    'eyeline-golf-coupons' => [
+        'cpd' => [
+            'url' => 'https://www.couponsplusdeals.com/eyeline-golf-coupons',
+            'title' => '45% Off eyelinegolf.com Coupons & Promo Codes, 2019 Updated!!!',
+            'description' => 'Hurry up and don\'t miss these great exclusive Eyeline Golf coupons. You have a chance to save up to 45% now on all items. Don\'t wait no more!',
+            'extend_url' => [
+                [
+                    'title' => 'CouponsPlusDeals 2019',
+                    'description' => '"Provied 100% working code
+Save with coupon, discount & promo code"'
+                ], [
+                    'title' => 'Working Promo Codes 2019',
+                    'description' => 'Hunders codes just for you - all verifed.'
+                ], [
+                    'title' => '$10 Off Offer',
+                    'description' => '"$10 Off all your purchase
+Get $10 Off Your Next Order"'
+                ], [
+                    'title' => 'Special Deals',
+                    'description' => '5+ active EyeLine Golf coupons, promo codes & deals for Feb. 2019.'
+                ],
+            ]
+        ],
+        'bbbd' => [
+            'url' => 'https://www.bestbuybestdeals.com/eyeline-golf-coupons',
+            'title' => 'Hot,Save 45% off and more now using these Eyeline Golf Coupons.',
+            'description' => 'You can\'t miss it! Don\'t waste the chance to save up to 45% off with these awesome Eyeline Golf coupons. The best opportunity to save money now!'
+        ],
+        'mrt' => [
+            'url' => 'https://couponmarathon.com/eyeline-golf-coupons',
+            'title' => 'Don\'t miss these awesome 45% off EyeLine Gold discounts. Hurry up!',
+            'description' => 'Hurry up! Use this great chance to save your money and get the best Eyeline Golf coupons and save up to 45% now. You defenitely can\'t miss it!'
+        ],
+        'cfs' => [
+            'url' => 'https://www.couponsforsave.com/eyeline-golf-coupons',
+            'title' => 'Enjoy these special Eyeline Golf Coupons now. Don\'t miss it!',
+            'description' => 'Don\'t wait no more! Take chance to get at least 45% off with these great Eyeline Golf discounts. Hurry up and get these awesome offers! 100% Valid'
+        ],
+        'cp' => [
+            'url' => 'https://www.couponpublish.com/eyeline-golf-coupons',
+            'title' => 'Perfect Eyeline Golf discounts are here. Don\'t wait, grab it now!',
+            'description' => 'You will love using these awesome Eyeline Golf offers | Get the opportunity to save at least 45% now | Don\'t skip these great discount codes!'
+        ]
+    ],
+    'q-link-coupons' => [
+        'cpd' => [
+            'url' => 'https://www.couponsplusdeals.com/q-link-coupons',
+            'title' => '20% Off shopqlink.com Coupons & Promo Codes, February 2019',
+            'description' => 'Who doesn\'t love an amazing deal? Shop at Q-Link to get up to 40% OFF by this promo. These top rated products could be yours! Last chance to buy.',
+            'extend_url' => [
+                [
+                    'title' => 'Best Coupons Site 2019',
+                    'description' => '"Provied 100% working code
+Save with coupon, discount & promo code"'
+                ], [
+                    'title' => 'Free Shipping Deals',
+                    'description' => 'Free Shipping on all your order, from $50'
+                ], [
+                    'title' => 'Best Discount‎: ‎50% off',
+                    'description' => 'Updated Regularly - Checked Daily'
+                ], [
+                    'title' => 'All Q-link coupon codes',
+                    'description' => 'Lastest coupon code for Feb 2019'
+                ],
+            ]
+        ],
+        'bbbd' => [
             'url' => '',
             'title' => '',
             'description' => ''
         ],
+        'mrt' => [
+            'url' => 'https://couponmarathon.com/q-link-coupons',
+            'title' => 'Grab this special offer and enjoy up to 30% off by Q-Link promo',
+            'description' => 'Choose your favorite products at Q-Link and save 30% off. Right now is the best time to buy and claim it as your own. Hot specials don\'t last forever.'
+        ],
+        'cfs' => [
+            'url' => 'https://www.couponsforsave.com/q-link-coupons',
+            'title' => 'Great Sale Time - Enjoy 25% OFF when using Q-Link promo! Be quick!',
+            'description' => 'Pay 10% less than the regular price with this Q-Link coupon for products anywhere in the world. No minimum purchase required. Check it now! '
+        ],
         'cp' => [
-            'url' => '',
-            'title' => '',
-            'description' => ''
+            'url' => 'https://www.couponpublish.com/q-link-coupons',
+            'title' => 'Steal the amazing discounts up to 30% OFF by this Q-Link promo',
+            'description' => 'Take this great opportunity to save big with Q-Link promo code! Up to 25% discount available for picks on selected products. Don"t wait any longer!'
+        ]
+    ],
+    'seatylock-coupons' => [
+        'cpd' => [
+            'url' => 'https://www.couponsplusdeals.com/seatylock-coupons',
+            'title' => '35% OFF promo codes for all beloved customers! More saving here!',
+            'description' => 'Make the best of this 45% OFF Seatylock discount code. Pick your favorite products at really lowest price online thanks to Seatylock coupon codes.',
+            'extend_url' => [
+                [
+                    'title' => 'CouponsPlusDeals 2019',
+                    'description' => '"Provied 100% working code
+Save with coupon, discount & promo code"'
+                ], [
+                    'title' => '35% Off on Seaty Lock',
+                    'description' => 'Don\'t miss out!'
+                ], [
+                    'title' => 'Specials Program',
+                    'description' => 'Get 10% off ANY orders with this discount code.'
+                ], [
+                    'title' => 'Happy Offer',
+                    'description' => 'You own a wonderful chance to use this Seatylock coupon code and enjoy 30% off on any order.'
+                ],
+            ]
+        ],
+        'bbbd' => [
+            'url' => 'https://www.bestbuybestdeals.com/seatylock-coupons',
+            'title' => '50% OFF Seatylock Coupon |  Exclusive discounts for Feb. 2019.',
+            'description' => 'Enjoy new special offers for this February 2019. You can hunt more official and verified Seatylock coupons at here! Happy Time & Great Discount! '
+        ],
+        'mrt' => [
+            'url' => 'https://couponmarathon.com/seatylock-coupons',
+            'title' => 'Click here to activate the 45% Seatylock coupons and get discount',
+            'description' => 'Come to purchase with 30% cut off regular price by using Seatylock  coupon code. All Seatylock coupons are tested to give you the best coupons. Hurry!'
+        ],
+        'cfs' => [
+            'url' => 'https://www.couponsforsave.com/seatylock-coupons',
+            'title' => 'Redeem all Seatylock discounts for maximum discount. Happy Time! ',
+            'description' => '70% Off Seatylock Coupons & February 2019 Deals are for only you! Grab it now to purchase any Seatylock products with moderate price. Hurry!'
+        ],
+        'cp' => [
+            'url' => 'https://www.couponpublish.com/seatylock-coupons',
+            'title' => 'Pay 30% lower price for your order using Seatylock coupon codes.',
+            'description' => 'Get the best bicycle manufacturer in the world with the lowest cost. What are you waiting for? All verified Seatylock coupons stay here. Up to 45% OFF'
+        ]
+    ],
+    'wow-african-coupons' => [
+        'cpd' => [
+            'url' => 'https://www.couponsplusdeals.com/wow-african-coupons',
+            'title' => 'Enjoy this wonderful WOW African promos when accessing our site. ',
+            'description' => 'Take chance to enjoy the best price with the help of WOW African coupons. Up to 50% discount for each order is available for all customers | BIG deal',
+            'extend_url' => [
+                [
+                    'title' => 'Best Coupons Site 2019',
+                    'description' => 'Provied 100% working code
+Save with coupon, discount & promo code'
+                ], [
+                    'title' => 'WOW African Coupons',
+                    'description' => '45% Off and free shipping deals - [Verified]'
+                ], [
+                    'title' => 'Offer $10 off',
+                    'description' => 'Save $10 Off Your Order at VP Fashion'
+                ], [
+                    'title' => 'Exclusive coupon code',
+                    'description' => '15% Discount + Free Shipping On wowafrican.com Purchase'
+                ],
+            ]
+        ],
+        'bbbd' => [
+            'url' => 'https://www.bestbuybestdeals.com/wow-african-coupons',
+            'title' => 'Exclusive WOW African coupons are available. Click to get 50% OFF',
+            'description' => 'Get the best coupons now! Don\'t miss this chance to save money with all verified WOW African coupon codes for Feb. 2019. Don\'t hesitate any longer!'
+        ],
+        'mrt' => [
+            'url' => 'https://couponmarathon.com/wow-african-coupons',
+            'title' => 'Active this WOW African code to avail this offer for up to 40% OFF',
+            'description' => 'It’s the perfect opportunity for you to relax and take time off by using WOW African coupon codes. Start using it now before it expires. Hurry up!'
+        ],
+        'cfs' => [
+            'url' => 'https://www.couponsforsave.com/wow-african-coupons',
+            'title' => 'WOW African coupon code for bulk purchasing. Get it now or never!',
+            'description' => 'More and more WOW African coupon codes are waiting for you at here. Never pay full price when you have WOW African coupon codes. Take chance!'
+        ],
+        'cp' => [
+            'url' => 'https://www.couponpublish.com/wow-african-coupons',
+            'title' => '25% off with WOW African coupons and WOW African discounts 2019',
+            'description' => 'Receive The Top Quality Virgin Human Hair at reasonable price with WOW African coupon. WOW African coupons won\'t last long so make your purchase today'
         ]
     ],
     '' => [
@@ -424,4 +597,5 @@ Save with coupon, discount & promo code"'
             'description' => ''
         ]
     ],
+
 ];
