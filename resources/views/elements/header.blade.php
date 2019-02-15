@@ -8,12 +8,14 @@
                     </a>
                 </div>
                 <div class="input-group search-box head col-md-9 col-sm-12 col-xs-12 col-sm-offset-1 col-xs-offset-1">
+				@if(IS_SEARCH)
                     <form id="frmSearch" class="frmSearch-home" autocomplete="off" style="display: inherit">
                         <input type="text" class="form-control input-search" placeholder="" id="q">
                         <span class="input-group-btn">
                 <button class="btn btn-default border-right-radius" type="submit" id="btnSearch"><i class="fas fa-search"></i></button>
                 </span>
                     </form>
+				@endif
                     </span>
                 </div>
             </div>
