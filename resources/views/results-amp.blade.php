@@ -178,6 +178,39 @@
         {
             right: 3px;
         }
+        .box-result {
+            padding-bottom: 15px; }
+        .box-result .ad {
+            margin-right: 7px;
+            background-color: #fff;
+            border-radius: 3px;
+            color: #006621;
+            display: inline-block;
+            font-size: 11px;
+            border: 1px solid #006621;
+            padding: 1px 3px 0 2px;
+            line-height: 11px;
+            vertical-align: baseline; }
+        .box-result p {
+            margin-bottom: 0; }
+        .box-result .result-title h3 {
+            font-size: 18px;
+            margin-top: 0;
+            margin-bottom: 5px; }
+        .box-result .result-title a {
+            color: #1a0dab; }
+        .box-result .result-url {
+            color: #006621;
+            font-size: 14px; }
+        .box-result .result-description {
+            color: #545454; }
+        .box-result .ext-result .ext-title a {
+            color: #1a0dab;
+            font-size: 18px;
+            margin-top: 0;
+            margin-bottom: 5px; }
+        .box-result .ext-result .ext-title-mobile a {
+            color: #1967D2; }
     </style>
     <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
     <amp-analytics type="gtag" data-credentials="include">
@@ -236,6 +269,17 @@
                             <hr>
                             @if(!empty($result['description']))
                                 <p class="result-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['description'])) !!}</p>
+                            @endif
+
+                            @if(!empty($result['extend_url']))
+                                @foreach($result['extend_url'] as $ex)
+                                    <div class="col-md-6 ext-result">
+                                        <hr>
+                                        <div class="ext-title-mobile">
+                                            <a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" title="{{ $ex['title'] }}">{{ $ex['title'] }}</a>
+                                        </div>
+                                    </div>
+                                @endforeach
                             @endif
                         </div>
                     @endif

@@ -156,6 +156,15 @@ body {
     font-size: 14px; }
   .box-result .result-description {
     color: #545454; }
+  .box-result .ext-result {
+    padding-top: 10px; }
+    .box-result .ext-result .ext-title a {
+      color: #1a0dab;
+      font-size: 18px;
+      margin-top: 0;
+      margin-bottom: 5px; }
+    .box-result .ext-result .ext-title-mobile a {
+      color: #1967D2; }
 
 .container-padding-left {
   padding-left: 6%; }

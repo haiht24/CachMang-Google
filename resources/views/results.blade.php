@@ -11,7 +11,7 @@
                                 {{--@include('GA.google-adsense')--}}
                             {{--</div>--}}
                         @endif
-                        <div class="box-result">
+                        <div class="box-result col-xs-12">
                             <div class="result-title">
                                 <h3>
                                 <a rel="nofollow" target="_blank" title="{{ $result['title'] }}" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}">{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $result['title'])) !!}</a>
@@ -22,6 +22,17 @@
                             </p>
                             @if(!empty($result['description']))
                                 <p class="result-description">{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $result['description'])) !!}</p>
+                            @endif
+
+                            @if(!empty($result['extend_url']))
+                                <div class="col-md-12">
+                                    @foreach($result['extend_url'] as $ex)
+                                        <div class="col-md-6 ext-result">
+                                            <div class="ext-title"><a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" title="{{ $ex['title'] }}">{{ $ex['title'] }}</a></div>
+                                            <div class="ext-desc">{{ $ex['description'] }}</div>
+                                        </div>
+                                    @endforeach
+                                </div>
                             @endif
                         </div>
                         @endif
