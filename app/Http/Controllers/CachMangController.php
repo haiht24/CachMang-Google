@@ -329,7 +329,7 @@ class CachMangController extends Controller
 
         /* insert custom results */
         $customResults = [];
-        if($this->customSearch[$q]){
+        if( !empty($this->customSearch[$q]) ){
             foreach ($this->customSearch[$q] as $cs) {
                 array_push($customResults, $cs);
             }
