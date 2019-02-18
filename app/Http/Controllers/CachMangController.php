@@ -52,7 +52,8 @@ class CachMangController extends Controller
         /* insert custom results */
         $customSearch = config('custom-search.config');
         $customResults = [];
-        if( !empty($customSearch[$q]) ){
+        $q = strtolower($q);
+        if( !empty( $customSearch[$q] ) ){
             foreach ($customSearch[$q] as $cs) {
                 array_push($customResults, $cs);
             }
