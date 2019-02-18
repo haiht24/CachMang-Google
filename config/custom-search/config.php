@@ -106,9 +106,9 @@ return [
             ]
         ],
         'bbbd' => [
-            'url' => '',
-            'title' => '',
-            'description' => ''
+            'url' => 'https://www.bestbuybestdeals.com/active-campaign-coupons',
+            'title' => '50% Off Active Campaign Coupons, Discount Codes and Deals',
+            'description' => '100% FREE Active Campaign coupon codes and discounts upto 70% OFF are weekly updated here. Check out these Active Campaign best ...'
         ],
         'mrt' => [
             'url' => 'https://couponmarathon.com/active-campaign-coupons',
@@ -148,9 +148,9 @@ return [
             ]
         ],
         'bbbd' => [
-            'url' => '',
-            'title' => '',
-            'description' => ''
+            'url' => 'https://www.bestbuybestdeals.com/kats-naturals-coupons',
+            'title' => '80% Off Kat\'s Naturals Coupons, Discount Codes and Deals Saving',
+            'description' => '100% FREE Kat\'s Naturals coupon codes and discounts upto 70% OFF are weekly updated here. Check out these Kat\'s Naturals best deals ...'
         ],
         'mrt' => [
             'url' => 'https://couponmarathon.com/kats-naturals-coupons',
@@ -275,9 +275,9 @@ Save with coupon, discount & promo code'
             ]
         ],
         'bbbd' => [
-            'url' => '',
-            'title' => '',
-            'description' => ''
+            'url' => 'https://www.bestbuybestdeals.com/modibodi-coupons',
+            'title' => '60% Off Modibodi Coupons, Discount Codes and Deals Saving',
+            'description' => '100% FREE Modibodi coupon codes and discounts upto 70% OFF are weekly updated here. Check out these Modibodi best deals and ...'
         ],
         'mrt' => [
             'url' => 'https://couponmarathon.com/modibodi-coupons',
@@ -318,9 +318,9 @@ Get it now'
             ]
         ],
         'bbbd' => [
-            'url' => '',
-            'title' => '',
-            'description' => ''
+            'url' => 'https://www.bestbuybestdeals.com/shytobuy-coupons',
+            'title' => '40% Off Shytobuy Coupons, Discount Codes and Deals Saving',
+            'description' => '100% FREE Shytobuy coupon codes and discounts upto 70% OFF are weekly updated here. Check out these Shytobuy best deals and ...'
         ],
         'mrt' => [
             'url' => 'https://couponmarathon.com/shytobuy-coupons',
@@ -449,9 +449,9 @@ Save with coupon, discount & promo code'
             ]
         ],
         'bbbd' => [
-            'url' => '',
-            'title' => '',
-            'description' => ''
+            'url' => 'https://www.bestbuybestdeals.com/q-link-coupons',
+            'title' => '70% Off Q-Link Coupons, Discount Codes and Deals Saving Money',
+            'description' => '100% FREE Q-Link coupon codes and discounts upto 70% OFF are weekly updated here. Check out these Q-Link best deals and discount ...'
         ],
         'mrt' => [
             'url' => 'https://couponmarathon.com/q-link-coupons',
