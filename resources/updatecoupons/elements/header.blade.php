@@ -23,7 +23,7 @@
                 {{--Search--}}
                 <div class="col-sm-6 npd-lr">
                     <div class="input-group search-input">
-					@if(IS_SEARCH)
+					@if(ENABLE_SEARCH_BOX)
                         <form id="frmSearch" autocomplete="off">
                             <ul class="parent-header-search">
                                 <li>

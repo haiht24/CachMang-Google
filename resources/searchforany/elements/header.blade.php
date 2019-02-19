@@ -7,7 +7,7 @@
 			</a>--}}
             </div>
             <div class="input-group search-box head col-md-9 col-sm-6 npd-lr">
-			@if(IS_SEARCH)
+			@if(ENABLE_SEARCH_BOX)
                 <form id="frmSearch" autocomplete="off" style="display: inherit">
                     <input type="text" class="form-control input-search" placeholder="" id="q">
                     <span class="input-group-btn">

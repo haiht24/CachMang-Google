@@ -132,7 +132,6 @@ body {
   .logo.home-pos img {
     height: 40px; } }
 @media (max-width: 467px) {
-.c-info {display:block;clear:both;float:none}
   .logo.home-pos img {
     height: 35px; }
 

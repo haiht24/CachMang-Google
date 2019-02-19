@@ -23,7 +23,7 @@
 <a target="_blank" href="https://www.reddit.com/submit?url={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}" title="Reddit Share"><img src="https://www.getsetcoupon.com/img/rt.png"></a>
 <a target="_blank" href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site {{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}" title="E-Mail Share"><img src="https://www.getsetcoupon.com/img/mail.png"></a>
 </p>
-@if(IS_SEARCH)
+@if(ENABLE_SEARCH_BOX)
 <form class="form-inline" role="form" method="get" id="frmSearch" autocomplete="off">
 <div class="input-group">
 <input type="text" class="form-control" placeholder="Please put keyword here" id="q" name="q" value="" size="80">

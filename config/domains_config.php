@@ -1,12 +1,19 @@
 <?php
+/*
+template name in /resources:
+1. getsetcoupon
+2. searchforany
+3. startnewjobs
+4. updatecoupons
+ */
 
 return [
-	'localhost' => [
-		'enable_search' => 1,
+	'localhost:8080' => [
+		'enableSearchBox' => 1,
 		'template' => 'getsetcoupon'
 	],
 	'getsetcoupon.com' => [
-		'enable_search' => 1,
+		'enableSearchBox' => 1,
 		'template' => 'getsetcoupon'
 	],
 ];

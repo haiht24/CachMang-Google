@@ -4,7 +4,7 @@ $domain = $_SERVER['HTTP_HOST'];
 $dmConfig = config('domains_config'); //edit in config
 $dmConfig = $dmConfig[$domain];
 
-define('IS_SEARCH', !isset($dmConfig['enable_search'])||$dmConfig['enable_search']?1:0);
+define('ENABLE_SEARCH_BOX', !isset($dmConfig['enableSearchBox'])||$dmConfig['enableSearchBox']?1:0);
 if(isset($dmConfig['template'])!==false) {
 	$view_active = $dmConfig['template'];
 }else {

@@ -1,4 +1,4 @@
-@if(IS_SEARCH)
+@if(ENABLE_SEARCH_BOX)
 <div class="search-form col-xs-12">
         <form id="frmSearch" autocomplete="off" action="{{ url('/query') }}">
             <div class="col-sm-2 col-xs-12 logo-search">
