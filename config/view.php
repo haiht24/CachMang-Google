@@ -1,22 +1,18 @@
 <?php
-        $domain = $_SERVER['HTTP_HOST'];
-        if ($domain == 'localhost'){
-            $domain = 'getsetcoupon.com';//default template on localhost
-        }
-        $arrDomainParams = explode('.', $domain);
-        if($arrDomainParams[0] === 'www')
-            $folderName = $arrDomainParams[1];
-        else
-            $folderName = $arrDomainParams[0];
-        define('ASSET_DOMAIN', $folderName);
-$dmConfig = config('domains.'.$folderName); //edit in config
-define('IS_SEARCH', !isset($dmConfig['isSearch'])||$dmConfig['isSearch']?1:0);
+
+$domain = $_SERVER['HTTP_HOST'];
+$dmConfig = config('domains_config'); //edit in config
+$dmConfig = $dmConfig[$domain];
+
+define('IS_SEARCH', !isset($dmConfig['enable_search'])||$dmConfig['enable_search']?1:0);
 if(isset($dmConfig['template'])!==false) {
-	$view_active = $folderName;
+	$view_active = $dmConfig['template'];
 }else {
 	$view_active = 'views';
 }
-	define('TEMPLATE', $view_active);
+define('TEMPLATE', $view_active);
+define('ASSET_DOMAIN', $view_active);
+
 
 return [
 
