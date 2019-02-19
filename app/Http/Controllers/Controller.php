@@ -12,10 +12,16 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function __construct() {
-        /* Get folder name contain config for each domain. Eg: /public/images/beginfinder */
-        $host_explode = explode('.', strpos($_SERVER['HTTP_HOST'], '.') === false ? env('SITE_NAME') : $_SERVER['HTTP_HOST']);
-        $c_host = count($host_explode);
-        $GLOBALS['asset_domain'] = strtolower($host_explode[$c_host - 2]);
+
+        /* Get folder name contain config for each domain. Eg: http://localhost:8080/CachMang/public/images/beginfinder */
+        define('TEMPLATE_PATH', "templates." . ASSET_DOMAIN . ".");
+        /* http://localhost:8080/CachMang/public/css/domains/searchforany/app.css */
+        define('CSS_PATH', 'css/domains/'.TEMPLATE);
+        define('USE_DEFAULT_KEYWORD',config('domains.'.ASSET_DOMAIN)['useDefaultKeyword']);
+        define('DEFAULT_KEYWORD',config('domains.'.ASSET_DOMAIN)['defaultKeyword']);
+		//$ip = \Request::ip();
+        //$position = \Location::get($ip);
+        define('CITY','cityname');//$position->cityName);
     }
 
     public function getGoogleSuggestSearch($kw, $filterResult = true) {
