@@ -4,6 +4,7 @@
         <div class="col-md-8 con-results">
                @include('custom-ads.ads-head')
             @if(count($results) > 0)
+				<?php $from = 'DB'; ?>
                 @if($from === 'ASK')
                     @foreach($results as $k=>$result)
                         @if($k === 2 || $k === 6 || $k === 9)

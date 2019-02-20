@@ -49,6 +49,7 @@
             <div class="col-xs-8 npd-lr">
             @include('custom-ads.ads-head')
             @if(count($results) > 0)
+				<?php $from = 'DB'; ?>
                 @if($from === 'ASK')
                     @foreach($results as $k=>$result)
 
