@@ -143,9 +143,10 @@ body {
 
 .discount-value {
   height: 70px;
-  width: 90%;
   padding-left: 0;
-  padding-right: 0; }
+  padding-right: 0;
+  max-width: 110px;
+  }
   .discount-value h3 {
     margin-bottom: 0 !important;
     padding-top: 10px;

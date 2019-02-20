@@ -12,6 +12,10 @@ return [
 		'enableSearchBox' => 1,
 		'template' => 'getsetcoupon'
 	],
+	'localhost' => [
+		'enableSearchBox' => 1,
+		'template' => 'updatecoupons'
+	],
 	'getsetcoupon.com' => [
 		'enableSearchBox' => 1,
 		'template' => 'getsetcoupon'
