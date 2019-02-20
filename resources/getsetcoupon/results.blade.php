@@ -186,7 +186,7 @@
 									<h3>{{ !empty($findDollar) ? strtolower($findDollar[0]) : (!empty($findPercent) ? strtolower($findPercent[0]) : 'CODE') }}</h3>
 									</span>
 										@if(!empty($result['description']))
-										<span class="rs-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['description'])) !!}</span>
+										<span class="rs-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', isset($result['description']{240})?substr($result['description'],0,180).'<span onclick="showmore(this)" style="color:blue"><span class="hidden">'.substr($result['description'],180).'</span>...more</span>':$result['description'])) !!}</span>
 										@endif
 										<p class="result-url">
 											{{ str_limit(html_entity_decode($result['url']),80) }}
@@ -336,6 +336,12 @@
                     });
                 }
             })
-        })
+        });
+function showmore(is){
+	$(is).css('color','inherit');
+	$(is).html($(is).find('.hidden').html());
+	$(is).parents('.panel').eq(0).css('height', 'auto');
+}
+		
     </script>
 @endsection

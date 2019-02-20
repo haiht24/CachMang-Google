@@ -145,7 +145,7 @@ body {
   height: 70px;
   padding-left: 0;
   padding-right: 0;
-  max-width: 110px;
+  width: 110px;
   }
   .discount-value h3 {
     margin-bottom: 0 !important;
@@ -280,5 +280,5 @@ textarea, input {
     .footer .con-footer {
       padding-left: 0 !important;
       padding-right: 0 !important; } }
-
+.hidden {display: none}
 /*# sourceMappingURL=app.css.map */
