@@ -83,6 +83,7 @@
                     @endforeach
                 @endif
             @endif
+			<input type="hidden" id="isFromSERP" value="1">
             @include('custom-ads.ads-foot')
         </div>
         <div class="col-md-4 col-sm-6 col-xs-12 con-ads">
