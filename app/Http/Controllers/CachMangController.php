@@ -171,10 +171,14 @@ class CachMangController extends Controller
         $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
         return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
     }
-
-    public function getHtml($url) {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL,$url);
+	
+	function getCurl($url) {
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch,CURLOPT_COOKIESESSION,false);
         if(env('USE_PROXY') === 'yes'){
             $proxies = explode('|', env('PROXIES'));
             $randKey = array_rand($proxies, 1);
@@ -182,15 +186,20 @@ class CachMangController extends Controller
             $proxy = 'https://' . $randomOneProxy;
             curl_setopt($ch, CURLOPT_PROXY, $proxy);
         }
-        //curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyauth);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        //curl_setopt($ch, CURLOPT_HEADER, 1);
-        $curl_scraped_page = curl_exec($ch);
-        curl_close($ch);
+		curl_setopt($ch, CURLOPT_HEADER,false);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+		curl_setopt($ch, CURLOPT_AUTOREFERER, false);
+		curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4 );
+		curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 6.1; rv:37.0) Gecko/20100101 Firefox/37.0");
 
+	   $htm = curl_exec($ch);
+		curl_close($ch);
+		return $htm;
+	}
+    public function getHtml($url) {
+		$html_get = $this->getCurl($url);
         $html = new \Htmldom();
-        $html->load($curl_scraped_page);
+        $html->load($html_get);
         return $html;
     }
 

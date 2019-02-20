@@ -116,27 +116,21 @@
                         @foreach($results as $k=>$result)
 
                             <div class="alert alert-info search-result col-xs-12">
-                                <div class="col-xs-12 npd-lr"><h3 class="text-primary title">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result->title)) !!}</h3></div>
+                                <div class="col-xs-12 npd-lr"><h3 class="text-primary title">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</h3></div>
                                 <div class="col-xs-12 npd-lr">
                                     <div class="col-xs-2 npd-lr">
                                         <?php
-                                        preg_match('/\$([0-9]+[\.]*[0-9]*) off|\$([0-9]+[\.]*[0-9]*) Off|\$([0-9]+[\.]*[0-9]*)/', $result->title, $findDollar);
-                                        preg_match('/([0-9]+[\.]*[0-9]*)\% Off|([0-9]+[\.]*[0-9]*)\% off|([0-9]+[\.]*[0-9]*)\%/', $result->title, $findPercent);
+                                        preg_match('/\$([0-9]+[\.]*[0-9]*) off|\$([0-9]+[\.]*[0-9]*) Off|\$([0-9]+[\.]*[0-9]*)/', $result['title'], $findDollar);
+                                        preg_match('/([0-9]+[\.]*[0-9]*)\% Off|([0-9]+[\.]*[0-9]*)\% off|([0-9]+[\.]*[0-9]*)\%/', $result['title'], $findPercent);
                                         ?>
                                         <button class="btn {{ !empty($findDollar) ? 'btn-warning' : (!empty($findPercent) ? 'btn-primary' : 'btn-default') }}  pull-left discount-value" style="margin-right:10px"><h3>{{ !empty($findDollar) ? strtolower($findDollar[0]) : (!empty($findPercent) ? strtolower($findPercent[0]) : 'CODE') }}</h3></button>
                                     </div>
                                     <div class="col-xs-10 npd-lr">
-                                        {{--Tam disable vi loi carbon trailing data--}}
-                                        {{--@if(!empty($result->updated_at))--}}
-                                        {{--<span class="label label-success"><em>({{ $result->updated_at->diffForHumans() }})</em></span>--}}
-                                        {{--@else--}}
-                                        {{--<span class="label label-success"><em>(1 seconds ago)</em></span>--}}
-                                        {{--@endif--}}
                                         <span class="label label-success"><em>(1 seconds ago)</em></span>
-                                        <span class="rs-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result->description)) !!}</span>
+                                        <span class="rs-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['description'])) !!}</span>
                                         <p class="result-url">
-                                            {{ str_limit(html_entity_decode($result->url),80) }}
-                                            <sup><a href="{{ strpos($result->url,'http') === false ? 'http://'.$result->url : $result->url }}" target="_blank" rel="nofollow"><span class="fa fa-external-link"></span></a></sup>
+                                            {{ str_limit(html_entity_decode($result['url']),80) }}
+                                            <sup><a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" rel="nofollow"><span class="fa fa-external-link"></span></a></sup>
                                         </p>
                                     </div>
                                 </div>
