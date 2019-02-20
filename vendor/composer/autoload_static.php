@@ -4,7 +4,11 @@
 
 namespace Composer\Autoload;
 
+<<<<<<< HEAD
 class ComposerStaticInitb3ecd69ff71d56b10232b8b0b74f81ea
+=======
+class ComposerStaticInit6950d53ede6c8623979eb1d327eb87e6
+>>>>>>> c109a86... fix error var from
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -2408,6 +2412,7 @@ class ComposerStaticInitb3ecd69ff71d56b10232b8b0b74f81ea
         'PhpParser\\Node\\Expr\\AssignOp\\BitwiseAnd' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/Expr/AssignOp/BitwiseAnd.php',
         'PhpParser\\Node\\Expr\\AssignOp\\BitwiseOr' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/Expr/AssignOp/BitwiseOr.php',
         'PhpParser\\Node\\Expr\\AssignOp\\BitwiseXor' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/Expr/AssignOp/BitwiseXor.php',
+        'PhpParser\\Node\\Expr\\AssignOp\\Coalesce' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/Expr/AssignOp/Coalesce.php',
         'PhpParser\\Node\\Expr\\AssignOp\\Concat' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/Expr/AssignOp/Concat.php',
         'PhpParser\\Node\\Expr\\AssignOp\\Div' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/Expr/AssignOp/Div.php',
         'PhpParser\\Node\\Expr\\AssignOp\\Minus' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/Expr/AssignOp/Minus.php',
@@ -3749,11 +3754,19 @@ class ComposerStaticInitb3ecd69ff71d56b10232b8b0b74f81ea
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+<<<<<<< HEAD
             $loader->prefixLengthsPsr4 = ComposerStaticInitb3ecd69ff71d56b10232b8b0b74f81ea::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitb3ecd69ff71d56b10232b8b0b74f81ea::$prefixDirsPsr4;
             $loader->fallbackDirsPsr4 = ComposerStaticInitb3ecd69ff71d56b10232b8b0b74f81ea::$fallbackDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInitb3ecd69ff71d56b10232b8b0b74f81ea::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitb3ecd69ff71d56b10232b8b0b74f81ea::$classMap;
+=======
+            $loader->prefixLengthsPsr4 = ComposerStaticInit6950d53ede6c8623979eb1d327eb87e6::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit6950d53ede6c8623979eb1d327eb87e6::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInit6950d53ede6c8623979eb1d327eb87e6::$fallbackDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit6950d53ede6c8623979eb1d327eb87e6::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit6950d53ede6c8623979eb1d327eb87e6::$classMap;
+>>>>>>> c109a86... fix error var from
 
         }, null, ClassLoader::class);
     }

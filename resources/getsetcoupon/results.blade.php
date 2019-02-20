@@ -90,7 +90,7 @@
             </div>
 
             {{--Result search--}}
-            <div class="">
+            <div class=""><?php $from = 'DB'; ?>
  
                 @include('custom-ads.ads-head')
                 @if(count($results) > 0)

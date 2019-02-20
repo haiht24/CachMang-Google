@@ -1407,6 +1407,7 @@
         ]
     },
     {
+<<<<<<< HEAD
         "name": "symfony/debug",
         "version": "v3.4.22",
         "version_normalized": "3.4.22.0",
@@ -1419,6 +1420,20 @@
             "type": "zip",
             "url": "https://api.github.com/repos/symfony/debug/zipball/667a26c4dd6bc75c67f06bc9bcd015bdecc7cbb8",
             "reference": "667a26c4dd6bc75c67f06bc9bcd015bdecc7cbb8",
+=======
+        "name": "nikic/php-parser",
+        "version": "v4.2.1",
+        "version_normalized": "4.2.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/nikic/PHP-Parser.git",
+            "reference": "5221f49a608808c1e4d436df32884cbc1b821ac0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/5221f49a608808c1e4d436df32884cbc1b821ac0",
+            "reference": "5221f49a608808c1e4d436df32884cbc1b821ac0",
+>>>>>>> c109a86... fix error var from
             "shasum": ""
         },
         "require": {
@@ -1431,7 +1446,14 @@
         "require-dev": {
             "symfony/http-kernel": "~2.8|~3.0|~4.0"
         },
+<<<<<<< HEAD
         "time": "2019-01-25 10:19:25",
+=======
+        "time": "2019-02-16T20:54:15+00:00",
+        "bin": [
+            "bin/php-parse"
+        ],
+>>>>>>> c109a86... fix error var from
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2352,10 +2374,17 @@
         ],
         "description": "Set trusted proxies for Laravel",
         "keywords": [
+<<<<<<< HEAD
             "load balancing",
             "proxy",
             "trusted proxy"
         ]
+=======
+            "mock",
+            "xunit"
+        ],
+        "abandoned": true
+>>>>>>> c109a86... fix error var from
     },
     {
         "name": "jakub-onderka/php-console-color",
