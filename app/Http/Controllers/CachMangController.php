@@ -18,138 +18,15 @@ use Cache;
 
 class CachMangController extends Controller
 {
-
     public function index() {
         $seo = [
             'title' => "Today's best deals for savyy - Searchdealtoday.com",
             'description' => "Searchdealtoday is thrilled to be your deal searcher every single day. Whatever you want to buy from clothes, beauty products, home items and so on, we are here update all latest deals, hot deals or top discounts for budget saving."
         ];
         $data['seo'] = $seo;
-//add from template
-        $data['trendingSearch'][1] = [
-            'argos promotional code 2018',
-            'billie discount code',
-            'black friday online shopping',
-            'circuit laundry promotional code 2017',
-            'debenhams promotional code 2018',
-            'direct line landlord insurance promotional code',
-            'fortnite discount code',
-            'john lewis partnership card',
-            'lyft promo code 2018',
-            'online shopping for women fitsiri',
-            'playstation store discount code 2018',
-            'ps4 discount code 2018',
-            'psn discount code 2018',
-            'railcard promotional code nus',
-            'stockx discount code 2018',
-//            'uber discount code 2018',
-        ];
-        $data['trendingSearch'][2] = [
-            'wish promo code 2018',
-            'wonderbly discount code',
-            'wonders of wildlife discount code',
-            'amazon discount code',
-            'amazon promo code',
-            'hobby lobby coupon',
-            'michaels coupons',
-            'promo code target',
-            'promotional code amazon',
-            'tire discount',
-            'debenhams promotional code',
-            'target promo code',
-            'jcpenney coupons',
-            'kohls coupons',
-            'promotional code argos',
-        ];
-        $data['trendingSearch'][3] = [
-            'screwfix promotional code',
-            'ps4 discount code',
-            'stubhub',
-            'uber promo code',
-            'papa johns',
-            'promo code papa johns',
-            'stubhub discount code',
-            'papa johns promo code',
-            'playstation',
-            'playstation discount code',
-            'asda promotional code',
-            'john lewis promotional code',
-            'printable coupons',
-            'pizza hut coupons',
-            'target coupons',
-        ];
-        $data['trendingSearch'][4] = [
-            'walmart coupons',
-            'michaels coupon',
-            'groupon discount code',
-            'groupon promo code',
-            'lyft promo',
-            'lyft promo code',
-            'online coupons',
-            'railcard promotional code',
-            'kohls coupon',
-            'bed bath beyond coupon',
-            'promotional code sports direct',
-            'aaa discount code',
-            'discount code for stockx',
-            'psn discount code'
-        ];
-        $data['holiday'][1] = [
-            '4th of July',
-            'After Christmas',
-            'Amazon Prime Day',
-            'Back to School',
-            'Beauty Brands',
-            'Black Friday',
-            'Boxing Day',
-            'Christmas',
-            'Columbus Day',
-            'Cyber Monday',
-        ];
-        $data['holiday'][2] = [
-            'Easter Sale',
-            'Father\'s Day',
-            'Flash Sales',
-            'Free Shipping Day',
-            'Gift Card Deals',
-            'Graduation Deals',
-            'Green Monday',
-            'Halloween',
-            'Hanukkah Day',
-            'Happy Birthday',
-        ];
-        $data['holiday'][3] = [
-            'Holiday Deals',
-            'Labor Day',
-            'Memorial Day',
-            'Mother\'s Day',
-            'Moving Deals',
-            'New Year\'s',
-            'Outdoor Living',
-            'Pi Day',
-            'Presidents Day',
-            'Spring Break Deals',
-        ];
-        $data['holiday'][4] = [
-            'Student Discounts',
-            'Summer Savings',
-            'Super Bowl Day',
-            'Thanksgiving',
-            'Travel Deals',
-            'Valentine\'s Day',
-            'Veterans Day',
-            'Wedding Deals',
-            'Weekly Ads',
-            'Small Business Day'
-        ];
-        $data['cityName'] = CITY;
-        $data['hiddenSearchHeader'] = 1;
-//end add
 
         $data['hiddenSearchHeader'] = 1;
-		$agent = new \Jenssegers\Agent\Agent();
-		$viewthis = ($agent->isMobile()?'home-amp':'home');
-        return view($viewthis)->with($data);
+        return view('home')->with($data);
     }
 
     public function search(Request $request) {
@@ -184,10 +61,18 @@ class CachMangController extends Controller
 
 //        $data = $this->getFromSearchEngine($q);
 //        echo "<pre>";var_dump($data);die;
+
+        $cacheKey = 'kw_' . $q;
+        if(Cache::has($cacheKey)){
+            $d = Cache::get($cacheKey);
+            if(empty($d['results'])){
+                Cache::forget($cacheKey);
+            }
+        }
         $data = Cache::remember('kw_' . $q, 60*24, function() use ($q){
             return $this->getFromSearchEngine($q);
         });
-		/* remove unwanted results */
+        /* remove unwanted results */
         if(sizeof($data['results']) > 0){
             foreach ($data['results'] as $k=>$r) {
                 if(strpos($r['url'], 'couponupto.com') !== false){
@@ -334,6 +219,7 @@ class CachMangController extends Controller
         $html = $this->getHtml($path);
 //        $html = file_get_contents($path);
 //        return $html;
+
         $arrResults = [];
         foreach($html->find('.algo') as $result){
             $a = [];
