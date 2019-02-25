@@ -196,10 +196,10 @@ body {
   margin-top: 0; }
 
 .discount-value {
-  height: 70px;
+  height: auto;
   padding-left: 0;
   padding-right: 0;
-  max-width: 110px;
+  width: 110px;
   }
   .discount-value h3 {
     margin-bottom: 0 !important;
@@ -309,18 +309,30 @@ textarea, input {
     font-size: 20px; }
   body .home-h1-blue {
     font-size: 20px; } }
+@media (max-width: 520px) {
+	.search-result {
+		display: block;
+		padding: 10px;
+	}
+	.npd-lr {
+		padding: 10px;
+	}
+	.panel-default {
+	height:auto !important;
+}
+}
 @media (max-width: 467px) {
   .parent {
     padding-left: 0 !important;
     padding-right: 0 !important; }
 
   .body-content {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    margin-top: 100px; }
+    margin-top: 100px;
+	}
 
   .navbar-header {
-    text-align: center; }
+    text-align: center;
+	}
 
   .home-h1 {
     font-size: 18px; }
@@ -328,21 +340,35 @@ textarea, input {
   .home-h1-blue {
     font-size: 18px; }
 
-  .footer {
+.footer {
     padding-left: 0;
-    padding-right: 0; }
-    .footer .con-footer {
+    padding-right: 0;
+}
+.footer .con-footer {
       padding-left: 0 !important;
-      padding-right: 0 !important; } }
+      padding-right: 0 !important;
+}
 
-/*# sourceMappingURL=app.css.map */
+	  
+}
+.hidden {display: none}
+
 		@yield('css')
+.showmore:active > .hidden,.showmore:hover > .hidden {
+	display:block!important;
+	color: #000;
+}
+.showmore:active > .moreclick,.showmore:hover > .moreclick {
+	display: none;
+}
 </style>
 </head>
 <body>
 @include('elements.header-amp')
 <div class="col-xs-12 body-content">
-@yield('content')
+    <div class="container parent">
+        @yield('content')
+    </div>
 </div>
 @include('elements.footer')
 </body>

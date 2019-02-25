@@ -10,11 +10,11 @@ template name in /resources:
 return [
 	'localhost:8080' => [
 		'enableSearchBox' => 1,
-		'template' => 'searchforany'
+		'template' => 'updatecoupons'
 	],
 	'localhost' => [
 		'enableSearchBox' => 1,
-		'template' => 'searchforany'
+		'template' => 'startnewjobs'
 	],
 	'getsetcoupon.com' => [
 		'enableSearchBox' => 1,

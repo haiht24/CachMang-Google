@@ -219,7 +219,8 @@ class CachMangController extends Controller
         $agent = new Agent();
         $isPhone = $agent->isPhone();
         $isTablet = $agent->isTablet();
-        if($isPhone || $isTablet){
+        //if(0) 
+		if($isPhone || $isTablet){
             return view('results-amp')->with($data);
         }
         return view('results')->with($data);

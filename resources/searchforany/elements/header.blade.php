@@ -1,5 +1,5 @@
-<div class="col-xs-12 home-box-search head text-center">
-        <div class="col-sm-8 con-header input-group search-box" style="margin:auto">
+<div class="home-box-search head text-center">
+        <div class="input-group search-box" style="width: 80%;margin:auto">
             {{--<div class="col-md-3 col-sm-6 npd-lr">
 			<a href="{{ url('/') }}">
                     <img src="{{ asset('/images/'.ASSET_DOMAIN.'/logo.png') }}" class="logo">
@@ -14,6 +14,6 @@
                     </span>
                 </form>
 			@endif
-            </div>
+            {{--</div>--}}
         </div>
 </div>
