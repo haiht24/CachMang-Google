@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-    <div class="col-xs-12 home-box-search">
+{{--    <div class="col-xs-12 home-box-search">
         <div class="container">
             <div class="col-xs-12 logo home-pos">
                 <a href="{{ url('/') }}">
@@ -17,7 +17,7 @@
                 </form>
             </div>
         </div>
-    </div>
+</div>--}}
 @endsection
 @section('js')
     <script>
