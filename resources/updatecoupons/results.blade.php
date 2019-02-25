@@ -170,6 +170,7 @@
                         @endforeach
                     @endif
                 @endif
+                <input type="hidden" id="isFromSERP" value="1">
                 {{--@include('custom-ads.ads-foot')--}}
             </div>
 
@@ -244,6 +245,7 @@
             </div>
         </div>
     </div>
+<input type="hidden" class="keyword" data-value="{{ $q }}">
 @endsection
 @section('js')
     <script>
