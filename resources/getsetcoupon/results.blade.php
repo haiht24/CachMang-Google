@@ -187,7 +187,7 @@
 									<h3>{{ !empty($findDollar) ? strtolower($findDollar[0]) : (!empty($findPercent) ? strtolower($findPercent[0]) : 'CODE') }}</h3>
 									</span>
 										@if(!empty($result['description']))
-										<span class="rs-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', isset($result['description']{180})?substr($result['description'],0,180).'<span onclick="showmore(this)" style="color:blue"><span class="hidden">'.substr($result['description'],180).'</span>...more</span>':$result['description'])) !!}</span>
+										<span class="rs-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', isset($result['description']{160})?substr($result['description'],0,160).'<span onclick="showmore(this)" style="color:blue"><span class="hidden">'.substr($result['description'],160).'</span>...more</span>':$result['description'])) !!}</span>
 										@endif
 										<p class="result-url">
 											{{ str_limit(html_entity_decode($result['url']),80) }}

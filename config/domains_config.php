@@ -14,11 +14,15 @@ return [
 	],
 	'localhost' => [
 		'enableSearchBox' => 1,
-		'template' => 'getsetcoupon'
+		'template' => 'searchforany'
 	],
 	'getsetcoupon.com' => [
 		'enableSearchBox' => 1,
 		'template' => 'getsetcoupon'
+	],
+	'updatecoupons.com' => [
+		'enableSearchBox' => 1,
+		'template' => 'updatecoupons'
 	],
 ];
 

@@ -1,12 +1,11 @@
-<div class="col-xs-12 home-box-search head">
-<div class="container">
-        <div class="col-sm-12 con-header">
-            <div class="col-md-3 col-sm-6 npd-lr">
-			{{--<a href="{{ url('/') }}">
+<div class="col-xs-12 home-box-search head text-center">
+        <div class="col-sm-8 con-header input-group search-box" style="margin:auto">
+            {{--<div class="col-md-3 col-sm-6 npd-lr">
+			<a href="{{ url('/') }}">
                     <img src="{{ asset('/images/'.ASSET_DOMAIN.'/logo.png') }}" class="logo">
-			</a>--}}
-            </div>
-            <div class="input-group search-box head col-md-9 col-sm-6 npd-lr">
+			</a>
+            </div>--}}
+            {{--<div class=" col-md-9 col-sm-6 npd-lr">--}}
 			@if(ENABLE_SEARCH_BOX)
                 <form id="frmSearch" autocomplete="off" style="display: inherit">
                     <input type="text" class="form-control input-search" placeholder="" id="q">
@@ -17,5 +16,4 @@
 			@endif
             </div>
         </div>
-    </div>
 </div>
