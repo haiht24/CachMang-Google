@@ -1,7 +1,6 @@
 @extends('app')
 @section('content')
-    <div class="container">
-        <div class="col-md-8 con-results">
+        <div class="">
                @include('custom-ads.ads-head')
             @if(count($results) > 0)
 				<?php $from = 'DB'; ?>
@@ -63,7 +62,7 @@
                 @elseif($from === 'DB')
                     @foreach($results as $k=>$result)
                         @if($k === 2 || $k === 6 || $k === 9)
-                            <div class="alert search-result col-xs-12">
+                            <div class="search-result">
                                 @include('GA.display')
                             </div>
                         @endif
@@ -91,24 +90,7 @@
                 <input type="hidden" id="isFromSERP" value="1">
                 {{--@include('custom-ads.ads-foot')--}}
         </div>
-        <div class="col-md-4 col-sm-6 col-xs-12 con-ads">
-            @if(!empty($related))
-                <div class="col-xs-12 npd-lr related-keywords">
-                    <h3 style="margin-bottom: 30px">Searches related to <b>{{ $q }}</b></h3>
-                    @foreach($related as $r)
-                        @if(!empty($r))
-                            <div class="col-xs-12 npd-lr">
-                                <a class="related_keywords" href="{{ url('/') . '/' . str_ireplace(' ', '-', str_ireplace('%','',$r)) }}">{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $r )) !!}</a>
-                            </div>
-                        @endif
-                    @endforeach
-                </div>
-            @endif
-            <div class="col-xs-12 npd-lr" style="padding-top: 30px;">
-                @include('GA.display')
-            </div>
-        </div>
-    </div>
+
     <input type="hidden" class="keyword" data-value="{{ $q }}">
 @endsection
 @section('js')

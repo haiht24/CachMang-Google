@@ -28,8 +28,10 @@
 {{--Header--}}
 @include('elements.header')
 {{--Body--}}
-<div class="col-xs-12 body-content">
+<div class="body-content">
+    <div class="container parent">
     @yield('content')
+	</div>
 </div>
 {{--Footer--}}
 @include('elements.footer')

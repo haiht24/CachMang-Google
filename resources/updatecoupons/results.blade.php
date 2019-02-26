@@ -1,6 +1,6 @@
 @extends('app')
 @section('content')
-    <div class="row">
+    <div class="main">
         <div class="col-xs-12"><h1 class="text-primary keyword" data-value="{{ $q }}">{{ !empty($q) ? ucwords($q):'Result page' }}</h1></div>
         <div class="col-xs-12 box-breadcrumb">
             <ol class="breadcrumb">
@@ -65,7 +65,7 @@
             </div>
 
             {{--Result search--}}
-            <div class="col-xs-8 npd-lr">
+            <div class="row">
  
                 @include('custom-ads.ads-head')
                 @if(count($results) > 0)
@@ -141,32 +141,36 @@
                         @endforeach
                         <input type="hidden" id="isFromSERP" value="1">
                     @elseif($from === 'DB')
-                        @foreach($results as $k=>$result)
+						@foreach($results as $k=>$result)
                             @if($k === 2 || $k === 6 || $k === 9)
-                                <div class="alert alert-info search-result col-xs-12">
-                                    @include('GA.google-adsense')
-                                </div>
+							<div class="search-result col-md-6 col-xs-12">
+								<div class="panel panel-default" style="height:180px;overflow:hidden">
+									<div class="panel-body">
+									@include('GA.google-adsense')
+									</div>
+								</div>
+							</div>
                             @endif
-                            <div class="alert alert-info search-result col-xs-12">
-                                <div class="col-xs-12 npd-lr"><h3 class="text-primary title">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</h3></div>
-                                <div class="col-xs-12 npd-lr">
-                                    <div class="col-xs-2 npd-lr">
-                                        <?php
-                                        preg_match('/\$([0-9]+[\.]*[0-9]*) off|\$([0-9]+[\.]*[0-9]*) Off|\$([0-9]+[\.]*[0-9]*)/', $result['title'], $findDollar);
-                                        preg_match('/([0-9]+[\.]*[0-9]*)\% Off|([0-9]+[\.]*[0-9]*)\% off|([0-9]+[\.]*[0-9]*)\%/', $result['title'], $findPercent);
-                                        ?>
-                                        <button class="btn {{ !empty($findDollar) ? 'btn-warning' : (!empty($findPercent) ? 'btn-primary' : 'btn-default') }}  pull-left discount-value" style="margin-right:10px"><h3>{{ !empty($findDollar) ? strtolower($findDollar[0]) : (!empty($findPercent) ? strtolower($findPercent[0]) : 'CODE') }}</h3></button>
-                                    </div>
-                                    <div class="col-xs-10 npd-lr">
-                                        <span class="label label-success"><em>(1 seconds ago)</em></span>
-                                        <span class="rs-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['description'])) !!}</span>
-                                        <p class="result-url">
-                                            {{ str_limit(html_entity_decode($result['url']),80) }}
-                                            <sup><a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" rel="nofollow"><span class="fa fa-external-link"></span></a></sup>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+							<?php
+								preg_match('/\$([0-9]+[\.]*[0-9]*) off|\$([0-9]+[\.]*[0-9]*) Off|\$([0-9]+[\.]*[0-9]*)/', $result['title'], $findDollar);
+								preg_match('/([0-9]+[\.]*[0-9]*)\% Off|([0-9]+[\.]*[0-9]*)\% off|([0-9]+[\.]*[0-9]*)\%/', $result['title'], $findPercent);
+                            ?>
+							<div class="search-result col-md-6 col-xs-12">
+								<div class="panel panel-default" style="height:180px;overflow:hidden">
+									<div class="panel-body"><h3 class="text-primary" style="margin-top:0px">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</h3>
+									<span class="btn btn-warning  pull-left discount-value" style="margin-right:10px">
+									<h3>{{ !empty($findDollar) ? strtolower($findDollar[0]) : (!empty($findPercent) ? strtolower($findPercent[0]) : 'CODE') }}</h3>
+									</span>
+										@if(!empty($result['description']))
+										<span class="rs-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', isset($result['description']{160})?substr($result['description'],0,160).'<span onclick="showmore(this)" style="color:blue"><span class="hidden">'.substr($result['description'],160).'</span>...more</span>':$result['description'])) !!}</span>
+										@endif
+										<p class="result-url">
+											{{ str_limit(html_entity_decode($result['url']),80) }}
+											<sup><a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" rel="nofollow"><span class="fa fa-external-link"></span></a></sup>
+										</p>
+									</div>
+								</div>
+							</div>
                         @endforeach
                     @endif
                 @endif
@@ -310,6 +314,12 @@
                     });
                 }
             })
-        })
+        });
+function showmore(is){
+	$(is).css('color','inherit');
+	$(is).html($(is).find('.hidden').html());
+	$(is).parents('.panel').eq(0).css('height', 'auto');
+}
+
     </script>
 @endsection

@@ -2,12 +2,9 @@
 @section('content')
     <div class="row">
 <div class="row">
-<div class="col-md-4 col-xs-12">
-<!-- google ads -->
-</div>
 <div class="col-md-8 col-xs-12">
 <h1 class="text-primary">{{ !empty($q) ? ucwords($q):'Result page' }}</h1>
-        <div class="col-xs-12 box-breadcrumb">
+        <div class="col-xs-12 box-breadcrumb" style="padding-left: 0px">
             <ol class="breadcrumb">
                 <li><a href="{{ url('/') }}">Home</a></li>
                 <li><a href="{{ !empty($q) ? str_ireplace(' ', '-', $q):'#' }}">{{ !empty($q) ? ucwords($q):'' }}</a></li>
@@ -90,11 +87,10 @@
             </div>
 
             {{--Result search--}}
-            <div class="">
+            <div class=""><?php $from = 'DB'; ?>
  
                 @include('custom-ads.ads-head')
                 @if(count($results) > 0)
-					<?php $from = 'DB'; ?>
                     @if($from === 'ASK')
                         @foreach($results as $k=>$result)
 
@@ -163,7 +159,7 @@
 									<h3>{{ !empty($findDollar) ? strtolower($findDollar[0]) : (!empty($findPercent) ? strtolower($findPercent[0]) : 'CODE') }}</h3>
 									</span>
 										@if(!empty($result['description']))
-										<span class="rs-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['description'])) !!}</span>
+										<span class="rs-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', isset($result['description']{160})?substr($result['description'],0,160).'<span class="showmore" style="color:blue"><span class="hidden">'.substr($result['description'],160).'</span><span class="moreclick">...more</span></span>':$result['description'])) !!}</span>
 										@endif
 										<p class="result-url">
 											{{ str_limit(html_entity_decode($result['url']),80) }}
@@ -175,6 +171,8 @@
                         @endforeach
                     @endif
                 @endif
+				
+                <input type="hidden" id="isFromSERP" value="1">
                 {{--@include('custom-ads.ads-foot')--}}
             </div>
 
@@ -197,7 +195,6 @@
                 {{--</button>--}}
                 {{--</p>--}}
                 {{--</div>--}}
-
 
                 {{--Last search 24h--}}
                 @if(!empty($lastSearch24h))
@@ -239,8 +236,9 @@
                         @endforeach
                     </div>
                 @endif
+
             </div>
         </div>
     </div>
-
+<input type="hidden" class="keyword" data-value="{{ $q }}">
 @endsection
