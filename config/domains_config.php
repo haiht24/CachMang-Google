@@ -14,7 +14,7 @@ return [
 	],
 	'localhost' => [
 		'enableSearchBox' => 1,
-		'template' => 'startnewjobs'
+		'template' => 'updatecoupons'
 	],
 	'getsetcoupon.com' => [
 		'enableSearchBox' => 1,

@@ -148,7 +148,9 @@ body {
   body .navbar-inverse .navbar-nav > li > a {
     color: #83A3CA; }
   body .search-input {
-    width: 100%; }
+    width: 100%;
+	margin: auto;
+	}
     body .search-input .parent-header-search {
       list-style: none;
       width: 70%;
@@ -164,8 +166,7 @@ body {
 .parent {
   margin-top: 0 !important; }
 
-.search-input {
-  margin-top: 7px; }
+
   .search-input button {
     background-color: #F77779;
     color: #fff; }
@@ -288,8 +289,8 @@ textarea, input {
       background-color: blue; }
 
 .container-header {
-  padding-top: 5px;
-  padding-bottom: 5px; }
+  padding: 10px;
+  }
 
 .box-breadcrumb {
   padding-right: 30px; }
@@ -309,14 +310,15 @@ textarea, input {
     font-size: 20px; }
   body .home-h1-blue {
     font-size: 20px; } }
-@media (max-width: 520px) {
+@media (max-width: 550px) {
 	.search-result {
 		display: block;
 		padding: 10px;
 	}
-	.npd-lr {
-		padding: 10px;
-	}
+.text-primary {
+	padding:5px;
+	font-size: 18px;
+}
 	.panel-default {
 	height:auto !important;
 }
@@ -325,9 +327,24 @@ textarea, input {
   .parent {
     padding-left: 0 !important;
     padding-right: 0 !important; }
-
+.h1, h1 {
+    font-size: 22px;
+}
+.search-result { padding: 5px }
+.panel {margin: auto}
+.panel-body,.body-content { padding: 5px;}
+.discount-value {
+	width: 70px;
+	float:left;
+	font-size: 13px;
+	line-height: 1;
+}
+.discount-value h3 {
+	font-size: 16px;
+}
+.filter-type {display: block; }
   .body-content {
-    margin-top: 100px;
+    margin-top: 25px;
 	}
 
   .navbar-header {
@@ -351,7 +368,12 @@ textarea, input {
 
 	  
 }
+.panel-default {
+	border:1px solid #bce8f1;
+}
 .hidden {display: none}
+/*# sourceMappingURL=app.css.map */
+
 
 		@yield('css')
 .showmore:active > .hidden,.showmore:hover > .hidden {

@@ -47,8 +47,8 @@
             @endif
             <h3 class="text-primary npd-lr col-xs-12"> Listing Websites about {{ ucwords($q) }}</h3>
             <div class="col-md-12 col-xs-12 npd-lr row" style="margin-bottom:10px">
-                <div class="col-xs-8">
-                    <strong>Filter Type:</strong>
+                <div class="col-xs-12">
+                    <strong class="filter-type">Filter Type:</strong>
                     <button class="btn btn-default" name="filterValue" value="$">
                         <input type="radio" name="raCheck"> $ Off
                     </button>
@@ -138,7 +138,7 @@
                             ?>
 							<div class="search-result col-md-6 col-xs-12">
 								<div class="panel panel-default" style="height:180px;overflow:hidden">
-									<div class="panel-body"><h3 class="text-primary" style="margin-top:0px">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</h3>
+									<div class="panel-body"><h3 class="text-primary" style="margin:auto">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</h3>
 									<span class="btn btn-warning  pull-left discount-value" style="margin-right:10px">
 									<h3>{{ !empty($findDollar) ? strtolower($findDollar[0]) : (!empty($findPercent) ? strtolower($findPercent[0]) : 'CODE') }}</h3>
 									</span>
