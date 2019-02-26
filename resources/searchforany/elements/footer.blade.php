@@ -1,4 +1,4 @@
-<div class="site-footer">
+<div class="row site-footer">
         <div class="col-xs-12 col-md-12">
             <div class="col-xs-12">2018 {{ ASSET_DOMAIN }}. All Rights Reserved</div>
             {{--<div class="col-xs-12 alert-link">--}}
