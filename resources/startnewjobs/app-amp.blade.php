@@ -301,7 +301,12 @@ header {
     position: relative;
     margin: 0 auto;
     height: 100%;
-    width: auto; } }
+    width: auto;
+	}
+	.find-jobs-button button {
+    margin-top: 15px;
+	}	
+}
 @media screen and (max-width: 479px) {
   .logo-search img {
     width: 100%;
@@ -316,8 +321,11 @@ header {
 
   .ft-right p {
     float: none; } }
-
+h3.text-primary {
+	padding:8px
+}
 /*# sourceMappingURL=app.css.map */
+
 
 		@yield('css')
 </style>

@@ -105,7 +105,9 @@ h3 {
 
 .home-box-search.head {
   background-color: #eee;
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+  padding:10px;
+  }
   .home-box-search.head .logo {
     height: 44px; }
   .home-box-search.head .con-header {
@@ -118,11 +120,11 @@ h3 {
 
 .site-footer {
   background-color: #eee;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding: 15px;
   padding-left: 0;
   padding-right: 0;
-  margin-top: 15px; }
+  margin: auto;
+  }
 
 .body-content .related-keywords h3 {
   color: #222;
@@ -229,12 +231,13 @@ h3 {
 /*# sourceMappingURL=app.css.map */
 
 
+
 		@yield('css')
 </style>
 </head>
 <body>
 @include('elements.header-amp')
-<div class="col-xs-12 body-content">
+<div class="body-content">
 @yield('content')
 </div>
 @include('elements.footer')

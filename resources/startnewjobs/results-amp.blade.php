@@ -46,7 +46,7 @@
             <h3 class="text-primary npd-lr col-xs-12"> Listing Websites about {{ ucwords($q) }}</h3>
 
             {{--Result search--}}
-            <div class="col-xs-8 npd-lr">
+            <div class="col-xs-12 npd-lr">
             @include('custom-ads.ads-head')
             @if(count($results) > 0)
 				<?php $from = 'DB'; ?>

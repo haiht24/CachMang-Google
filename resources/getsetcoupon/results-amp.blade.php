@@ -71,9 +71,9 @@
 	</div>
 </div>
             <h3 class="text-primary npd-lr col-xs-12"> Listing Websites about {{ ucwords($q) }}</h3>
-            <div class="col-md-12 col-xs-12 npd-lr row" style="margin-bottom:10px">
-                <div class="col-xs-8">
-                    <strong>Filter Type:</strong>
+            <div class="col-md-12 col-xs-12 npd-lr row" style="margin-bottom:5px">
+                <div class="col-xs-12">
+                    <strong class="filtertype">Filter Type:</strong>
                     <button class="btn btn-default" name="filterValue" value="$">
                         <input type="radio" name="raCheck"> $ Off
                     </button>

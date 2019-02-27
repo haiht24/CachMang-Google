@@ -249,12 +249,20 @@ textarea, input {
   body .home-h1 {
     font-size: 24px; }
   body .home-h1-blue {
-    font-size: 24px; } }
+    font-size: 24px; }
+	}
 @media (max-width: 991px) {
   body .home-h1 {
     font-size: 20px; }
   body .home-h1-blue {
-    font-size: 20px; } }
+    font-size: 20px; }
+		.body-content {
+		padding-top: 60px;
+	}
+	}
+@media (max-width: 768px) {
+
+}
 @media (max-width: 520px) {
 	.search-result {
 		display: block;
@@ -265,15 +273,52 @@ textarea, input {
 	}
 	.panel-default {
 	height:auto !important;
-}
+	}
+	.breadcrumb{
+		margin-left: 1px;
+	}
+	.body-content {
+		padding-top: 20px;
+	}
+	h1.text-primary {
+		font-size:22px;
+		margin: 5px;
+	}
+	h3.text-primary {
+		padding: 5px;
+		margin: auto;
+		font-size:22px;
+	}
+	.panel {
+		margin: auto;
+	}
+	.panel-body {
+		padding: 5px;
+	}
+	.discount-value {
+		float:left;
+		width: 70px;
+		line-height: 1;
+	}
+	.discount-value h3 {
+		font-size: 18px;
+		line-height: 1;
+	}
+	.filtertype {
+		display: block;
+	}
+	.search-result {
+		padding: 5px;
+	}
 }
 @media (max-width: 467px) {
+
   .parent {
     padding-left: 0 !important;
     padding-right: 0 !important; }
 
   .body-content {
-    margin-top: 100px;
+    margin-top: 40px;
 	}
 
   .navbar-header {
