@@ -2,9 +2,9 @@
 @section('content')
 <div class="col-xs-12 home-box-search">
         <div class="container right-13">
-            <div class="col-xs-12 logo home-pos">
+		{{--<div class="col-xs-12 logo home-pos">
                 <img src="{{ asset('/images/logo.png') }}" class="logo">
-            </div>
+		</div>--}}
             <div class="input-group search-box">
                 <form id="frmSearch" autocomplete="off" style="display: inherit" action="{{ url('/query') }}" method="get">
                     <input type="text" class="form-control input-search" placeholder="" id="q">
