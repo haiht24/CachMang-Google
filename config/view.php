@@ -1,8 +1,7 @@
 <?php
 
 $domain = $_SERVER['HTTP_HOST'];
-$dmConfig = config('theme.domains_config')['theme']; //edit in config
-echo "<pre>";var_dump($dmConfig);die;
+$dmConfig = include(__DIR__.'/theme/domains_config.php'); //edit in config
 $dmConfig = $dmConfig[$domain];
 
 define('ENABLE_SEARCH_BOX', !isset($dmConfig['enable_search'])||$dmConfig['enable_search']?1:0);

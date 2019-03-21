@@ -368,8 +368,8 @@ textarea, input {
 @media (max-width: 467px) {
 
   .parent {
-    padding-left: 0 !important;
-    padding-right: 0 !important; }
+    padding-left: 5px !important;
+    padding-right: 5px !important; }
 
   .body-content {
     margin-top: 40px;
@@ -397,7 +397,10 @@ textarea, input {
 	  
 }
 .hidden {display: none}
+
 /*# sourceMappingURL=app.css.map */
+
+
 
 		@yield('css')
 .showmore:active > .hidden,.showmore:hover > .hidden {
@@ -406,6 +409,38 @@ textarea, input {
 }
 .showmore:active > .moreclick,.showmore:hover > .moreclick {
 	display: none;
+}
+
+.navbar-toggle {
+	display: block;
+    position: relative;
+    float: right;
+    padding: 9px 10px;
+    margin-top: 8px;
+    margin-right: 15px;
+    margin-bottom: 8px;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.navbar-toggle #navbar {
+  display: none !important;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  right: 1px;
+  z-index: 1;
+}
+
+.navbar-toggle:hover #navbar {
+  display: block!important;
+}
+@media (min-width: 768px)
+.navbar-header {
+    float: none !important;
+}
 }
 </style>
 </head>

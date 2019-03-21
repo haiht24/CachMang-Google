@@ -1,4 +1,4 @@
-<div class="col-xs-12 site-footer">
+<div class="col-xs-12 site-footer" style="text-align:center;padding: 15px; background: #fee">
     <div class="container">
         <div class="col-xs-12 con-footer npd-lr">
             <div class="col-xs-12">2018 {{ ASSET_DOMAIN }}. All Rights Reserved</div>

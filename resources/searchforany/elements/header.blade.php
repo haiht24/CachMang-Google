@@ -1,4 +1,5 @@
 <div class="home-box-search head text-center">
+<div class=" container">
         <div class="input-group search-box" style="width: 80%;margin:auto">
             {{--<div class="col-md-3 col-sm-6 npd-lr">
 			<a href="{{ url('/') }}">
@@ -16,4 +17,5 @@
 			@endif
             {{--</div>--}}
         </div>
+</div>
 </div>

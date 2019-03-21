@@ -142,6 +142,10 @@ class CachMangController extends Controller
         ];
         $data['cityName'] = CITY;
         $data['hiddenSearchHeader'] = 1;
+			$agent = new Agent();
+			$isPhone = $agent->isPhone();
+			$isTablet = $agent->isTablet();
+		if($isPhone || $isTablet) return view('home-amp')->with($data);
         return view('home')->with($data);
     }
 
@@ -189,7 +193,7 @@ class CachMangController extends Controller
             return $this->getFromSearchEngine($q);
         });
         /* remove unwanted results */
-        if(sizeof($data['results']) > 0){
+        if(is_array($data['results']) && sizeof($data['results']) > 0){
             foreach ($data['results'] as $k=>$r) {
                 if(strpos($r['url'], 'couponupto.com') !== false){
                     unset($data['results'][$k]);
@@ -704,7 +708,7 @@ class CachMangController extends Controller
     /* Save to keyword */
     public function save(Request $request) {
         $relatedKeywords = Input::get('relatedKeywords');
-        if(sizeof($relatedKeywords) === 0)
+        if(!is_array($relatedKeywords) || count($relatedKeywords) === 0)
             return '0';
         $findExistedRecords = CachMangKeyword::whereIn('keyword_text', $relatedKeywords)->pluck('keyword_text')->all();
         $insertThem = [];

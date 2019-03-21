@@ -19,9 +19,12 @@ class Controller extends BaseController
         define('CSS_PATH', 'css/domains/'.TEMPLATE);
         define('USE_DEFAULT_KEYWORD',config('domains.'.ASSET_DOMAIN)['useDefaultKeyword']);
         define('DEFAULT_KEYWORD',config('domains.'.ASSET_DOMAIN)['defaultKeyword']);
-		//$ip = \Request::ip();
-        //$position = \Location::get($ip);
-        define('CITY','cityname');//$position->cityName);
+		if(class_exists('Location')){
+		$ip = \Request::ip();
+        $position = \Location::get($ip);
+        define('CITY', $position->cityName);
+		}else 
+        define('CITY', '');
     }
 
     public function getGoogleSuggestSearch($kw, $filterResult = true) {
