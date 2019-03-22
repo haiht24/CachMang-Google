@@ -4,8 +4,8 @@
     @if(!empty($keywords))
         @foreach($keywords as $k)
             <url>
-                <loc>{{ url($k->kw_slug) }}</loc>
-{{--                <lastmod>{{ $k->created_at->tz('UTC')->toAtomString() }}</lastmod>--}}
+                <loc>{{ url(str_slug($k)) }}</loc>
+                {{--<lastmod>{{ $k->created_at->tz('UTC')->toAtomString() }}</lastmod>--}}
                 <changefreq>hourly</changefreq>
                 <priority>0.6</priority>
             </url>

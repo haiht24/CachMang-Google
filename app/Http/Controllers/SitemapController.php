@@ -6,19 +6,29 @@ use App\CachMangKeyword;
 
 class SitemapController extends Controller
 {
+    private $sitemapConfig;
+    private $config;
+
+    public function __construct() {
+        $arrConfigs = config('theme.domains_config');
+        $domain = $_SERVER['HTTP_HOST'];
+        $this->config = !empty($arrConfigs[$domain]) ? $arrConfigs[$domain] : [];
+        $this->sitemapConfig = !empty($this->config['sitemap_keyword']) ? $this->config['sitemap_keyword'] : [];
+    }
+
     public function index()
     {
-        $data = [];
-        $keywordsLength = CachMangKeyword::count();
-        $page = $keywordsLength / 1000;
-        if($page < 1)
-            $page = 1;
-        $data['page'] = (Int)$page;
+        $keywordsLength = 0;
+        if(!empty($this->config)){
+            $keywordsLength = count($this->sitemapConfig);
+        }
+
+        $data['page'] = (Int)($keywordsLength / 1000);
         return view('sitemap-index')->with($data);
     }
 
     public function keywords($page) {
-        $keywords = CachMangKeyword::offset($page * 1000)->limit(1000)->get();
+        $keywords = $this->sitemapConfig;
         return response()->view('sitemap', [
             'keywords' => $keywords
         ])->header('Content-Type', 'text/xml');
