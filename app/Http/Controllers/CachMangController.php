@@ -24,6 +24,14 @@ class CachMangController extends Controller
             'description' => "Searchdealtoday is thrilled to be your deal searcher every single day. Whatever you want to buy from clothes, beauty products, home items and so on, we are here update all latest deals, hot deals or top discounts for budget saving."
         ];
         $data['seo'] = $seo;
+
+        $domain = $_SERVER['HTTP_HOST'];
+        $dmConfig = config('theme.domains_config')[$domain];
+        $sitemap_keyword = $dmConfig['sitemap_keyword'];
+        $lenSitemap = count($sitemap_keyword);
+        $splitSitemap = (Int)($lenSitemap/4);
+        $data['sitemap_keyword'] = array_chunk($sitemap_keyword, $splitSitemap+1);
+
         $data['trendingSearch'][1] = [
             'argos promotional code 2018',
             'billie discount code',
@@ -91,54 +99,6 @@ class CachMangController extends Controller
             'aaa discount code',
             'discount code for stockx',
             'psn discount code'
-        ];
-        $data['holiday'][1] = [
-            '4th of July',
-            'After Christmas',
-            'Amazon Prime Day',
-            'Back to School',
-            'Beauty Brands',
-            'Black Friday',
-            'Boxing Day',
-            'Christmas',
-            'Columbus Day',
-            'Cyber Monday',
-        ];
-        $data['holiday'][2] = [
-            'Easter Sale',
-            'Father\'s Day',
-            'Flash Sales',
-            'Free Shipping Day',
-            'Gift Card Deals',
-            'Graduation Deals',
-            'Green Monday',
-            'Halloween',
-            'Hanukkah Day',
-            'Happy Birthday',
-        ];
-        $data['holiday'][3] = [
-            'Holiday Deals',
-            'Labor Day',
-            'Memorial Day',
-            'Mother\'s Day',
-            'Moving Deals',
-            'New Year\'s',
-            'Outdoor Living',
-            'Pi Day',
-            'Presidents Day',
-            'Spring Break Deals',
-        ];
-        $data['holiday'][4] = [
-            'Student Discounts',
-            'Summer Savings',
-            'Super Bowl Day',
-            'Thanksgiving',
-            'Travel Deals',
-            'Valentine\'s Day',
-            'Veterans Day',
-            'Wedding Deals',
-            'Weekly Ads',
-            'Small Business Day'
         ];
         $data['cityName'] = CITY;
         $data['hiddenSearchHeader'] = 1;
