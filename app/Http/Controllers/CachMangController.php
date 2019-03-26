@@ -27,79 +27,14 @@ class CachMangController extends Controller
 
         $domain = $_SERVER['HTTP_HOST'];
         $dmConfig = config('theme.domains_config')[$domain];
-        $sitemap_keyword = $dmConfig['sitemap_keyword'];
-        $lenSitemap = count($sitemap_keyword);
-        $splitSitemap = (Int)($lenSitemap/4);
-        $data['sitemap_keyword'] = array_chunk($sitemap_keyword, $splitSitemap+1);
+        if(!empty($dmConfig['sitemap_keyword']))
+        {
+            $sitemap_keyword = $dmConfig['sitemap_keyword'];
+            $lenSitemap = count($sitemap_keyword);
+            $splitSitemap = (Int)($lenSitemap/4);
+            $data['sitemap_keyword'] = array_chunk($sitemap_keyword, $splitSitemap+1);
+        }
 
-        $data['trendingSearch'][1] = [
-            'argos promotional code 2018',
-            'billie discount code',
-            'black friday online shopping',
-            'circuit laundry promotional code 2017',
-            'debenhams promotional code 2018',
-            'direct line landlord insurance promotional code',
-            'fortnite discount code',
-            'john lewis partnership card',
-            'lyft promo code 2018',
-            'online shopping for women fitsiri',
-            'playstation store discount code 2018',
-            'ps4 discount code 2018',
-            'psn discount code 2018',
-            'railcard promotional code nus',
-            'stockx discount code 2018',
-//            'uber discount code 2018',
-        ];
-        $data['trendingSearch'][2] = [
-            'wish promo code 2018',
-            'wonderbly discount code',
-            'wonders of wildlife discount code',
-            'amazon discount code',
-            'amazon promo code',
-            'hobby lobby coupon',
-            'michaels coupons',
-            'promo code target',
-            'promotional code amazon',
-            'tire discount',
-            'debenhams promotional code',
-            'target promo code',
-            'jcpenney coupons',
-            'kohls coupons',
-            'promotional code argos',
-        ];
-        $data['trendingSearch'][3] = [
-            'screwfix promotional code',
-            'ps4 discount code',
-            'stubhub',
-            'uber promo code',
-            'papa johns',
-            'promo code papa johns',
-            'stubhub discount code',
-            'papa johns promo code',
-            'playstation',
-            'playstation discount code',
-            'asda promotional code',
-            'john lewis promotional code',
-            'printable coupons',
-            'pizza hut coupons',
-            'target coupons',
-        ];
-        $data['trendingSearch'][4] = [
-            'walmart coupons',
-            'michaels coupon',
-            'groupon discount code',
-            'groupon promo code',
-            'lyft promo',
-            'lyft promo code',
-            'online coupons',
-            'railcard promotional code',
-            'kohls coupon',
-            'bed bath beyond coupon',
-            'promotional code sports direct',
-            'aaa discount code',
-            'discount code for stockx',
-            'psn discount code'
-        ];
         $data['cityName'] = CITY;
         $data['hiddenSearchHeader'] = 1;
 			$agent = new Agent();
