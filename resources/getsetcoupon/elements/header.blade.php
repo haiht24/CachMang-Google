@@ -1,3 +1,4 @@
+{{--
 <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -17,7 +18,7 @@
 			<li><a href="{{ url('/groupon-coupons/') }}">Groupon Coupons</a></li>
 			<li><a href="{{ url('/discount-codes/') }}">Discount Codes</a></li>
 			<li><a href="{{ url('/free-shipping/') }}">Free Shipping</a></li>
-          </ul>		  
+          </ul>
         </div>
       </div>
-    </nav>
+    </nav>--}}

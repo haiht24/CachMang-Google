@@ -19,30 +19,38 @@
         <div>
             <div class="col-lg-3 col-sm-6 col-xs-12">
                 <div class="list-group">
-                    @foreach($holiday[1] as $k => $v)
-                        <a href='{{ url('/') . '/' . str_slug($v) . $_keyword }}' class='list-group-item' title='{{ $v }}'> > {{ $v }}</a>
-                    @endforeach
+                   @if(!empty($sitemap_keyword[0]))
+                        @foreach($sitemap_keyword[0] as $k => $v)
+                            <a href='{{ url('/') . '/' . str_slug($v) . $_keyword }}' class='list-group-item' title='{{ $v }}'> > {{ $v }}</a>
+                        @endforeach
+                       @endif
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6 col-xs-12">
                 <div class="list-group">
-                    @foreach($holiday[2] as $k => $v)
-                        <a href='{{ url('/'). '/' . str_slug($v) . $_keyword }}' class='list-group-item' title='{{ $v }}'> > {{ $v }}</a>
-                    @endforeach
+                    @if(!empty($sitemap_keyword[1]))
+                        @foreach($sitemap_keyword[1] as $k => $v)
+                            <a href='{{ url('/') . '/' . str_slug($v) . $_keyword }}' class='list-group-item' title='{{ $v }}'> > {{ $v }}</a>
+                        @endforeach
+                    @endif
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6 col-xs-12">
                 <div class="list-group">
-                    @foreach($holiday[3] as $k => $v)
-                        <a href='{{ url('/'). '/'  . str_slug($v) . $_keyword }}' class='list-group-item' title='{{ $v }}'> > {{ $v }}</a>
-                    @endforeach
+                    @if(!empty($sitemap_keyword[2]))
+                        @foreach($sitemap_keyword[2] as $k => $v)
+                            <a href='{{ url('/') . '/' . str_slug($v) . $_keyword }}' class='list-group-item' title='{{ $v }}'> > {{ $v }}</a>
+                        @endforeach
+                    @endif
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6 col-xs-12">
                 <div class="list-group">
-                    @foreach($holiday[4] as $k => $v)
-                        <a href='{{ url('/'). '/'  . str_slug($v) . $_keyword }}' class='list-group-item' title='{{ $v }}'> > {{ $v }}</a>
-                    @endforeach
+                    @if(!empty($sitemap_keyword[3]))
+                        @foreach($sitemap_keyword[3] as $k => $v)
+                            <a href='{{ url('/') . '/' . str_slug($v) . $_keyword }}' class='list-group-item' title='{{ $v }}'> > {{ $v }}</a>
+                        @endforeach
+                    @endif
                 </div>
             </div>
 
