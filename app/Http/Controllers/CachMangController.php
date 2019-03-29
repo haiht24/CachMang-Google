@@ -27,26 +27,26 @@ class CachMangController extends Controller
 
         $domain = $_SERVER['HTTP_HOST'];
         $dmConfig = config('theme.domains_config')[$domain];
-        if(!empty($dmConfig['sitemap_keyword']))
-        {
-            $sitemap_keyword = $dmConfig['sitemap_keyword'];
-            $lenSitemap = count($sitemap_keyword);
+        if(!empty($dmConfig['sitemap_keyword'])) {
+            $sitemapKeyword = $dmConfig['sitemap_keyword'];
+            $data['allKeywords'] = $sitemapKeyword;
+            $lenSitemap = count($sitemapKeyword);
             $splitSitemap = (Int)($lenSitemap/4);
-            $data['sitemap_keyword'] = array_chunk($sitemap_keyword, $splitSitemap+1);
+            $data['sitemap_keyword'] = array_chunk($sitemapKeyword, $splitSitemap+1);
         }
 
         $data['cityName'] = CITY;
         $data['hiddenSearchHeader'] = 1;
-			$agent = new Agent();
-			$isPhone = $agent->isPhone();
-			$isTablet = $agent->isTablet();
+        $agent = new Agent();
+        $isPhone = $agent->isPhone();
+        $isTablet = $agent->isTablet();
 		if($isPhone || $isTablet) return view('home-amp')->with($data);
         return view('home')->with($data);
     }
 
     public function search(Request $request) {
         $q = Input::get('q');
-        if(env('KEYWORD') && strpos($q, env('KEYWORD')) === false){
+        if(env('KEYWORD') && stripos(strtolower($q), env('KEYWORD')) === false){
             $q = $q . ' ' . env('KEYWORD');
         }
         $q = str_replace(' ', '-', $q);

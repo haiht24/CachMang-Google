@@ -10,15 +10,15 @@
                 <li><a href="{{ !empty($q) ? str_ireplace(' ', '-', $q):'#' }}">{{ !empty($q) ? ucwords($q):'' }}</a></li>
             </ol>
         </div>
-<p>Share: 
-<a target="_blank" href="https://www.facebook.com/sharer.php?u={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}" title="Facebook Share"><img src="https://www.getsetcoupon.com/img/fb.png"></a>
-<a target="_blank" href="https://plus.google.com/share?url={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}" title="Google Plus Share"><img src="https://www.getsetcoupon.com/img/gp.png"></a>
-<a target="_blank" href="https://twitter.com/share?url={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}" title="Twitter Share"><img src="https://www.getsetcoupon.com/img/tw.png"></a>
-<a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}" title="LinkedIn Share"><img src="https://www.getsetcoupon.com/img/in.png"></a>
-<a target="_blank" href="https://pinterest.com/pin/create/button/?url={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}" title="Pinterest Share"><img src="https://www.getsetcoupon.com/img/pin.png"></a>
-<a target="_blank" href="http://www.stumbleupon.com/badge/?url={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}" title="StumbleUpon Share"><img src="https://www.getsetcoupon.com/img/su.png"></a>
-<a target="_blank" href="https://www.reddit.com/submit?url={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}" title="Reddit Share"><img src="https://www.getsetcoupon.com/img/rt.png"></a>
-<a target="_blank" href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site {{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}" title="E-Mail Share"><img src="https://www.getsetcoupon.com/img/mail.png"></a>
+<p>Share:
+    <a target="_blank" href="https://www.facebook.com/sharer.php?u={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}" title="Facebook Share"><img src="{{ url('/') }}/images/fb.png"></a>
+    <a target="_blank" href="https://plus.google.com/share?url={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}" title="Google Plus Share"><img src="{{ url('/') }}/images/gp.png"></a>
+    <a target="_blank" href="https://twitter.com/share?url={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}" title="Twitter Share"><img src="{{ url('/') }}/images/tw.png"></a>
+    <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}" title="LinkedIn Share"><img src="{{ url('/') }}/images/in.png"></a>
+    <a target="_blank" href="https://pinterest.com/pin/create/button/?url={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}" title="Pinterest Share"><img src="{{ url('/') }}/images/pin.png"></a>
+    <a target="_blank" href="http://www.stumbleupon.com/badge/?url={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}" title="StumbleUpon Share"><img src="{{ url('/') }}/images/su.png"></a>
+    <a target="_blank" href="https://www.reddit.com/submit?url={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}" title="Reddit Share"><img src="{{ url('/') }}/images/rt.png"></a>
+    <a target="_blank" href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site {{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}" title="E-Mail Share"><img src="{{ url('/') }}/images/mail.png"></a>
 </p>
 @if(ENABLE_SEARCH_BOX)
 <form class="form-inline" role="form" method="get" id="frmSearch" autocomplete="off">

@@ -1,4 +1,4 @@
-	<footer>
+<footer class="footer">
     <div class="col-xs-12 footer alert-info container">
         <div class="col-xs-12 con-footer">
             <div class="col-xs-12">
