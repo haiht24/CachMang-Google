@@ -10,7 +10,7 @@ template name in /resources:
 return [
 	'localhost:8080' => [
 		'enableSearchBox' => 0,
-		'template' => 'getsetcoupon',
+		'template' => 'startnewjobs',
         'sitemap_keyword' => [
             'udemy coupon',
             'udemy coupon code',
@@ -80,7 +80,7 @@ return [
 	],
 	'capitalcoupon.com' => [
 		'enableSearchBox' => 0,
-		'template' => 'searchforany',
+		'template' => 'getsetcoupon',
         'sitemap_keyword' => [
             "helix sleep","helix sleep coupons","helix sleep discount code","helix sleep military discount","Udemy","udemy coupon","udemy coupon code","udemy coupon 10$","udemy coupon free","udemy coupon 100 off","udemy coupon india","udemy coupon 2019","udemy coupon uk","udemy coupon reddit","udemy coupon 2018","udemy discount","udemy discount coupon","udemy discount code","udemy discount code uk","udemy discount coupon india","udemy discount global","udemy discount code 2019","udemy discount reddit","udemy discount courses","coupon","coupon là gì","coupon traveloka","discount"
         ]
@@ -108,7 +108,7 @@ return [
 	],
 	'couponloans.com' => [
 		'enableSearchBox' => 0,
-		'template' => 'searchforany',
+		'template' => 'getsetcoupon',
         'sitemap_keyword' => [
             "helix sleep","helix sleep coupons","helix sleep discount code","helix sleep military discount","Udemy","udemy coupon","udemy coupon code","udemy coupon 10$","udemy coupon free","udemy coupon 100 off","udemy coupon india","udemy coupon 2019","udemy coupon uk","udemy coupon reddit","udemy coupon 2018","udemy discount","udemy discount coupon","udemy discount code","udemy discount code uk","udemy discount coupon india","udemy discount global","udemy discount code 2019","udemy discount reddit","udemy discount courses","coupon","coupon là gì","coupon traveloka","discount"
         ]

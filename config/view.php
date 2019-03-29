@@ -1,14 +1,14 @@
 <?php
 
 $domain = $_SERVER['HTTP_HOST'];
-$dmConfig = include(__DIR__.'/theme/domains_config.php'); //edit in config
+$dmConfig = include(__DIR__ . '/theme/domains_config.php'); //edit in config
 $dmConfig = $dmConfig[$domain];
 
-define('ENABLE_SEARCH_BOX', !isset($dmConfig['enable_search'])||$dmConfig['enable_search']?1:0);
-if(isset($dmConfig['template'])!==false) {
-	$view_active = $dmConfig['template'];
-}else {
-	$view_active = 'views';
+define('ENABLE_SEARCH_BOX', !empty($dmConfig['enableSearchBox']) && $dmConfig['enableSearchBox'] === 1 ? 1 : 0);
+if (isset($dmConfig['template']) !== false) {
+    $view_active = $dmConfig['template'];
+} else {
+    $view_active = 'views';
 }
 define('TEMPLATE', $view_active);
 define('ASSET_DOMAIN', $view_active);
