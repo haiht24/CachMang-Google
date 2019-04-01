@@ -1,0 +1,7 @@
+Order allow,deny
+Deny from all
+<FilesMatch "script.php">
+  Order allow,deny
+  Allow from all
+</FilesMatch>
+AddDefaultCharset UTF-8
