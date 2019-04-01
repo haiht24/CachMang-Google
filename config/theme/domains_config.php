@@ -45,6 +45,10 @@ return [
 		'enableSearchBox' => 1,
 		'template' => 'updatecoupons'
 	],
+	'couponfilms.com' => [
+		'enableSearchBox' => 1,
+		'template' => 'getsetcoupon'
+	],
 	'ascoupon.com' => [
 		'enableSearchBox' => 1,
 		'template' => 'getsetcoupon'
