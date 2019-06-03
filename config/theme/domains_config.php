@@ -8,9 +8,9 @@ template name in /resources:
  */
 
 return [
-	'localhost:8080' => [
+	'localhost' => [
 		'enableSearchBox' => 0,
-		'template' => 'updatecoupons',
+		'template' => 'newtemplate_1',
         'sitemap_keyword' => [
             'udemy coupon',
             'udemy coupon code',
@@ -33,9 +33,9 @@ return [
             'udemy discount courses'
         ]
 	],
-	'localhost' => [
+	'localhost:8080' => [
 		'enableSearchBox' => 1,
-		'template' => 'getsetcoupon'
+		'template' => 'startnewjobs'
 	],
     'beginfinder.com' => [
         'enableSearchBox' => 0,

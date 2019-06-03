@@ -140,7 +140,8 @@ class CachMangController extends Controller
 
 //        $data['ask'] = $this->_ask($q);
 //        $data['bing'] = $this->_bing($q);
-        $data['bing'] = $this->_yahoo($q);
+        //$data['bing'] = $this->_yahoo($q);
+		$data['all'] = $this->getFromApiNodejs($q);
 //        return $data;
         /*$data['dogpile'] = $this->getData('dogpile.com', $q);
         $data['netfind'] = $this->getData('netfind.com', $q);
@@ -248,7 +249,7 @@ class CachMangController extends Controller
         $arrResults = [];
         foreach($html->find('.algo') as $result){
             $a = [];
-            if($result->find('h3', 0)){
+            if($result->find('h3', 0)) {
                 $a['title'] = trim($result->find('h3', 0)->plaintext);
                 if($result->find('.compText', 0)){
                     $a['description'] = trim($result->find('.compText', 0)->plaintext);
