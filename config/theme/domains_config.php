@@ -33,9 +33,30 @@ return [
             'udemy discount courses'
         ]
 	],
-	'localhost:8080' => [
-		'enableSearchBox' => 1,
-		'template' => 'startnewjobs'
+    'localhost:8080' => [
+		'enableSearchBox' => 0,
+		'template' => 'newtemplate_1',
+        'sitemap_keyword' => [
+            'udemy coupon',
+            'udemy coupon code',
+            'udemy coupon 10$',
+            'udemy coupon free',
+            'udemy coupon 100 off',
+            'udemy coupon india',
+            'udemy coupon 2019',
+            'udemy coupon uk',
+            'udemy coupon reddit',
+            'udemy coupon 2018',
+            'udemy discount',
+            'udemy discount coupon',
+            'udemy discount code',
+            'udemy discount code uk',
+            'udemy discount coupon india',
+            'udemy discount global',
+            'udemy discount code 2019',
+            'udemy discount reddit',
+            'udemy discount courses'
+        ]
 	],
     'beginfinder.com' => [
         'enableSearchBox' => 1,
