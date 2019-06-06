@@ -26,6 +26,55 @@ class Controller extends BaseController
 		}else 
         define('CITY', '');
     }
+	
+	public function getCurlHtml($url) {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,$url);
+        curl_setopt($ch, CURLOPT_AUTOREFERER, 0);
+        //if($ref) curl_setopt($ch, CURLOPT_REFERER, $ref);
+        curl_setopt($ch, CURLOPT_COOKIESESSION, 0);
+        curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0");
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4 );
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        $html = curl_exec($ch);
+        curl_close($ch);
+        return $html;
+    }
+	
+	public function getFromApiNodejs($q) {
+		$url = 'http://localhost:8082/getsearch?q=' . $q;
+		$data = json_decode($this->getCurlHtml($url));
+		$rs = [
+				'items' => [],
+				'block' => [
+					'suggestion' => ''
+				]
+			];
+		if(!empty($data)) {
+			foreach($data as $k=>$s) {
+				if(!empty($s)) foreach($s->results as $item) {
+					$rs['items'][] = [
+							'title' => $item->title,
+							'description' => $item->description,
+							'url' => $item->url
+						];
+				}
+				if(!empty($s->suggest)) {
+					$rs['block']['suggestion'] .= ',' . join(',', $s->suggest); 
+					
+				}
+				
+			}
+			
+		}
+		//dd($rs);
+		return $rs;
+		
+		
+	}
 
     public function getGoogleSuggestSearch($kw, $filterResult = true) {
         $kw = urlencode($kw);
