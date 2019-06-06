@@ -5,6 +5,8 @@ template name in /resources:
 2. searchforany
 3. startnewjobs
 4. updatecoupons
+5. newtemplate_1
+6. newtemplate_2
  */
 
 return [
