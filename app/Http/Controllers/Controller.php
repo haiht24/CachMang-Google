@@ -45,7 +45,7 @@ class Controller extends BaseController
     }
 	
 	public function getFromApiNodejs($q) {
-		$url = 'http://localhost:8082/getsearch?q=' . $q;
+		$url = 'http://206.189.41.95:8082/getsearch?q=' . $q;
 		$data = json_decode($this->getCurlHtml($url));
 		$rs = [
 				'items' => [],
