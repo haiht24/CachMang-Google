@@ -1,0 +1,35 @@
+/*
+$white: #fff;
+$white-smoke: #f1f1f1;
+$gray: #999;
+$black: #404040;
+$gray_0: #7E7E7E;
+$blue: #648AB9;
+$footer-color: #44A5C2; //#27456D
+//$nav-bar-color: #27456D;
+$nav-bar-color: $footer-color;
+$btn-search-bg-color: #5bc0de;
+$breadcrumb-bg-color: #ececec;*/
+
+$white: #fff;
+$white-smoke: #f1f1f1;
+
+$black: #404040;
+$gray_0: #7E7E7E;
+$blue: #648AB9;
+
+/* scheme */
+//header and footer color
+$footer-color: #07889B;
+$nav-bar-color: $footer-color;
+//button search
+$btn-search-bg-color: #EEAA73;
+//breadcrumb
+$breadcrumb-bg-color: $btn-search-bg-color;
+//button CODE
+//$btn-code-bg-color: #E37222;
+$btn-code-bg-color: $btn-search-bg-color;
+//link in box result
+$gray: #66b9bf;
+
+
