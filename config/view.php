@@ -2,17 +2,22 @@
 
 $domain = $_SERVER['HTTP_HOST'];
 $dmConfig = include(__DIR__ . '/theme/domains_config.php'); //edit in config
+// Get array config of domain
 $dmConfig = $dmConfig[$domain];
-
+// Get Google adsense config of domain
+define('GA_CLIENT', !empty($dmConfig['google-adsense']['data-ad-client']) ? $dmConfig['google-adsense']['data-ad-client'] : '');
+define('GA_SLOT', !empty($dmConfig['google-adsense']['data-ad-slot']) ? $dmConfig['google-adsense']['data-ad-slot'] : '');
+// Get config Enable Search box in header
 define('ENABLE_SEARCH_BOX', !empty($dmConfig['enableSearchBox']) && $dmConfig['enableSearchBox'] === 1 ? 1 : 0);
 if (isset($dmConfig['template']) !== false) {
+    // Get template name
     $view_active = $dmConfig['template'];
 } else {
+    // Get default template in folder resources/views if not found custom domain config
     $view_active = 'views';
 }
 define('TEMPLATE', $view_active);
 define('ASSET_DOMAIN', $view_active);
-
 
 return [
 

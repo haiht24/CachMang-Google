@@ -1,10 +1,10 @@
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- GCN -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:block"
-     data-ad-client="ca-pub-0350851762030337"
-     data-ad-slot="1404304294"
-     data-ad-format="auto"></ins>
+     data-ad-client="{{ !empty(GA_CLIENT)?GA_CLIENT:'' }}"
+     data-ad-slot="{{ !empty(GA_SLOT)?GA_SLOT:'' }}"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
 <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
