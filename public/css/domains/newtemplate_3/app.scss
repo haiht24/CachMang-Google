@@ -944,25 +944,6 @@ legend {
   margin-bottom: 10px;
 }
 
-@media screen and (max-width: 767px) {
-  .wrap-search-box form .inner-form .input-field {
-    margin-bottom: 20px;
-    height: 50px;
-  }
-  .wrap-search-box form .inner-form .input-field input {
-    padding-left: 55px;
-    font-size: 16px;
-  }
-  .wrap-search-box form .inner-form .input-field .btn-search svg {
-    width: 26px;
-    height: 26px;
-  }
-}
-@media screen and (max-width: 300px) {
-  .wrap-search-box form legend {
-    font-size: 20px;
-  }
-}
 .autocomplete-items {
   position: absolute;
   border: 1px solid #d4d4d4;
@@ -1095,4 +1076,48 @@ a:hover,a h3.text-primary:hover{
   background-color: #111;
   padding:10px;
   color: #fffeee;
+}
+
+
+@media screen and (max-width: 1025px) {
+  .search-content {
+    height: 180px;
+  }
+}
+@media screen and (max-width: 769px) {
+  .search-content {
+    height: 160px;
+  }
+  .wrap-search-box form .inner-form .input-field {
+    margin-bottom: 20px;
+    height: 50px;
+  }
+  .wrap-search-box form .inner-form .input-field input {
+    padding-left: 55px;
+    font-size: 16px;
+  }
+  .wrap-search-box form .inner-form .input-field .btn-search svg {
+    width: 26px;
+    height: 26px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .search-content {
+    height: 180px;
+  }
+  .wrap-search-box form legend {
+    font-size: 20px;
+  }
+  .discount-value {
+    float: none !important;
+  }
+  .result-url {
+    max-width: 280px;
+    word-wrap: break-word;
+  }
+}
+@media screen and (max-width: 320px) {
+  .search-content {
+    height: 220px;
+  }
 }
