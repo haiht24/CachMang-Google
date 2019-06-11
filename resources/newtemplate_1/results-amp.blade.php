@@ -1,10 +1,10 @@
 @extends('app-amp')
 @section('content')
-        <div class="">
-               @include('custom-ads.ads-head')
-            @if(count($results) > 0)
-				<?php $from = 'DB'; ?>
-                @if($from === 'ASK')
+    <div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+            <div class="wrap-results">
+                @include('custom-ads.ads-head')
+                @if(count($results) > 0)
                     @foreach($results as $k=>$result)
                             @if($k === 2 || $k === 6 || $k === 9)
                                 <div class="alert search-result col-xs-12">
@@ -29,7 +29,6 @@
                                     <p class="result-description rs-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['description'])) !!}</p>
                                 @endif
                             </div>
-
                         @endif
                     @endforeach
                     <input type="hidden" id="isFromSERP" value="1">
@@ -42,10 +41,10 @@
                             @endif
                         <div class="box-result search-result">
                             <p class="result-title">
-                                <h3 class="title">
+                            <h3 class="title">
                                 <?php $title = html_entity_decode(str_ireplace($q, '<b>'.ucwords($q).'</b>', $result['title'])) ?>
-                                    <a target="_blank" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}">{!! $title !!}</a>
-                                </h3>
+                                <a target="_blank" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}">{!! $title !!}</a>
+                            </h3>
                             </p>
                             <p class="result-url">
                                 {{--@if($k<3)--}}
@@ -85,11 +84,30 @@
                             </div>
                     @endforeach
                 @endif
-            @endif
-			
+
                 <input type="hidden" id="isFromSERP" value="1">
                 {{--@include('custom-ads.ads-foot')--}}
+            </div>
         </div>
-
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            @if(!empty($related))
+                <div class="related-keywords">
+                    <h3>Searches related to <b>{{ $q }}</b></h3>
+                    @foreach($related as $r)
+                        @if(!empty($r))
+                            <div class="col-md-12 npd-lr">
+                                <?php
+                                $href = url('/') . '/' . str_ireplace(' ', '-', str_ireplace('%','',strtolower($r)));
+                                if(strpos($href,'jobs') === false || strpos($href,'job') === false)
+                                    $href .= '-jobs';
+                                ?>
+                                <a title="{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $r )) !!}" class="related_keywords" href="{{ $href }}">{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $r )) !!}</a>
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+            @endif
+        </div>
+    </div>
     <input type="hidden" class="keyword" data-value="{{ $q }}">
 @endsection

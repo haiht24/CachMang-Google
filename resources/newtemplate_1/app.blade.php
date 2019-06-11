@@ -1,3 +1,4 @@
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,7 +30,7 @@
 @include('elements.header')
 {{--Body--}}
 <div class="body-content">
-    <div class="container parent">
+    <div class="parent">
     @yield('content')
 	</div>
 </div>
@@ -195,4 +196,4 @@
 
     });
 </script>
-</body>
+</body></html>

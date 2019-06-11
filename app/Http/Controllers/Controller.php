@@ -45,7 +45,8 @@ class Controller extends BaseController
     }
 	
 	public function getFromApiNodejs($q) {
-		$url = 'http://206.189.41.95:8082/getsearch?q=' . $q;
+		$q = str_replace('-', '+', $q);
+		$url = 'http://206.189.41.95/getsearch?q=' . $q;
 		$data = json_decode($this->getCurlHtml($url));
 		$rs = [
 				'items' => [],
@@ -53,14 +54,16 @@ class Controller extends BaseController
 					'suggestion' => ''
 				]
 			];
+		$url = [];
 		if(!empty($data)) {
 			foreach($data as $k=>$s) {
-				if(!empty($s)) foreach($s->results as $item) {
+				if(!empty($s)) foreach($s->results as $item) if(!in_array($item->url, $url)) {
 					$rs['items'][] = [
 							'title' => $item->title,
 							'description' => $item->description,
 							'url' => $item->url
 						];
+					$url[] = $item->url;
 				}
 				if(!empty($s->suggest)) {
 					$rs['block']['suggestion'] .= ',' . join(',', $s->suggest); 
