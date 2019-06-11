@@ -7,12 +7,13 @@ template name in /resources:
 4. updatecoupons
 5. newtemplate_1
 6. newtemplate_2
+7. newtemplate_3
  */
 
 return [
 	'localhost' => [
 		'enableSearchBox' => 0,
-		'template' => 'newtemplate_1',
+		'template' => 'newtemplate_3',
         'sitemap_keyword' => [
             'udemy coupon',
             'udemy coupon code',

@@ -3,7 +3,9 @@
         @if(ENABLE_SEARCH_BOX)
             <form class="input-group search-input" id="frmSearch" autocomplete="off">
                 <div class="parent-header-search" style="width:60%;margin:auto;">
+				<div style="position:relative">
                     <input type="text" class="form-control" placeholder="Enter to search" id="q">
+				</div>
                     <button type="submit" class="btn btn-info" id="btnSearch">
                         <span class="glyphicon glyphicon-search"></span> Search
                     </button>
