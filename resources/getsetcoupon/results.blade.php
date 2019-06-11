@@ -3,7 +3,7 @@
     <div class="row">
         <div class="row">
             <div class="col-md-4 col-xs-12">
-            @include('GA.google-adsense')
+            @include('Google.adsense')
             <!-- google ads -->
             </div>
             <div class="col-md-8 col-xs-12">
@@ -129,7 +129,7 @@
                             <div class="search-result col-md-6 col-xs-12">
                                 <div class="panel panel-default" style="height:180px;overflow:hidden">
                                     <div class="panel-body">
-                                        @include('GA.google-adsense')
+                                        @include('Google.adsense')
                                     </div>
                                 </div>
                             </div>
@@ -168,7 +168,7 @@
                             <div class="search-result col-md-6 col-xs-12">
                                 <div class="panel panel-default" style="height:180px;overflow:hidden">
                                     <div class="panel-body">
-                                        @include('GA.google-adsense')
+                                        @include('Google.adsense')
                                     </div>
                                 </div>
                             </div>
@@ -205,7 +205,7 @@
                             <div class="search-result col-md-6 col-xs-12">
                                 <div class="panel panel-default" style="height:180px;overflow:hidden">
                                     <div class="panel-body">
-                                        @include('GA.google-adsense')
+                                        @include('Google.adsense')
                                     </div>
                                 </div>
                             </div>
@@ -261,7 +261,7 @@
             {{--</div>--}}
 
             <div class="list-group">
-                @include('GA.google-adsense')
+                @include('Google.adsense')
             </div>
             {{--Last search 24h--}}
             @if(!empty($lastSearch24h))
@@ -282,7 +282,7 @@
             @endif
             {{--Top search--}}
             <div class="list-group">
-                @include('GA.google-adsense')
+                @include('Google.adsense')
             </div>
             @if(!empty($topSearch))
                 <div class="list-group">
@@ -307,7 +307,7 @@
                 </div>
             @endif
             <div class="list-group">
-                @include('GA.google-adsense')
+                @include('Google.adsense')
             </div>
         </div>
     </div>

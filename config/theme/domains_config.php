@@ -34,12 +34,13 @@ return [
         ]
 	],
     'localhost:8080' => [
-		'enableSearchBox' => 0,
+		'enableSearchBox' => 1,
 		'template' => 'updatecoupons',
         'google-adsense' => [
             'data-ad-client' => 'ca-pub-0350851762030337',
             'data-ad-slot' => '2320133743'
         ],
+        'google-analytic' => 'UA-141818063-1',
         'sitemap_keyword' => [
             'udemy coupon',
             'udemy coupon code',

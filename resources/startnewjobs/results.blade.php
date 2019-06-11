@@ -5,7 +5,7 @@
                 <h1>{{ $q }}</h1>
             </div>
             <div class="alert col-xs-12">
-                @include('GA.display')
+                @include('Google.adsense')
             </div>
             @include('custom-ads.ads-head')
             @if(count($results) > 0)
@@ -14,7 +14,7 @@
                     @foreach($results as $k=>$result)
                         @if($k === 2 || $k === 6 || $k === 9)
                             <div class="alert col-xs-12">
-                                @include('GA.display')
+                                @include('Google.adsense')
                             </div>
                         @endif
                         @if($result && !empty($result['url']))
@@ -40,7 +40,7 @@
                     @foreach($results as $k=>$result)
                         @if($k === 2 || $k === 6 || $k === 9)
                             <div class="alert col-xs-12">
-                                @include('GA.display')
+                                @include('Google.adsense')
                             </div>
                         @endif
                         <div class="box-result">
@@ -63,7 +63,7 @@
                     @foreach($results as $k=>$result)
                         @if($k === 2 || $k === 6 || $k === 9)
                             <div class="alert col-xs-12">
-                                @include('GA.display')
+                                @include('Google.adsense')
                             </div>
                         @endif
                             <div class="box-result">
@@ -105,7 +105,7 @@
                 </div>
             @endif
             <div class="col-xs-12 npd-lr" style="padding-top: 30px">
-                @include('GA.display')
+                @include('Google.adsense')
             </div>
         </div>
     <input type="hidden" class="keyword" data-value="{{ $q }}">

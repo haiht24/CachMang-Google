@@ -8,7 +8,7 @@
                         @if(!empty($result['url']))
                         @if($k === 2 || $k === 6 || $k === 9)
                             {{--<div class="alert search-result col-xs-12">--}}
-                                {{--@include('GA.google-adsense')--}}
+                                {{--@include('Google.adsense')--}}
                             {{--</div>--}}
                         @endif
                         <div class="box-result col-xs-12">
@@ -57,7 +57,7 @@
             </div>
             @endif
             {{--<div class="col-md-4 col-sm-6 col-xs-12 con-ads">--}}
-                {{--@include('GA.google-adsense')--}}
+                {{--@include('Google.adsense')--}}
             {{--</div>--}}
         </div>
 

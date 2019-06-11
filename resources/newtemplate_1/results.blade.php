@@ -8,7 +8,7 @@
                     @foreach($results as $k=>$result)
                         @if($k === 2 || $k === 6 || $k === 9)
                             <div class="alert search-result col-xs-12">
-                                @include('GA.display')
+                                @include('Google.adsense')
                             </div>
                         @endif
                         @if($result && !empty($result['url']))
@@ -37,7 +37,7 @@
                     @foreach($results as $k=>$result)
                         @if($k === 2 || $k === 6 || $k === 9)
                             <div class="alert search-result col-xs-12">
-                                @include('GA.display')
+                                @include('Google.adsense')
                             </div>
                         @endif
                         <div class="box-result search-result">
@@ -63,7 +63,7 @@
                     @foreach($results as $k=>$result)
                         @if($k === 2 || $k === 6 || $k === 9)
                             <div class="search-result">
-                                @include('GA.display')
+                                @include('Google.adsense')
                             </div>
                         @endif
                             <div class="box-result search-result">

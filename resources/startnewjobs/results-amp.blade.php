@@ -52,7 +52,11 @@
 				<?php $from = 'DB'; ?>
                 @if($from === 'ASK')
                     @foreach($results as $k=>$result)
-
+                            @if($k === 2 || $k === 6 || $k === 9)
+                                <div class="alert col-xs-12">
+                                    @include('Google.adsense')
+                                </div>
+                            @endif
                         @if($result && !empty($result['url']))
                             <div class="box-result search-result">
                                     <h3 class="title result-title">
@@ -74,7 +78,11 @@
                     <input type="hidden" id="isFromSERP" value="1">
                 @elseif($from === 'SERP')
                     @foreach($results as $k=>$result)
-
+                            @if($k === 2 || $k === 6 || $k === 9)
+                                <div class="alert col-xs-12">
+                                    @include('Google.adsense')
+                                </div>
+                            @endif
                         <div class="box-result">
                                 <h3 class="title">
                                     <a title="{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}" target="_blank" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</a>
@@ -93,7 +101,11 @@
                     <input type="hidden" id="isFromSERP" value="1">
                 @elseif($from === 'DB')
                     @foreach($results as $k=>$result)
-
+                            @if($k === 2 || $k === 6 || $k === 9)
+                                <div class="alert col-xs-12">
+                                    @include('Google.adsense')
+                                </div>
+                            @endif
                             <div class="box-result">
                                     <h3 class="title">
                                         <a title="{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}" target="_blank" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</a>

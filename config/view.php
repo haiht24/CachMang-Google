@@ -4,6 +4,8 @@ $domain = $_SERVER['HTTP_HOST'];
 $dmConfig = include(__DIR__ . '/theme/domains_config.php'); //edit in config
 // Get array config of domain
 $dmConfig = $dmConfig[$domain];
+// Get Google Analytic Tracking Id
+define('GA_ANALYTIC', !empty($dmConfig['google-analytic']) ? $dmConfig['google-analytic']:'');
 // Get Google adsense config of domain
 define('GA_CLIENT', !empty($dmConfig['google-adsense']['data-ad-client']) ? $dmConfig['google-adsense']['data-ad-client'] : '');
 define('GA_SLOT', !empty($dmConfig['google-adsense']['data-ad-slot']) ? $dmConfig['google-adsense']['data-ad-slot'] : '');
@@ -33,7 +35,8 @@ return [
     */
 
     'paths' => [
-        resource_path($view_active),
+        resource_path($view_active), // custom folder /views by domain configs
+        resource_path('views'), // default folder /views
     ],
 
     /*

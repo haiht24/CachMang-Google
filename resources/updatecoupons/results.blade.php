@@ -13,7 +13,7 @@
             {{--Related keywords--}}
             @if(!empty($related))
                 <div class="col-xs-4 npd-lr">
-                    @include('GA.google-adsense')
+                    @include('Google.adsense')
                 </div>
                 <div class="col-xs-8 npd-lr">
                     @foreach($related as $r)
@@ -66,7 +66,7 @@
 
             {{--Result search--}}
             <div class="row">
- 
+
                 @include('custom-ads.ads-head')
                 @if(count($results) > 0)
 					<?php $from = 'DB'; ?>
@@ -74,7 +74,7 @@
                         @foreach($results as $k=>$result)
                             @if($k === 2 || $k === 6 || $k === 9)
                                 <div class="alert alert-info search-result col-xs-12">
-                                    @include('GA.google-adsense')
+                                    @include('Google.adsense')
                                 </div>
                             @endif
                             @if($result && !empty($result['url']))
@@ -107,7 +107,7 @@
                         @foreach($results as $k=>$result)
                             @if($k === 2 || $k === 6 || $k === 9)
                                 <div class="alert alert-info search-result col-xs-12">
-                                    @include('GA.google-adsense')
+                                    @include('Google.adsense')
                                 </div>
                             @endif
                             {{--@if($result->is('classical'))--}}
@@ -146,7 +146,7 @@
 							<div class="search-result col-md-6 col-xs-12">
 								<div class="panel panel-default" style="overflow:hidden">
 									<div class="panel-body">
-									@include('GA.google-adsense')
+									@include('Google.adsense')
 									</div>
 								</div>
 							</div>
@@ -199,7 +199,7 @@
                 {{--</div>--}}
 
                 <div class="list-group">
-                    @include('GA.google-adsense')
+                    @include('Google.adsense')
                 </div>
                 {{--Last search 24h--}}
                 @if(!empty($lastSearch24h))
@@ -219,7 +219,7 @@
                 @endif
                 {{--Top search--}}
                 <div class="list-group">
-                    @include('GA.google-adsense')
+                    @include('Google.adsense')
                 </div>
                 @if(!empty($topSearch))
                     <div class="list-group">
@@ -244,7 +244,7 @@
                     </div>
                 @endif
                 <div class="list-group">
-                    @include('GA.google-adsense')
+                    @include('Google.adsense')
                 </div>
             </div>
         </div>

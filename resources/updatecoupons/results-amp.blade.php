@@ -69,7 +69,11 @@
 					<?php $from = 'DB'; ?>
                     @if($from === 'ASK')
                         @foreach($results as $k=>$result)
-
+                                @if($k === 2 || $k === 6 || $k === 9)
+                                    <div class="alert alert-info search-result col-xs-12">
+                                        @include('Google.adsense')
+                                    </div>
+                                @endif
                             @if($result && !empty($result['url']))
                                 <div class="alert alert-info search-result col-xs-12">
                                     <div class="col-xs-12 npd-lr"><h3 class="text-primary title">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</h3></div>
@@ -98,7 +102,11 @@
                         <input type="hidden" id="isFromSERP" value="1">
                     @elseif($from === 'SERP')
                         @foreach($results as $k=>$result)
-
+                                @if($k === 2 || $k === 6 || $k === 9)
+                                    <div class="alert alert-info search-result col-xs-12">
+                                        @include('Google.adsense')
+                                    </div>
+                                @endif
                             {{--@if($result->is('classical'))--}}
                             <div class="alert alert-info search-result col-xs-12">
                                 <div class="col-xs-12 npd-lr"><h3 class="text-primary title">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result->title)) !!}</h3></div>
@@ -131,7 +139,11 @@
                         <input type="hidden" id="isFromSERP" value="1">
                     @elseif($from === 'DB')
 						@foreach($results as $k=>$result)
-
+                                @if($k === 2 || $k === 6 || $k === 9)
+                                    <div class="alert alert-info search-result col-xs-12">
+                                        @include('Google.adsense')
+                                    </div>
+                                @endif
 							<?php
 								preg_match('/\$([0-9]+[\.]*[0-9]*) off|\$([0-9]+[\.]*[0-9]*) Off|\$([0-9]+[\.]*[0-9]*)/', $result['title'], $findDollar);
 								preg_match('/([0-9]+[\.]*[0-9]*)\% Off|([0-9]+[\.]*[0-9]*)\% off|([0-9]+[\.]*[0-9]*)\%/', $result['title'], $findPercent);
