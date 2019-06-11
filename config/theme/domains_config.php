@@ -333,8 +333,26 @@ return [
 		'enableSearchBox' => 1,
 		'template' => 'updatecoupons'	
 	],
-	
-	
+    'searchforany.com' => [
+        'enableSearchBox' => 1,
+        'template' => 'searchforany',
+        'google-adsense' => [
+            'data-ad-client' => '',
+            'data-ad-slot' => ''
+        ],
+        'google-analytic' => '',
+        'sitemap_keyword' => []
+    ],
+    'startnewjobs.com' => [
+        'enableSearchBox' => 1,
+        'template' => 'startnewjobs',
+        'google-adsense' => [
+            'data-ad-client' => '',
+            'data-ad-slot' => ''
+        ],
+        'google-analytic' => '',
+        'sitemap_keyword' => []
+    ],
 ];
 
 ?>
