@@ -27,19 +27,19 @@
 <body>
 {{--Header--}}
 {{--Body--}}
-<div class="s006">
-    <div class="wrap-search-box">
+<div class="">
+    <div class="wrap-search-box tpl_4">
     <form name="f" id="frmSearch" autocomplete="off" style="display: inherit" action="{{ url('/query') }}" method="get">
-        <fieldset>
-            <legend>What are you looking for?</legend>
-            <div class="inner-form">
                 <div class="input-field">
+                    <span class="mg-auto">
+                    <input id="q" name="q" autocomplete="off" type="text" placeholder="Keywords" value="" />
                     <button class="btn-search" type="submit">
                         <i class="fa fa-search"></i>
                     </button>
-                    <input id="q" name="q" autocomplete="off" type="text" placeholder="Keywords" value="" />
+                    </span>
                 </div>
-            </div>
+    </form>
+    </div>
             <?php $_keyword = env('KEYWORD') ? '-'.env('KEYWORD'):''; ?>
             <div class="suggestion-wrap">
                 @if(!empty($sitemap_keyword))
@@ -50,9 +50,6 @@
                     @endforeach
                 @endif
             </div>
-        </fieldset>
-    </form>
-    </div>
 </div>
 {{--Footer--}}
 @include('elements.footer')

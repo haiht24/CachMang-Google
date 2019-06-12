@@ -44,9 +44,11 @@ class Controller extends BaseController
         return $html;
     }
 	
+	public $api_url_get = 'http://206.189.41.95/getsearch?q=';
+	public $api_url_clear = 'http://206.189.41.95/clear-cache?q=';
 	public function getFromApiNodejs($q) {
 		$q = str_replace('-', '+', $q);
-		$url = 'http://206.189.41.95/getsearch?q=' . $q;
+		$url = $this->api_url_get . $q;
 		$data = json_decode($this->getCurlHtml($url));
 		$rs = [
 				'items' => [],
