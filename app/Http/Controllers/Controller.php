@@ -46,10 +46,10 @@ class Controller extends BaseController {
         curl_close($ch);
         return $html;
     }
-
+	
     public function getFromApiNodejs($q) {
-        $q = str_replace('-', '+', $q);
-        $url = $this->apiUrlGet . $q;
+        $q = str_replace('-', '+', $q );
+        $url = $this->apiUrlGet . $q . '&d=' . $_SERVER['HTTP_HOST'];
         $data = json_decode($this->getCurlHtml($url));
         $rs = [
             'items' => [],

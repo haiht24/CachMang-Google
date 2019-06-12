@@ -7,15 +7,6 @@
                 @if(count($results) > 0)
                     @foreach($results as $k=>$result)
                         <?php  $sk = $k%3; $searchklass = $sk==0?1:($sk==1?2:3); ?>
-                        @if($k === 2 || $k === 6 || $k === 9)
-                            <div class="search-result col-md-6 col-xs-12 col-lg-6 col-sm-12">
-                                <div class="search-content search-{{ $searchklass }}">
-                                    <div class="search-body">
-                                        @include('GA.google-adsense')
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
                         <?php
                         preg_match('/\$([0-9]+[\.]*[0-9]*) off|\$([0-9]+[\.]*[0-9]*) Off|\$([0-9]+[\.]*[0-9]*)/', $result['title'], $findDollar);
                         preg_match('/([0-9]+[\.]*[0-9]*)\% Off|([0-9]+[\.]*[0-9]*)\% off|([0-9]+[\.]*[0-9]*)\%/', $result['title'], $findPercent);
