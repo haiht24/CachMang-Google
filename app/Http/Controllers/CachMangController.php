@@ -20,8 +20,8 @@ class CachMangController extends Controller
 {
     public function index() {
         $seo = [
-            'title' => "Today's best deals for savyy - Searchdealtoday.com",
-            'description' => "Searchdealtoday is thrilled to be your deal searcher every single day. Whatever you want to buy from clothes, beauty products, home items and so on, we are here update all latest deals, hot deals or top discounts for budget saving."
+            'title' => "Search anything with " . url('/'),
+            'description' => ""
         ];
         $data['seo'] = $seo;
 
@@ -74,9 +74,7 @@ class CachMangController extends Controller
             }
         }
 
-//        $data = $this->getFromSearchEngine($q);
-//        echo "<pre>";var_dump($data);die;
-
+        /* Using Laravel cache */
         $cacheKey = 'kw_' . $q;
         if(Cache::has($cacheKey)){
             $d = Cache::get($cacheKey);
@@ -84,9 +82,14 @@ class CachMangController extends Controller
                 Cache::forget($cacheKey);
             }
         }
-        $data = Cache::remember('kw_' . $q, 60*24, function() use ($q){
+        $data = Cache::remember('kw_' . $q, 60*1, function() use ($q){
             return $this->getFromSearchEngine($q);
         });
+        /* End using Laravel cache */
+
+        /* Using API Nightmare cache */
+        //$data = $this->getFromSearchEngine($q);
+
         /* remove unwanted results */
         if(is_array($data['results']) && sizeof($data['results']) > 0){
             foreach ($data['results'] as $k=>$r) {

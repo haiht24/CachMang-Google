@@ -864,8 +864,7 @@ legend {
   cursor: pointer;
   background-color: #fff;
   border-bottom: 1px solid #d4d4d4;
-  color: #111;
-}
+  color: #111; }
 
 .autocomplete-items div:hover {
   /*when hovering an item:*/

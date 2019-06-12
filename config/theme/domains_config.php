@@ -38,7 +38,7 @@ return [
 	],
     'localhost:8080' => [
 		'enableSearchBox' => 1,
-		'template' => 'updatecoupons',
+		'template' => 'newtemplate_2',
         'google-adsense' => [
             'data-ad-client' => 'ca-pub-0350851762030337',
             'data-ad-slot' => '2320133743'
