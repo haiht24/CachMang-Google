@@ -43,9 +43,12 @@ class Controller extends BaseController {
         return $html;
     }
 
+    public $api_url_get = 'http://206.189.41.95/getsearch?q=';
+    public $api_url_clear = 'http://206.189.41.95/clear-cache?q=';
+
     public function getFromApiNodejs($q) {
         $q = str_replace('-', '+', $q);
-        $url = 'http://206.189.41.95/getsearch?q=' . $q;
+        $url = $this->api_url_get . $q;
         $data = json_decode($this->getCurlHtml($url));
         $rs = [
             'items' => [],
@@ -56,13 +59,11 @@ class Controller extends BaseController {
         $url = [];
         if (!empty($data)) {
             foreach ($data as $k => $s) {
-                $source = !empty($s->source)?$s->source:'';
                 if (!empty($s)) foreach ($s->results as $item) if (!in_array($item->url, $url)) {
                     $rs['items'][] = [
                         'title' => $item->title,
                         'description' => $item->description,
-                        'url' => $item->url,
-                        'source' => $source
+                        'url' => $item->url
                     ];
                     $url[] = $item->url;
                 }

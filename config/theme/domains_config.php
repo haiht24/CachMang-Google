@@ -8,6 +8,7 @@ template name in /resources:
 5. newtemplate_1
 6. newtemplate_2
 7. newtemplate_3
+8. newtemplate_4
  */
 
 return [
