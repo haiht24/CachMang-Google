@@ -10,6 +10,8 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public $apiUrlGet,$apiUrlClear;
+
     public function __construct() {
 
         /* Get folder name contain config for each domain. Eg: http://localhost:8080/CachMang/public/images/beginfinder */
@@ -24,6 +26,8 @@ class Controller extends BaseController {
             define('CITY', $position->cityName);
         } else
             define('CITY', '');
+        $this->apiUrlGet = 'http://'.env('API_IP').'/getsearch?q=';
+        $this->apiUrlClear = 'http://'.env('API_IP').'/clear-cache?q=';
     }
 
     public function getCurlHtml($url) {
@@ -43,12 +47,9 @@ class Controller extends BaseController {
         return $html;
     }
 
-    public $api_url_get = 'http://206.189.41.95/getsearch?q=';
-    public $api_url_clear = 'http://206.189.41.95/clear-cache?q=';
-
     public function getFromApiNodejs($q) {
         $q = str_replace('-', '+', $q);
-        $url = $this->api_url_get . $q;
+        $url = $this->apiUrlGet . $q;
         $data = json_decode($this->getCurlHtml($url));
         $rs = [
             'items' => [],

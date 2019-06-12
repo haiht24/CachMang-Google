@@ -86,7 +86,7 @@ class CachMangController extends Controller
         }
         if(!empty($rq['clear-cache'])) {
             Cache::forget($cacheKey);
-            $this->getCurlHtml($this->api_url_clear . str_replace('-', '+', $q));
+            $this->getCurlHtml($this->apiUrlClear . str_replace('-', '+', $q));
         }
         $data = Cache::remember('kw_' . $q, 60*1, function() use ($q){
             return $this->getFromSearchEngine($q);
