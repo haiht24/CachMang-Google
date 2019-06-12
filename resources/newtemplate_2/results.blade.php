@@ -11,7 +11,7 @@
                                 <div class="search-result col-md-6 col-xs-12 col-lg-6 col-sm-12">
                                     <div class="panel panel-default search-{{ $searchklass }}">
                                         <div class="panel-body">
-                                            @include('GA.google-adsense')
+                                            @include('Google.adsense')
                                         </div>
                                     </div>
                                 </div>

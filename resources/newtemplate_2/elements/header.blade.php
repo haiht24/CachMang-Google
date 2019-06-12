@@ -9,7 +9,7 @@
 				</div>--}}
 				<a class="logo" href="/">{{ $_SERVER['HTTP_HOST'] }}</a>
 			</div>
-			@if(1||ENABLE_SEARCH_BOX)
+			@if(ENABLE_SEARCH_BOX)
 				<div class=" col-md-9 col-sm-12 col-lg-10 col-xs-12">
                     <form name="f" id="frmSearch" autocomplete="off" style="display: inherit" action="{{ url('/query') }}" method="get">
 					<div id="search-input" style="width:100%">
