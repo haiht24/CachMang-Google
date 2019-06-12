@@ -59,7 +59,9 @@ class CachMangController extends Controller
         return redirect('/' . $q);
     }
 
-    public function query($q) {
+    public function query($q, Request $request) {
+		$rq = $request->all();
+
         if(empty($q))
             return redirect('/' . $q);
         $q = $this->cleanSpecialChars($q);
@@ -78,12 +80,16 @@ class CachMangController extends Controller
 //        echo "<pre>";var_dump($data);die;
 
         $cacheKey = 'kw_' . $q;
-        if(Cache::has($cacheKey)){
+		if(Cache::has($cacheKey)){
             $d = Cache::get($cacheKey);
             if(empty($d['results'])){
                 Cache::forget($cacheKey);
             }
         }
+		if(!empty($rq['clear-cache'])) {
+			Cache::forget($cacheKey);
+			$this->getCurlHtml($this->api_url_clear . str_replace('-', '+', $q));
+		}
         $data = Cache::remember('kw_' . $q, 60*24, function() use ($q){
             return $this->getFromSearchEngine($q);
         });
