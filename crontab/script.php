@@ -94,9 +94,9 @@ function envFileToArr($pathFile) {
 	$rs = [];
 	$getFile = file_get_contents($pathFile);
 	foreach(explode("\n", $getFile) as $line) {
-      if( empty($line) ) continue;
+      if( empty(trim($line)) ) continue;
       list($name, $val) = explode("=", $line, 2);
-      $rs[trim($name)] = $val;
+      $rs[trim($name)] = trim($val);
     }
 	return $rs;
 	
@@ -115,6 +115,7 @@ $dirOfNewCode = __DIR__.'/extract/' . $treeExplode[count($treeExplode)-1] . '-' 
 downloadCode(TREE, 'master.zip', BRAND);
 //step 2 unzip:
 unZip('master.zip', 'extract');
+if(!file_exists($dirOfNewCode)) die('fail!!! dir new code not exists');
 //step 3 (ignore) delete file not need update:
 unlink($dirOfNewCode . '/.env');
 unlink($dirOfNewCode . '/public/index.php');
@@ -124,15 +125,17 @@ $envHost = $dirOfNewCode . '/env/' . $_SERVER['HTTP_HOST'] . '.env';
 $envCommon = $dirOfNewCode . '/.env.common';
 	if(!file_exists($envHost)) {
 		$envDefault = $dirOfNewCode . '/.env.default';
+		$envContent = file_get_contents($envDefault);
 	} else {
 		$arrEnvCommon = envFileToArr($envCommon);
 		$arrEnvHost = envFileToArr($envHost);
 		$arrEnvHost['SITE_NAME'] = $_SERVER['HTTP_HOST'];
 		
 		$arrEnvMerge = array_merge($arrEnvHost, $arrEnvCommon);
+		$envContent = arrToStrEnv($arrEnvMerge);
 		
 	}
-file_put_contents($dirOfNewCode . '/.env', arrToStrEnv($arrEnvMerge));
+file_put_contents($dirOfNewCode . '/.env', $envContent);
 //step 4 paste to:
 rcopy($dirOfNewCode . '/public', $dirOfNewCode);
 recurse_copy($dirOfNewCode, dirname(__DIR__));
