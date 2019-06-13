@@ -1,10 +1,12 @@
 <?php
 
-function downloadCode($tree='MCCorp/CachMang-Google', $saveTo='master.zip') {
+define('BRAND', 'master');
+define('TREE', 'MCCorp/CachMang-Google');
+function downloadCode($tree='MCCorp/CachMang-Google', $saveTo='master.zip', $brand = 'master') {
 	
 	$username='haidang9x';
 	$password='haidang123';
-	$URL = "https://github.com/$tree/archive/master.zip";
+	$URL = "https://github.com/$tree/archive/$brand.zip";
 
 	
 $ch=curl_init();
@@ -88,17 +90,53 @@ function recurse_copy($src,$dst) {
         closedir($dir); 
 }
 
-
+function envFileToArr($pathFile) {
+	$rs = [];
+	$getFile = file_get_contents($pathFile);
+	foreach(explode("\n", $getFile) as $line) {
+      if( empty($line) ) continue;
+      list($name, $val) = explode("=", $line, 2);
+      $rs[$name] = $val;
+    }
+	return $rs;
+	
+}
+function arrToStrEnv($arrVal) {
+	$rs = '';
+	foreach($arrVal as $name=>$val) {
+		$rs .= $name . '=' . $val . "\n";
+	}
+	return $rs;
+} 
 // **action step.
+$treeExplode = explode('/', TREE);
+$dirOfNewCode = __DIR__.'/extract/' . $treeExplode[count($treeExplode)-1] . '-' . BRAND;
 //step 1 download code:
-downloadCode('MCCorp/CachMang-Google', 'master.zip');
+downloadCode(TREE, 'master.zip', BRAND);
 //step 2 unzip:
 unZip('master.zip', 'extract');
 //step 3 (ignore) delete file not need update:
-unlink(__DIR__.'/extract/CachMang-Google-master/.env');
-unlink(__DIR__.'/extract/CachMang-Google-master/public/index.php');
-unlink(__DIR__.'/extract/CachMang-Google-master/public/.htaccess');
+unlink($dirOfNewCode . '/.env');
+unlink($dirOfNewCode . '/public/index.php');
+unlink($dirOfNewCode . '/public/.htaccess');
+//file env config:
+$envHost = $dirOfNewCode . '/env/' . $_SERVER['HTTP_HOST'] . '.env';
+$envCommon = $dirOfNewCode . '/.env.common';
+	if(!file_exists($envHost)) {
+		$envDefault = $dirOfNewCode . '/.env.default';
+	} else {
+		$arrEnvCommon = envFileToArr($envCommon);
+		$arrEnvHost = envFileToArr($envHost);
+		$arrEnvHost['SITE_NAME'] = $_SERVER['HTTP_HOST'];
+		
+		$arrEnvMerge = array_merge($arrEnvHost, $arrEnvCommon);
+		
+	}
+file_put_contents($dirOfNewCode . '/.env', arrToStrEnv($arrEnvMerge));
 //step 4 paste to:
-rcopy(__DIR__.'/extract/CachMang-Google-master/public', __DIR__.'/extract/CachMang-Google-master');
-recurse_copy(__DIR__.'/extract/CachMang-Google-master', dirname(__DIR__));
+rcopy($dirOfNewCode . '/public', $dirOfNewCode);
+recurse_copy($dirOfNewCode, dirname(__DIR__));
+
+
+
 

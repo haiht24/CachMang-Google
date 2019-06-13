@@ -11,13 +11,21 @@ define('GA_CLIENT', !empty($dmConfig['google-adsense']['data-ad-client']) ? $dmC
 define('GA_SLOT', !empty($dmConfig['google-adsense']['data-ad-slot']) ? $dmConfig['google-adsense']['data-ad-slot'] : '');
 // Get config Enable Search box in header
 define('ENABLE_SEARCH_BOX', !empty($dmConfig['enableSearchBox']) && $dmConfig['enableSearchBox'] === 1 ? 1 : 0);
-if (isset($dmConfig['template']) !== false) {
+if (!empty($dmConfig['template'])) {
     // Get template name
     $view_active = $dmConfig['template'];
 } else {
     // Get default template in folder resources/views if not found custom domain config
     $view_active = 'views';
 }
+// api config
+$apiConfig = ['ip' => env('API_IP'), 'from' => env('API_FROM')];
+if(!empty($dmConfig['apiConfig'])) {
+	if(!empty($dmConfig['apiConfig']['ip'])) $apiConfig['ip'] = $dmConfig['apiConfig']['ip'];
+	if(!empty($dmConfig['apiConfig']['from'])) $apiConfig['from'] = $dmConfig['apiConfig']['from'];
+}
+define('API_CONFIG_IP', $apiConfig['ip']);
+define('API_CONFIG_FROM', $apiConfig['from']);
 define('TEMPLATE', $view_active);
 define('ASSET_DOMAIN', $view_active);
 

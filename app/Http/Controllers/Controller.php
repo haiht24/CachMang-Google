@@ -26,8 +26,8 @@ class Controller extends BaseController {
             define('CITY', $position->cityName);
         } else
             define('CITY', '');
-        $this->apiUrlGet = 'http://'.env('API_IP').'/getsearch?q=';
-        $this->apiUrlClear = 'http://'.env('API_IP').'/clear-cache?q=';
+        $this->apiUrlGet = 'http://'.API_CONFIG_IP.'/getsearch?from=' . API_CONFIG_FROM . '&q=';
+        $this->apiUrlClear = 'http://'.API_CONFIG_IP.'/clear-cache?q=';
     }
 
     public function getCurlHtml($url) {
