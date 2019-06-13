@@ -96,7 +96,7 @@ function envFileToArr($pathFile) {
 	foreach(explode("\n", $getFile) as $line) {
       if( empty($line) ) continue;
       list($name, $val) = explode("=", $line, 2);
-      $rs[$name] = $val;
+      $rs[trim($name)] = $val;
     }
 	return $rs;
 	
