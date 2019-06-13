@@ -181,8 +181,8 @@ class CachMangController extends Controller
             }
         }
         /* Get more suggest kw from Google api */
-        $suggestFromGoogleApi = $this->getGoogleSuggestSearch($q, false);
-        $arrSuggest = array_merge($arrSuggest, $suggestFromGoogleApi);
+        //$suggestFromGoogleApi = $this->getGoogleSuggestSearch($q, false);
+        //$arrSuggest = array_merge($arrSuggest, $suggestFromGoogleApi);
         /* remove duplicate from array */
         $arrSuggest = array_unique($arrSuggest);
         $data = [
