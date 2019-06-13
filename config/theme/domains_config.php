@@ -9,6 +9,11 @@ template name in /resources:
 6. newtemplate_2
 7. newtemplate_3
 8. newtemplate_4
+
+'apiConfig' => [
+            'ip' => '',
+            'from' => 'google.com,bing.com,yahoo.com,duckduckgo.com'
+        ],
  */
 
 return [
@@ -74,6 +79,10 @@ return [
     'beginfinder.com' => [
         'enableSearchBox' => 1,
         'template' => 'updatecoupons',
+        'apiConfig' => [
+            'ip' => '',
+            'from' => 'google.com,bing.com,yahoo.com,duckduckgo.com'
+        ],
         'google-adsense' => [
             'data-ad-client' => 'ca-pub-0350851762030337',
             'data-ad-slot' => '5023529804'
