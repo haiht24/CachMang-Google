@@ -15,6 +15,10 @@ return [
 	'localhost' => [
 		'enableSearchBox' => 0,
 		'template' => 'newtemplate_3',
+		'apiConfig' => [
+			'ip' => '',
+			'from' => 'google.com,bing.com,yahoo.com,duckduckgo.com'
+		],
         'sitemap_keyword' => [
             'udemy coupon',
             'udemy coupon code',
