@@ -28,28 +28,39 @@
 {{--Header--}}
 {{--Body--}}
 <div class="">
-    <div class="wrap-search-box tpl_4">
-    <form name="f" id="frmSearch" autocomplete="off" style="display: inherit" action="{{ url('/query') }}" method="get">
-                <div class="input-field">
-                    <span class="mg-auto">
-                    <input id="q" name="q" autocomplete="off" type="text" placeholder="Keywords" value="" />
-                    <button class="btn-search" type="submit">
-                        <i class="fa fa-search"></i>
-                    </button>
-                    </span>
-                </div>
-    </form>
+
+    <div class="top-title">
+        <h1>Search any you want...</h1>
     </div>
-            <?php $_keyword = env('KEYWORD') ? '-'.env('KEYWORD'):''; ?>
-            <div class="suggestion-wrap">
+
+    <div class="wrap-search-box">
+        <div class="form-search width-container">
+        <form class="form-wrapper cf" name="f" id="frmSearch" autocomplete="off" style="display: inherit" action="{{ url('/query') }}" method="get">
+            <div class="wrap-search-input">
+                <input id="q" name="q" autocomplete="off" type="text" placeholder="Keywords" value="" />
+            </div>
+            <button type="submit">Search</button>
+        </form>
+        </div>
+
+        <div class="suggestion-wrap row width-container">
+        <div class="list-type3">
+            <ul>
+                <?php $_keyword = env('KEYWORD') ? '-'.env('KEYWORD'):''; ?>
                 @if(!empty($sitemap_keyword))
                     @foreach($sitemap_keyword as $kw)
                         @foreach($kw as $k => $v)
-                            <a href='{{ url('/') . '/' . str_slug($v) . $_keyword }}' title='{{ $v }}' style=""><span>{{ $v }}</span></a>
+ <div class="col-lg-4 col-sm-6 col-xs-12">
+                <li><a <a href='{{ url('/') . '/' . str_slug($v) . $_keyword }}' title='{{ $v }}' >{{ $v }}</a></li>
+ </div>
                         @endforeach
                     @endforeach
                 @endif
-            </div>
+            </ul>
+        </div>
+        </div>
+
+    </div>
 </div>
 {{--Footer--}}
 @include('elements.footer')
