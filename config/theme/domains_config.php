@@ -19,7 +19,7 @@ template name in /resources:
 return [
 	'localhost' => [
 		'enableSearchBox' => 0,
-		'template' => 'newtemplate_3',
+		'template' => 'newtemplate_4',
 		'apiConfig' => [
 			'ip' => '',
 			'from' => 'google.com,bing.com,yahoo.com,duckduckgo.com'

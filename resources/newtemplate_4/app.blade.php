@@ -26,12 +26,12 @@
 </head>
 <body>
 {{--Header--}}
+<div class="wrap-search-box">
 @include('elements.header')
 {{--Body--}}
-<div class="body-content s006">
-    <div class="parent">
+<div class="suggestion-wrap row width-container">
     @yield('content')
-	</div>
+</div>
 </div>
 {{--Footer--}}
 @include('elements.footer')
