@@ -12,10 +12,14 @@ html {
 /**
  * Remove the margin in all browsers (opinionated).
  */
+@font-face {
+  font-family: Atami;
+  src: url("../../../fonts/Atami-Regular.otf");
+}
 body {
   margin: 0;
+  font-family: "Atami";
 }
-
 /**
  * Add the correct display in IE 9-.
  */
@@ -75,7 +79,7 @@ hr {
  * 2. Correct the odd `em` font sizing in all browsers.
  */
 pre {
-  font-family: monospace, monospace;
+  font-family: "Atami";
   /* 1 */
   font-size: 1em;
   /* 2 */
@@ -818,12 +822,8 @@ legend {
   justify-content: center;
   -ms-flex-align: center;
   align-items: center;
-  font-family: 'Poppins', sans-serif;
-  background: rgb(2,0,36);
-  background: linear-gradient(142deg, rgba(2,0,36,1) 0%, rgba(9,121,97,0.9995211483387465) 35%, rgba(0,212,255,1) 100%);
-  background-size: cover;
-  background-position: center center;
-  padding: 15px;
+  font-family: 'Atami', sans-serif;
+  background: #f5f5f5;
   color: #cccc00;
 }
 .btn-search .fa {
@@ -833,6 +833,17 @@ legend {
 .input-field:hover .fa {
   color: #000;
 }
+.discount-value-code{
+  min-width: 80px;
+  border-radius: 0;
+  background-color: #00d4ff;
+  border-color: #00d4ff ;
+  h3{
+    font-size: 17px;
+    margin: 0;
+    padding: 5px;
+  }
+}
 
 .wrap-search-box form {
   width: 100%;
@@ -841,7 +852,6 @@ legend {
 
 .wrap-search-box form legend {
   font-size: 36px;
-  color: #fff;
   font-weight: 800;
   text-align: center;
   margin-bottom: 30px;
@@ -981,7 +991,6 @@ legend {
 }
 .footer {
   background-color: #0099ff;
-  padding: 10px;
   color: #fefefe;
 }
 .footer a {
@@ -989,8 +998,7 @@ legend {
 }
 
 .search-content {
-  background: rgba(0, 0, 0, 0.6);
-  border:1px solid rgba(100, 100, 100, 0.6);
+  background-color: #ffffff;
   padding: 10px;
   height: 160px;
   overflow: hidden;
@@ -998,12 +1006,14 @@ legend {
   margin-bottom: 5px;
 }
 .pnel {
-  background: rgba(0, 0, 0, 0.6);
+  background-color: #f5f5f5;
   border:1px solid rgba(100, 100, 100, 0.6);
   padding: 10px;
 }
 .pnel h3 {
-  margin:5px;
+  margin:5px 5px 0 0;
+  color: black;
+  padding-bottom: 15px;
 }
 
 
@@ -1036,30 +1046,43 @@ legend {
 }
 
 .result-url {
-  color: #00bcd4;
+  color: #39bdd0;
   font-style: italic;
   word-wrap: break-word;
-  fond-size: 12px;
+  font-size: 12px;
+  margin-top: 10px;
+}
+.rs-description{
+  color: #999;
 }
 .search-result a h3.text-primary {
   padding: 5px;
-  margin: 0px;
+  margin: 0;
   font-size: 17px;
-  border-bottom: 1px solid red;
-  margin-bottom: 10px;
+  border-bottom: 1px dashed black;
+  margin-bottom: 15px;
 }
 a h3.text-primary,.search-result a,.pnel a {
-  color: #00cc66;
+  color: #000000;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 a:hover,a h3.text-primary:hover{
   text-decoration: none;
   color: #cc0066;
 }
+.rl-row{
+  margin-bottom: 5px;
+  a{
+    color: #999;
+  }
+}
 .discount-value h3,.discount-value {
   font-size: 17px;
   padding: 5px;
-  margin: 0px;
-  background-color: #9933ff;
+  margin: 0;
+  background-color: #25b08b;
+  border: 0;
   border-radius: 0;
 }
 
@@ -1074,7 +1097,7 @@ a:hover,a h3.text-primary:hover{
 
 .site-footer {
   background-color: #111;
-  padding:10px;
+  padding:15px;
   color: #fffeee;
 }
 

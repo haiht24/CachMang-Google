@@ -43,7 +43,7 @@
             </div>
         </div>
         </div>
-        <div class="search-info"><h1>Search with us to get more</h1></h1></div>
+        <div class="search-info"><h1>Search with us to get more</h1></div>
       <div id="search">
         <div id="srch-in">
 
@@ -53,7 +53,7 @@
                     <input id="q" name="q" autocomplete="off" type="text" class="search-query form-control" placeholder="Search" />
                     <span class="input-group-btn">
                     <button class="btn btn-search" type="submit">
-                       <i class="fa fa-search"></i>
+                       <i class="fa fa-search mg-left-5"></i>
                     </button>
                     </span>
                 </div>
@@ -73,8 +73,8 @@
 		@foreach($sitemap_keyword as $kw)
         @foreach($kw as $k => $v)
 		<div class="col-lg-4 col-sm-6 col-xs-12">
-		<div style="margin-bottom:15px;margin-right:15px;padding:5px;border:1px solid #ccc"">
-			<i class="fa fa-caret-right"></i> <a href='{{ url('/') . '/' . str_slug($v) . $_keyword }}' title='{{ $v }}' style="">{{ $v }}</a>
+		<div style="margin-bottom:15px;margin-right:15px;padding:5px;border:1px dashed #ccc">
+			<i class="fa fa-location-arrow"></i> <a href='{{ url('/') . '/' . str_slug($v) . $_keyword }}' title='{{ $v }}' style="">{{ $v }}</a>
 		</div>
 		</div>
         @endforeach

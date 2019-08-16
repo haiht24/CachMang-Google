@@ -30,9 +30,19 @@
 									@else
 										<h3 class="text-primary">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</h3>
 									@endif
-                                        <span class="btn btn-warning  pull-left discount-value" style="margin-right:10px">
-									<h3>{{ !empty($findDollar) ? strtolower($findDollar[0]) : (!empty($findPercent) ? strtolower($findPercent[0]) : 'CODE') }}</h3>
-									</span>
+                                        @if(!empty($findDollar))
+                                            <span class="btn btn-warning  pull-left discount-value">
+                                                <h3>{{strtolower($findDollar[0])}}</h3>
+                                            </span>
+                                        @elseif(!empty($findPercent))
+                                            <span class="btn btn-warning  pull-left discount-value">
+                                                <h3>{{strtolower($findPercent[0])}}</h3>
+                                            </span>
+                                        @else
+                                            <span class="btn btn-warning  pull-left discount-value-code">
+                                                 <h3>CODE</h3>
+                                            </span>
+                                        @endif
                                         @if(!empty($result['description']))
                                             <span class="rs-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', isset($result['description']{120})?substr($result['description'],0,120).'<span onclick="showmore(this)" style="color:blue"><span class="hidden">'.substr($result['description'],120).'</span>...more</span>':$result['description'])) !!}</span>
                                         @endif
@@ -52,7 +62,7 @@
                 {{--@include('custom-ads.ads-foot')--}}
         </div>
     </div>
-<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="padding:10px">
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
             @if(!empty($related))
                 <div class="pnel">
                 <h3>Searches related to <b>{{ $q }}</b></h3>

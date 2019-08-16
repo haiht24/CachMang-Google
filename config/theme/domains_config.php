@@ -45,7 +45,7 @@ $public_ads = [
 return [
     'localhost' => [
         'enableSearchBox' => 0,
-        'template' => 'newtemplate_4',
+        'template' => 'searchforany',
         'apiConfig' => [
             'ip' => '',
             'from' => 'google.com,bing.com,yahoo.com,duckduckgo.com'

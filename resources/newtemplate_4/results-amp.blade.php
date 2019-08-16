@@ -17,17 +17,37 @@
 									@if(empty($result['type']) || $result['type'] !== 'fake')
                                         <a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" {!! $rel_ex !!}>
                                             <h3 class="text-primary">
-                                                <span class="btn btn-warning discount-value">
-                                                {{ !empty($findDollar) ? strtolower($findDollar[0]) : (!empty($findPercent) ? strtolower($findPercent[0]) : 'CODE') }}
-                                                </span>
+                                                @if(!empty($findDollar))
+                                                    <span class="btn btn-warning  pull-left discount-value">
+                                                {{strtolower($findDollar[0])}}
+                                            </span>
+                                                @elseif(!empty($findPercent))
+                                                    <span class="btn btn-warning  pull-left discount-value">
+                                                {{strtolower($findPercent[0])}}
+                                            </span>
+                                                @else
+                                                    <span class="btn btn-warning  pull-left discount-value-code">
+                                                 CODE
+                                            </span>
+                                                @endif
                                                 {!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}
                                             </h3>
                                         </a>
 									@else
 										<h3 class="text-primary">
-                                                <span class="btn btn-warning discount-value">
-                                                {{ !empty($findDollar) ? strtolower($findDollar[0]) : (!empty($findPercent) ? strtolower($findPercent[0]) : 'CODE') }}
-                                                </span>
+                                            @if(!empty($findDollar))
+                                                <span class="btn btn-warning  pull-left discount-value">
+                                                {{strtolower($findDollar[0])}}
+                                            </span>
+                                            @elseif(!empty($findPercent))
+                                                <span class="btn btn-warning  pull-left discount-value">
+                                                {{strtolower($findPercent[0])}}
+                                            </span>
+                                            @else
+                                                <span class="btn btn-warning  pull-left discount-value-code">
+                                                 CODE
+                                            </span>
+                                            @endif
                                                 {!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}
                                         </h3>
 									@endif

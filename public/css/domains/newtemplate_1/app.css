@@ -2,10 +2,14 @@
   width: 80%;
   margin: auto; }
 
+.related-keywords h3 {
+  margin-bottom: 12px; }
+.related-keywords .npd-lr {
+  margin-bottom: 5px; }
+
 h3 {
-  font-size: 18px;
-  margin-top: 0;
-  margin-bottom: 0; }
+  font-size: 21px;
+  margin-top: 0; }
 
 h3 a {
   color: #1a0dab;
@@ -53,7 +57,7 @@ h3 a {
   height: 50px; }
 
 .home-box-search.head {
-  background-color: #ffe0cc;
+  background-color: cyan;
   margin-bottom: 15px;
   padding: 10px; }
 
@@ -70,7 +74,7 @@ h3 a {
   padding-top: 5px; }
 
 .site-footer {
-  background-color: #ff6600;
+  background-color: cyan;
   padding: 15px;
   padding-left: 0;
   padding-right: 0;
@@ -93,9 +97,6 @@ h3 a {
   padding-bottom: 5px;
   border-bottom: 1px dotted #acd; }
 
-.wrap-results {
-  background-color: #fff0e6; }
-
 .box-result .ad {
   margin-right: 7px;
   background-color: #fff;
@@ -109,7 +110,7 @@ h3 a {
   vertical-align: baseline; }
 
 .box-result p {
-  margin-bottom: 0; }
+  margin: 4px 0; }
 
 .box-result .result-title a {
   color: #1a0dab;
@@ -151,9 +152,6 @@ body {
 body, html, #page {
   height: 100%;
   padding: 0; }
-
-#btn span {
-  background-image: url(btn.png); }
 
 a {
   color: #0000cc; }
@@ -229,11 +227,10 @@ a {
 #page form {
   margin: 40px auto 0 auto;
   position: relative;
-  border: 5px solid #d6e9f3;
+  border: 2px solid cyan;
   background: white; }
 
 #page form div {
-  border: 1px solid #5a5a5a;
   padding: 0;
   min-height: 1px;
   position: relative; }
@@ -259,21 +256,20 @@ a {
   background: white;
   text-decoration: none;
   overflow: visible;
-  margin: 0 2px 1px 10px;
+  margin: 0 0 1px 10px;
   vertical-align: top; }
 
 #btn span {
   display: block;
-  height: 38px;
-  background-color: #ff6c00;
+  height: 39px;
+  background-color: cyan;
   background-position: 0 -56px;
   color: white;
   font: bold 17px/38px 'Segoe UI',sans-serif;
-  padding: 0 0 0 35px; }
+  padding: 0 0 0 14px; }
 
 #btn span span {
-  padding: 0 10px 0 0;
-  background-position: 100% -56px; }
+  padding: 0 10px 0 0; }
 
 #btn::-moz-focus-inner {
   border: 0; }
@@ -358,8 +354,6 @@ a {
   background-position: 100% -251px !important; }
 
 .logo {
-  color: #FFFFFF;
-  text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;
   color: #FFFFFF;
   background: #232323;
   font-weight: bold;

@@ -147,9 +147,10 @@ class CachMangController extends Controller
 			$data['ads'] = $dmConfig['ads'];
 			$data['ads_count'] = 10;
 		}
-		foreach($data['ads'] as $k=>$v) {
-			$data['ads'][$k]['title'] = str_replace('[store_name]', $store_name, $v['title']);
-		}
+//		dd($data['ads']);
+//		foreach($data['ads'] as $k=>$v) {
+//			$data['ads'][$k]['title'] = str_replace('[store_name]', $store_name, $v['title']);
+//		}
 		//rel link extenal
 		$data['rel_ex'] = 'rel="nofollow"';
 		//limit item result search engine
