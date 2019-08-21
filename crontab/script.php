@@ -1,14 +1,14 @@
 <?php
 
-define('BRAND', 'master');
+define('BRAND', (!empty($_GET['brand'])?$_GET['brand']:'master'));
 define('TREE', 'MCCorp/CachMang-Google');
 function downloadCode($tree='MCCorp/CachMang-Google', $saveTo='master.zip', $brand = 'master') {
 	
 	$username='haidang9x';
 	$password='haidang123';
-	$URL = "https://github.com/$tree/archive/$brand.zip";
-
-	
+	$URL = "https://api.github.com/repos/$tree/zipball/$brand";
+	//$URL = "https://github.com/$tree/archive/$brand.zip";
+	//die($URL);
 $ch=curl_init();
 //curl_setopt($ch,CURLOPT_COOKIESESSION,true);
 //$fcook = __DIR__.'/cookie.txt';
@@ -25,6 +25,7 @@ curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 	curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
 $GET = curl_exec($ch);
 curl_close($ch);
+//die($GET);
 	file_put_contents($saveTo, $GET);
 	
 }
@@ -110,7 +111,14 @@ function arrToStrEnv($arrVal) {
 } 
 // **action step.
 $treeExplode = explode('/', TREE);
+$nameNewDir = '';
 $dirOfNewCode = __DIR__.'/extract/' . $treeExplode[count($treeExplode)-1] . '-' . BRAND;
+$files = scandir ( __DIR__.'/extract/' );
+            foreach ( $files as $file ) {
+				if(is_dir(__DIR__.'/extract/' . $file) && $file != "." && $file != ".." && $file) $nameNewDir = $file;
+			}			
+if($nameNewDir) $dirOfNewCode = __DIR__.'/extract/' . $nameNewDir;
+
 //step 1 download code:
 downloadCode(TREE, 'master.zip', BRAND);
 //step 2 unzip:
