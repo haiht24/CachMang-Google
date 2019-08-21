@@ -19,6 +19,7 @@ use Cache;
 class CachMangController extends Controller
 {
     public function index() {
+		try {
         $seo = [
             'title' => "Search anything with " . url('/'),
             'description' => ""
@@ -41,6 +42,9 @@ class CachMangController extends Controller
         $isPhone = $agent->isPhone();
         $isTablet = $agent->isTablet();
 		if($isPhone || $isTablet) return view('home-amp')->with($data);
+		} catch(Exception $e) {
+			$exitCode = Artisan::call('cache:clear');
+		}
         return view('home')->with($data);
     }
 
