@@ -23,7 +23,7 @@
                         <div class="search-result col-md-6 col-xs-12 col-lg-6 col-sm-12">
                             <div class="panel panel-default search-{{ $searchklass }}">
                                 <div class="panel-body">
-                                    <a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" rel="nofollow">
+                                    <a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" {!! $rel_ex !!}>
                                         <h3 class="text-primary">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</h3>
                                     </a>
                                     <span class="btn btn-warning  pull-left discount-value" style="margin-right:10px">
@@ -34,7 +34,7 @@
                                     @endif
                                     <p class="result-url">
                                         {{ str_limit(html_entity_decode($result['url']),60) }}
-                                        <sup><a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" rel="nofollow"><span class="fa fa-external-link"></span></a></sup>
+                                        <sup><a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" {!! $rel_ex !!}><span class="fa fa-external-link"></span></a></sup>
                                     </p>
                                 </div>
                             </div>

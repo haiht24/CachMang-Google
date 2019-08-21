@@ -110,7 +110,7 @@
 										@endif
 										<p class="result-url">
 											{{ str_limit(html_entity_decode($result['url']),80) }}
-											<sup><a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" rel="nofollow"><span class="fa fa-external-link"></span></a></sup>
+											<sup><a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" {!! $rel_ex !!}><span class="fa fa-external-link"></span></a></sup>
 										</p>
 									</div>
 								</div>
@@ -137,7 +137,7 @@
 										@endif
 										<p class="result-url">
 											{{ str_limit(html_entity_decode($result['url']),80) }}
-											<sup><a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" rel="nofollow"><span class="fa fa-external-link"></span></a></sup>
+											<sup><a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" {!! $rel_ex !!}><span class="fa fa-external-link"></span></a></sup>
 										</p>
 									</div>
 								</div>
@@ -163,7 +163,7 @@
 										@endif
 										<p class="result-url">
 											{{ str_limit(html_entity_decode($result['url']),80) }}
-											<sup><a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" rel="nofollow"><span class="fa fa-external-link"></span></a></sup>
+											<sup><a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" {!! $rel_ex !!}><span class="fa fa-external-link"></span></a></sup>
 										</p>
 									</div>
 								</div>

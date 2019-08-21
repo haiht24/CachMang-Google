@@ -1,7 +1,6 @@
-@if(!empty(config('domains.' . ASSET_DOMAIN)['ads']))
-    <?php $ads = config('domains.' . ASSET_DOMAIN)['ads']; ?>
+@if($enable_ads && !empty($ads))
     @foreach($ads as $k => $v)
-        @if($k<3)
+        @if($k<10)
 			<?php  $sk = $k%3; $searchklass = $sk==0?1:($sk==1?2:3); ?>
 			<div class="search-result">
 				<div class="search-content search-{{ $searchklass }}">

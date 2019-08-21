@@ -10,7 +10,8 @@
                 <div class="list-group">
                    @if(!empty($sitemap_keyword[0]))
                         @foreach($sitemap_keyword[0] as $k => $v)
-                            <a href='{{ url('/') . '/' . str_slug($v) . $_keyword }}' class='list-group-item' title='{{ $v }}'>{{ $v }}</a>
+						<?php $sl = !stripos($v,env('KEYWORD')) ? str_slug($v) . $_keyword : str_slug($v) ?>
+                            <a href='{{ url('/') . '/' .$sl }}' class='list-group-item' title='{{ $v }}'>{{ $v }}</a>
                         @endforeach
                        @endif
                 </div>
@@ -19,7 +20,8 @@
                 <div class="list-group">
                     @if(!empty($sitemap_keyword[1]))
                         @foreach($sitemap_keyword[1] as $k => $v)
-                            <a href='{{ url('/') . '/' . str_slug($v) . $_keyword }}' class='list-group-item' title='{{ $v }}'>{{ $v }}</a>
+                            <?php $sl = !stripos($v,env('KEYWORD')) ? str_slug($v) . $_keyword : str_slug($v) ?>
+                            <a href='{{ url('/') . '/' .$sl }}' class='list-group-item' title='{{ $v }}'>{{ $v }}</a>
                         @endforeach
                     @endif
                 </div>
@@ -28,7 +30,8 @@
                 <div class="list-group">
                     @if(!empty($sitemap_keyword[2]))
                         @foreach($sitemap_keyword[2] as $k => $v)
-                            <a href='{{ url('/') . '/' . str_slug($v) . $_keyword }}' class='list-group-item' title='{{ $v }}'>{{ $v }}</a>
+                            <?php $sl = !stripos($v,env('KEYWORD')) ? str_slug($v) . $_keyword : str_slug($v) ?>
+                            <a href='{{ url('/') . '/' .$sl }}' class='list-group-item' title='{{ $v }}'>{{ $v }}</a>
                         @endforeach
                     @endif
                 </div>
@@ -37,7 +40,8 @@
                 <div class="list-group">
                     @if(!empty($sitemap_keyword[3]))
                         @foreach($sitemap_keyword[3] as $k => $v)
-                            <a href='{{ url('/') . '/' . str_slug($v) . $_keyword }}' class='list-group-item' title='{{ $v }}'>{{ $v }}</a>
+                            <?php $sl = !stripos($v,env('KEYWORD')) ? str_slug($v) . $_keyword : str_slug($v) ?>
+                            <a href='{{ url('/') . '/' .$sl }}'class='list-group-item' title='{{ $v }}'>{{ $v }}</a>
                         @endforeach
                     @endif
                 </div>

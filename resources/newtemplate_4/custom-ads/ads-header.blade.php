@@ -1,7 +1,6 @@
-@if(!empty(config('domains.' . ASSET_DOMAIN)['ads']))
-    <?php $ads = config('domains.' . ASSET_DOMAIN)['ads']; ?>
+@if($enable_ads && !empty($ads))
     @foreach($ads as $k => $result)
-        @if($k<3)
+        @if($k<10)
 <div class="search-result col-md-6 col-xs-12">
 <div class="panel panel-default" style="height:110px;overflow:hidden">
 	<div class="panel-body">
