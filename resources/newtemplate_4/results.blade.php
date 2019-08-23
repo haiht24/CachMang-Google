@@ -23,7 +23,7 @@
                             <div class="search-result">
                                 <div class="search-content search-{{ $searchklass }}">
                                     <div class="search-body">
-                                        <a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" rel="nofollow">
+                                        <a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" {!! $rel_ex !!}>
                                             <h3 class="text-primary">
                                                 <span class="btn btn-warning discount-value">
                                                 {{ !empty($findDollar) ? strtolower($findDollar[0]) : (!empty($findPercent) ? strtolower($findPercent[0]) : 'CODE') }}
@@ -36,7 +36,7 @@
                                         @endif
                                         <p class="result-url">
                                             {{ str_limit(html_entity_decode($result['url']),60) }}
-                                            <a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" rel="nofollow"><span class="fa fa-external-link"></span></a>
+                                            <a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" {!! $rel_ex !!}><span class="fa fa-external-link"></span></a>
                                         </p>
                                     </div>
                                 </div>

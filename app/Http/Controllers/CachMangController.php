@@ -127,7 +127,15 @@ class CachMangController extends Controller
 //        $date->subDay(1);
 //        $data['lastSearch24h'] = CachMangKeyword::where('updated_at', '>', $date->toDateTimeString() )->limit(9)->orderBy('updated_at','DESC')->get(['keyword_text','kw_slug','updated_at']);
         $data['hiddenSearchHeader'] = 0;
-
+		//ads top result
+		$data['enable_ads'] = 1;
+		$domain = $_SERVER['HTTP_HOST'];
+        $dmConfig = config('theme.domains_config')[$domain];
+		$data['ads'] = empty($dmConfig['ads'])?config('domains.' . ASSET_DOMAIN)['ads'] : $dmConfig['ads'];
+		if(empty($dmConfig['ads'])) $data['enable_ads'] = 0;
+		//rel link extenal
+		$data['rel_ex'] = 'rel="nofollow"';
+		
         $agent = new Agent();
         $isPhone = $agent->isPhone();
         $isTablet = $agent->isTablet();

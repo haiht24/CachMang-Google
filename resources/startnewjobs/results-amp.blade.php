@@ -60,7 +60,7 @@
                         @if($result && !empty($result['url']))
                             <div class="box-result search-result">
                                     <h3 class="title result-title">
-                                        <a title="{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}" target="_blank" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</a>
+                                        <a title="{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}" target="_blank" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" {!! $rel_ex !!}>{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</a>
                                     </h3>
                                 <p class="result-url trim-text">
                                     {{--@if($k<3)--}}
@@ -85,7 +85,7 @@
                             @endif
                         <div class="box-result">
                                 <h3 class="title">
-                                    <a title="{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}" target="_blank" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</a>
+                                    <a title="{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}" target="_blank" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" {!! $rel_ex !!}>{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</a>
                                 </h3>
                             <p class="result-url">
                                 {{--@if($k<3)--}}
@@ -108,7 +108,7 @@
                             @endif
                             <div class="box-result">
                                     <h3 class="title">
-                                        <a title="{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}" target="_blank" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</a>
+                                        <a title="{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}" target="_blank" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" {!! $rel_ex !!}>{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</a>
                                     </h3>
                                 <p class="result-url">
                                     {{--@if($k<3)--}}

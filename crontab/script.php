@@ -6,21 +6,24 @@ function downloadCode($tree='MCCorp/CachMang-Google', $saveTo='master.zip', $bra
 	
 	$username='haidang9x';
 	$password='haidang123';
-	$URL = "https://api.github.com/repos/$tree/zipball/$brand";
+	$URL = "https://api.github.com/repos/$tree/zipball/$brand?access_token=331eed7741e64adbde0d735cc2f7cf0297ec6d9d";
 	//$URL = "https://github.com/$tree/archive/$brand.zip";
 	//die($URL);
 $ch=curl_init();
-//curl_setopt($ch,CURLOPT_COOKIESESSION,true);
-//$fcook = __DIR__.'/cookie.txt';
-//curl_setopt($ch,CURLOPT_COOKIEJAR,$fcook);
-//curl_setopt($ch,CURLOPT_COOKIEFILE,$fcook);
+$saveTo = __DIR__.'/'.$saveTo;
+	//$fp = fopen($saveTo, 'w+');
+	//curl_setopt($ch, CURLOPT_FILE, $fp);
+// curl_setopt($ch,CURLOPT_COOKIESESSION,true);
+// $fcook = __DIR__.'/cookie.txt';
+// curl_setopt($ch,CURLOPT_COOKIEJAR,$fcook);
+// curl_setopt($ch,CURLOPT_COOKIEFILE,$fcook);
 curl_setopt($ch, CURLOPT_URL, $URL);
 curl_setopt($ch, CURLOPT_TIMEOUT, 3600); 
-curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0");
+curl_setopt($ch, CURLOPT_USERAGENT, 'PHP/'.phpversion('tidy'));
 curl_setopt($ch, CURLOPT_HEADER, 0); 
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 	curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
 	curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
 $GET = curl_exec($ch);
@@ -110,6 +113,15 @@ function arrToStrEnv($arrVal) {
 	return $rs;
 } 
 // **action step.
+$files = scandir ( __DIR__.'/extract/' );
+            foreach ( $files as $file ) {
+				if(is_dir(__DIR__.'/extract/' . $file) && $file != "." && $file != ".." && $file) rrmdir(__DIR__.'/extract/' . $file);
+			}	
+//step 1 download code:
+downloadCode(TREE, 'master.zip', BRAND);
+//step 2 unzip:
+unZip('master.zip', 'extract');
+
 $treeExplode = explode('/', TREE);
 $nameNewDir = '';
 $dirOfNewCode = __DIR__.'/extract/' . $treeExplode[count($treeExplode)-1] . '-' . BRAND;
@@ -119,11 +131,7 @@ $files = scandir ( __DIR__.'/extract/' );
 			}			
 if($nameNewDir) $dirOfNewCode = __DIR__.'/extract/' . $nameNewDir;
 
-//step 1 download code:
-downloadCode(TREE, 'master.zip', BRAND);
-//step 2 unzip:
-unZip('master.zip', 'extract');
-if(!file_exists($dirOfNewCode)) die('fail!!! dir new code not exists');
+if(!file_exists($dirOfNewCode)) die('fail!!! dir new code not exists '.$dirOfNewCode);
 //step 3 (ignore) delete file not need update:
 unlink($dirOfNewCode . '/.env');
 unlink($dirOfNewCode . '/public/index.php');
@@ -147,7 +155,7 @@ file_put_contents($dirOfNewCode . '/.env', $envContent);
 //step 4 paste to:
 rcopy($dirOfNewCode . '/public', $dirOfNewCode);
 recurse_copy($dirOfNewCode, dirname(__DIR__));
-
+rrmdir($dirOfNewCode);
 
 
 

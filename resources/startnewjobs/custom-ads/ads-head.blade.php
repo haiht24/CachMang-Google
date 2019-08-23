@@ -1,7 +1,6 @@
-@if(!empty(config('domains.' . ASSET_DOMAIN)['ads']))
-    <?php $ads = config('domains.' . ASSET_DOMAIN)['ads']; ?>
+@if($enable_ads && !empty($ads))
     @foreach($ads as $k => $v)
-        @if($k<3)
+        @if($k<10)
         <div class="box-result search-result">
             <h3 class="title result-title">
                 <a target="_blank" href="{{ $v['domain'] }}">{{ $v['title'] }}</a>
