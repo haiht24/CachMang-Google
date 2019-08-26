@@ -1,10 +1,10 @@
 @if($enable_ads && !empty($ads))
     @foreach($ads as $k => $result)
-        @if($k<10)
+        @if($k<$ads_count)
 <div class="search-result col-md-6 col-xs-12">
 <div class="panel panel-default" style="height:110px;overflow:hidden">
 	<div class="panel-body">
-	<a href="{{ $link=strpos($result['domain'],'http') === false ? 'http://'.$result['domain'] : $result['domain'] }}" target="_blank" rel="nofollow">
+	<a href="{{ $link=strpos($result['domain'],'http') === false ? 'http://'.$result['domain'] : $result['domain'] }}" target="_blank">
 		<span class="btn btn-warning  pull-left discount-value" style="margin-right:10px;">
 		<h3>{{ !empty($findDollar) ? strtolower($findDollar[0]) : (!empty($findPercent) ? strtolower($findPercent[0]) : 'CODE') }}</h3>
 		</span>

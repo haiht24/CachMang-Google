@@ -1,6 +1,6 @@
 @if($enable_ads && !empty($ads))
     @foreach($ads as $k => $v)
-        @if($k<10)
+        @if($k<$ads_count)
         <div class="box-result search-result">
             <h3 class="title result-title">
                 <a target="_blank" href="{{ $v['domain'] }}">{{ $v['title'] }}</a>
