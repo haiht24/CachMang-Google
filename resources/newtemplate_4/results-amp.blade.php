@@ -25,9 +25,9 @@
                                     @if(!empty($result['description']))
                                         <span class="rs-description">{!! html_entity_decode($result['description']) !!}</span>
                                     @endif
-                                    <p class="result-url">
+                                    <p class="result-url"><a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" {!! $rel_ex !!}>
                                         {{ str_limit(html_entity_decode($result['url']),60) }}
-                                    </p>
+                                    </a></p>
                                 </div>
                             </div>
                         </div>

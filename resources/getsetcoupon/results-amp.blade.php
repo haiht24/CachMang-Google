@@ -154,7 +154,7 @@
                             ?>
 							<div class="search-result col-md-6 col-xs-12">
 								<div class="panel panel-default" style="height:180px;overflow:hidden">
-									<div class="panel-body"><h3 class="text-primary" style="margin-top:0px">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</h3>
+									<div class="panel-body"><a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" {!! $rel_ex !!}><h3 class="text-primary" style="margin-top:0px">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</h3></a>
 									<span class="btn btn-warning  pull-left discount-value" style="margin-right:10px">
 									<h3>{{ !empty($findDollar) ? strtolower($findDollar[0]) : (!empty($findPercent) ? strtolower($findPercent[0]) : 'CODE') }}</h3>
 									</span>
@@ -162,8 +162,8 @@
 										<span class="rs-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', isset($result['description']{160})?substr($result['description'],0,160).'<span class="showmore" style="color:blue"><span class="hidden">'.substr($result['description'],160).'</span><span class="moreclick">...more</span></span>':$result['description'])) !!}</span>
 										@endif
 										<p class="result-url">
-											{{ str_limit(html_entity_decode($result['url']),80) }}
-											<sup><a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" {!! $rel_ex !!}><span class="fa fa-external-link"></span></a></sup>
+											<a {!! $rel_ex !!} href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}"
+                                                target="_blank">{{ str_limit(html_entity_decode($result['url']),80) }}</a>
 										</p>
 									</div>
 								</div>
