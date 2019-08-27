@@ -19,12 +19,12 @@
                                     <a target="_blank" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" {!! $rel_ex !!}>{!! $title !!}</a>
                                 </h3>
                                 </p>
-                                <p class="result-url">
+                                <p class="result-url"><a target="_blank" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" {!! $rel_ex !!}>
                                     {{--@if($k<3)--}}
                                     {{--<span class="ad">Ad</span>--}}
                                     {{--@endif--}}
                                     {{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}
-                                </p>
+                                </a></p>
                                 @if(!empty($result['description']))
                                     <p class="result-description rs-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['description'])) !!}</p>
                                 @endif
