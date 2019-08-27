@@ -85,6 +85,7 @@ class CachMangController extends Controller
 		if(Cache::has($cacheKey)){
             $d = Cache::get($cacheKey);
             if(empty($d['results'])){
+				$exitCode = \Artisan::call('cache:clear');
                 Cache::forget($cacheKey);
             }
         }
@@ -92,7 +93,8 @@ class CachMangController extends Controller
             Cache::forget($cacheKey);
             $this->getCurlHtml($this->apiUrlClear . str_replace('-', '+', $q));
         }
-        $data = Cache::remember('kw_' . $q, 60*1, function() use ($q){
+        $data = Cache::remember('kw_' . $q, 60*24, function() use ($q){
+			$exitCode = \Artisan::call('cache:clear');
             return $this->getFromSearchEngine($q);
         });
         /* End using Laravel cache */
@@ -131,8 +133,14 @@ class CachMangController extends Controller
 		$data['enable_ads'] = 1;
 		$domain = $_SERVER['HTTP_HOST'];
         $dmConfig = config('theme.domains_config')[$domain];
-		$data['ads'] = empty($dmConfig['ads'])?config('domains.' . ASSET_DOMAIN)['ads'] : $dmConfig['ads'];
-		if(empty($dmConfig['ads'])) $data['enable_ads'] = 0;
+		$data['ads_count'] = 3;
+		if(empty($dmConfig['ads'])) {
+			$data['ads'] = config('domains.' . ASSET_DOMAIN)['ads'];
+		}else {
+			$data['ads'] = $dmConfig['ads'];
+			$data['ads_count'] = 10;
+		}
+		//if(empty($dmConfig['ads'])) $data['enable_ads'] = 0;
 		//rel link extenal
 		$data['rel_ex'] = 'rel="nofollow"';
 		
@@ -248,6 +256,7 @@ class CachMangController extends Controller
         if($ref) curl_setopt($ch, CURLOPT_REFERER, $ref);
         curl_setopt($ch, CURLOPT_COOKIESESSION, 0);
         curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0");
+		curl_setopt($ch, CURLOPT_TIMEOUT, 30000);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4 );

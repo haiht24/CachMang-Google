@@ -37,6 +37,7 @@ class Controller extends BaseController {
         //if($ref) curl_setopt($ch, CURLOPT_REFERER, $ref);
         curl_setopt($ch, CURLOPT_COOKIESESSION, 0);
         curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0");
+		curl_setopt($ch, CURLOPT_TIMEOUT, 30000);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);

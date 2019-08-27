@@ -1,11 +1,11 @@
 @if($enable_ads && !empty($ads))
     @foreach($ads as $k => $v)
-        @if($k<10)
+        @if($k<$ads_count)
 			<?php  $sk = $k%3; $searchklass = $sk==0?1:($sk==1?2:3); ?>
 			<div class="search-result">
 				<div class="search-content search-{{ $searchklass }}">
 					<div class="search-body">
-						<a href="{{ $v['domain'] }}" target="_blank" rel="nofollow">
+						<a href="{{ $v['domain'] }}" target="_blank">
 							<h3 class="text-primary" style="margin:auto">
 								<span class="btn btn-warning discount-value">
 									<span class="ad">Ad</span>
