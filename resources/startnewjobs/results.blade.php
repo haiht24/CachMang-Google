@@ -20,7 +20,11 @@
                         @if($result && !empty($result['url']))
                             <div class="box-result search-result">
                                     <h3 class="title result-title">
+									@if(empty($result['type']) || $result['type'] !== 'fake')
                                         <a title="{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}" target="_blank" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" {!! $rel_ex !!}>{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</a>
+									@else
+										{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}
+									@endif
                                     </h3>
                                 <p class="result-url trim-text">
                                     {{--@if($k<3)--}}
@@ -70,12 +74,12 @@
                                     <h3 class="title">
                                         <a title="{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}" target="_blank" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" {!! $rel_ex !!}>{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</a>
                                     </h3>
-                                <p class="result-url"><a title="{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}" target="_blank" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" {!! $rel_ex !!}>
+                                <p class="result-url">
                                     {{--@if($k<3)--}}
                                     {{--<span class="ad">Ad</span>--}}
                                     {{--@endif--}}
                                     {{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}
-                                </a></p>
+                                </p>
                                 @if(!empty($result['description']))
                                     <p class="result-description rs-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['description'])) !!}</p>
                                 @endif

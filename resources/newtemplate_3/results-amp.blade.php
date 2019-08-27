@@ -14,19 +14,22 @@
                         <div class="search-result col-md-6 col-xs-12 col-lg-6 col-sm-12">
                             <div class="search-content search-{{ $searchklass }}">
                                 <div class="search-body">
-                                    <a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" {!! $rel_ex !!}>
-                                        <h3 class="text-primary">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</h3>
-                                    </a>
+									@if(empty($result['type']) || $result['type'] !== 'fake')
+                                        <a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" {!! $rel_ex !!}>
+                                            <h3 class="text-primary">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</h3>
+                                        </a>
+									@else
+										<h3 class="text-primary">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</h3>
+									@endif
                                     <span class="btn btn-warning  pull-left discount-value" style="margin-right:10px">
 									<h3>{{ !empty($findDollar) ? strtolower($findDollar[0]) : (!empty($findPercent) ? strtolower($findPercent[0]) : 'CODE') }}</h3>
 									</span>
                                     @if(!empty($result['description']))
                                         <span class="rs-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', isset($result['description']{120})?substr($result['description'],0,120).'<span onclick="showmore(this)" style="color:blue"><span class="hidden">'.substr($result['description'],120).'</span>...more</span>':$result['description'])) !!}</span>
                                     @endif
-                                    <p class="result-url"><a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" {!! $rel_ex !!}>
+                                    <p class="result-url">
                                         {{ str_limit(html_entity_decode($result['url']),60) }}
-                                        <a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" {!! $rel_ex !!}><span class="fa fa-external-link"></span></a>
-                                    </a></p>
+										</p>
                                 </div>
                             </div>
                         </div>
