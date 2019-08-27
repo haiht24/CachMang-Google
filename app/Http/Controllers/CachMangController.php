@@ -112,8 +112,9 @@ class CachMangController extends Controller
         }
         $data['results'] = array_merge($customResults, $data['results']);
         /* SEO */
+		$title = ucwords(str_replace('-', ' ', $q));
         $seo = [
-            'title' => ucwords(str_replace('-', ' ', $q)),
+            'title' => $title,
             'description' => 'Search results for keyword ' . $q
         ];
         if(!empty($data[0])){
@@ -134,11 +135,15 @@ class CachMangController extends Controller
 		$domain = $_SERVER['HTTP_HOST'];
         $dmConfig = config('theme.domains_config')[$domain];
 		$data['ads_count'] = 3;
+		if(isset($dmConfig['enable_ads'])) $data['enable_ads'] = $dmConfig['enable_ads'];
 		if(empty($dmConfig['ads'])) {
 			$data['ads'] = config('domains.' . ASSET_DOMAIN)['ads'];
 		}else {
 			$data['ads'] = $dmConfig['ads'];
 			$data['ads_count'] = 10;
+		}
+		foreach($data['ads'] as $k=>$v) {
+			$data['ads'][$k]['title'] = str_replace('[store_name]', str_replace(['-','coupon'],[' ',''], $q), $v['title']);
 		}
 		//if(empty($dmConfig['ads'])) $data['enable_ads'] = 0;
 		//rel link extenal
