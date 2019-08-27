@@ -143,7 +143,7 @@ class CachMangController extends Controller
 			$data['ads_count'] = 10;
 		}
 		foreach($data['ads'] as $k=>$v) {
-			$data['ads'][$k]['title'] = str_replace('[store_name]', str_replace(['-','coupon'],[' ',''], $q), $v['title']);
+			$data['ads'][$k]['title'] = str_replace('[store_name]', ucwords(str_replace(['-','coupon'],[' ',''], $q)), $v['title']);
 		}
 		//if(empty($dmConfig['ads'])) $data['enable_ads'] = 0;
 		//rel link extenal
