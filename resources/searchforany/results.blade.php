@@ -16,15 +16,19 @@
                                 <p class="result-title">
                                 <h3 class="title">
                                     <?php $title = html_entity_decode(str_ireplace($q, '<b>'.ucwords($q).'</b>', $result['title'])) ?>
+									@if(empty($result['type']) || $result['type'] !== 'fake')
                                     <a target="_blank" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" {!! $rel_ex !!}>{!! $title !!}</a>
+									@else
+										{!! $title !!}
+									@endif
                                 </h3>
                                 </p>
-                                <p class="result-url"><a target="_blank" href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" {!! $rel_ex !!}>
+                                <p class="result-url">
                                     {{--@if($k<3)--}}
                                     {{--<span class="ad">Ad</span>--}}
                                     {{--@endif--}}
                                     {{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}
-                                </a></p>
+                                </p>
                                 @if(!empty($result['description']))
                                     <p class="result-description rs-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['description'])) !!}</p>
                                 @endif

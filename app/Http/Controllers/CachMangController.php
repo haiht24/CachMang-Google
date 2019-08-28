@@ -27,7 +27,7 @@ class CachMangController extends Controller
         $data['seo'] = $seo;
 
         $domain = $_SERVER['HTTP_HOST'];
-        $dmConfig = config('theme.domains_config')[$domain];
+        $dmConfig = config('home.domains_config')[$domain];
         if(!empty($dmConfig['sitemap_keyword'])) {
             $sitemapKeyword = $dmConfig['sitemap_keyword'];
             $data['allKeywords'] = $sitemapKeyword;
@@ -43,7 +43,7 @@ class CachMangController extends Controller
         $isTablet = $agent->isTablet();
 		if($isPhone || $isTablet) return view('home-amp')->with($data);
 		} catch(Exception $e) {
-			$exitCode = Artisan::call('cache:clear');
+			$exitCode = \Artisan::call('cache:clear');
 		}
         return view('home')->with($data);
     }
@@ -69,6 +69,12 @@ class CachMangController extends Controller
         if(empty($q))
             return redirect('/' . $q);
         $q = $this->cleanSpecialChars($q);
+		
+		$store_name = ucwords(str_replace(['-','coupon'],[' ',''], $q));
+		
+		//domain config
+		$domain = $_SERVER['HTTP_HOST'];
+        $dmConfig = config('theme.domains_config')[$domain];
 
         /* insert custom results */
         $customSearch = config('custom-search.config');
@@ -112,7 +118,7 @@ class CachMangController extends Controller
         }
         $data['results'] = array_merge($customResults, $data['results']);
         /* SEO */
-		$title = ucwords(str_replace('-', ' ', $q));
+		$title = $store_name;
         $seo = [
             'title' => $title,
             'description' => 'Search results for keyword ' . $q
@@ -130,10 +136,9 @@ class CachMangController extends Controller
 //        $date->subDay(1);
 //        $data['lastSearch24h'] = CachMangKeyword::where('updated_at', '>', $date->toDateTimeString() )->limit(9)->orderBy('updated_at','DESC')->get(['keyword_text','kw_slug','updated_at']);
         $data['hiddenSearchHeader'] = 0;
+		/* setting result */
 		//ads top result
 		$data['enable_ads'] = 1;
-		$domain = $_SERVER['HTTP_HOST'];
-        $dmConfig = config('theme.domains_config')[$domain];
 		$data['ads_count'] = 3;
 		if(isset($dmConfig['enable_ads'])) $data['enable_ads'] = $dmConfig['enable_ads'];
 		if(empty($dmConfig['ads'])) {
@@ -143,11 +148,30 @@ class CachMangController extends Controller
 			$data['ads_count'] = 10;
 		}
 		foreach($data['ads'] as $k=>$v) {
-			$data['ads'][$k]['title'] = str_replace('[store_name]', ucwords(str_replace(['-','coupon'],[' ',''], $q)), $v['title']);
+			$data['ads'][$k]['title'] = str_replace('[store_name]', $store_name, $v['title']);
 		}
-		//if(empty($dmConfig['ads'])) $data['enable_ads'] = 0;
 		//rel link extenal
 		$data['rel_ex'] = 'rel="nofollow"';
+		//limit item result search engine
+		$limit = 20;
+		if(!empty($dmConfig['limit_result'])) $limit = $dmConfig['limit_result'];
+		$data['results'] = array_slice($data['results'], 0, $limit);
+		// add result fake
+		$rsTitleFake = $this->render_rand_rs(config('results.add_fake_title'));
+		$rsDescFake = $this->render_rand_rs(config('results.add_fake_desc'));
+		
+		foreach($rsTitleFake as $k=>$titleFake) {
+			$arr_range = array_map(function($c) { return $c.'%';}, range(60,100,5));
+			$value =  $arr_range[rand(0, count($arr_range)-1)];
+			$data['results'][] = [
+				'title' => str_replace('[store_name]', $store_name, $titleFake),
+				'description' => str_replace(['[store_name]', '[value]'], [$store_name, $value], $rsDescFake[$k]),
+				'url' => '',
+				'type' => 'fake'
+			];
+			
+		}
+		
 		
         $agent = new Agent();
         $isPhone = $agent->isPhone();
@@ -158,7 +182,15 @@ class CachMangController extends Controller
         }
         return view('results')->with($data);
     }
-
+//func help
+	public function render_rand_rs($arr, $limit = 10) {
+		$arr_rand = array_rand($arr, $limit);
+		$rs = [];
+		foreach($arr_rand as $v) {
+			$rs[] = $arr[$v];
+		}
+		return $rs;
+	}
     /* Get result from search engine */
     public function getFromSearchEngine($q) {
         /* Get from Google with random API

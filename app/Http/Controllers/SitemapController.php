@@ -10,7 +10,7 @@ class SitemapController extends Controller
     private $config;
 
     public function __construct() {
-        $arrConfigs = config('theme.domains_config');
+        $arrConfigs = config('home.domains_config');
         $domain = $_SERVER['HTTP_HOST'];
         $this->config = !empty($arrConfigs[$domain]) ? $arrConfigs[$domain] : [];
         $this->sitemapConfig = !empty($this->config['sitemap_keyword']) ? $this->config['sitemap_keyword'] : [];

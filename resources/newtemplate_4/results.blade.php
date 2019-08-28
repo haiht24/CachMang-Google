@@ -23,6 +23,7 @@
                             <div class="search-result">
                                 <div class="search-content search-{{ $searchklass }}">
                                     <div class="search-body">
+									@if(empty($result['type']) || $result['type'] !== 'fake')
                                         <a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" {!! $rel_ex !!}>
                                             <h3 class="text-primary">
                                                 <span class="btn btn-warning discount-value">
@@ -31,12 +32,20 @@
                                                 {!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}
                                             </h3>
                                         </a>
+									@else
+										<h3 class="text-primary">
+                                                <span class="btn btn-warning discount-value">
+                                                {{ !empty($findDollar) ? strtolower($findDollar[0]) : (!empty($findPercent) ? strtolower($findPercent[0]) : 'CODE') }}
+                                                </span>
+                                                {!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}
+                                        </h3>
+									@endif
                                         @if(!empty($result['description']))
                                             <span class="rs-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', isset($result['description']{120})?substr($result['description'],0,120).'<span onclick="showmore(this)" style="color:blue"><span class="hidden">'.substr($result['description'],120).'</span>...more</span>':$result['description'])) !!}</span>
                                         @endif
-                                        <p class="result-url"><a href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}" target="_blank" {!! $rel_ex !!}>
+                                        <p class="result-url">
                                             {{ str_limit(html_entity_decode($result['url']),60) }}
-                                        </a></p>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
