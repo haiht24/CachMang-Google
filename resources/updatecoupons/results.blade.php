@@ -169,9 +169,11 @@
 										@if(!empty($result['description']))
 										<span class="rs-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', isset($result['description']{160})?substr($result['description'],0,160).'<span onclick="showmore(this)" style="color:lightblue"><span class="hidden">'.substr($result['description'],160).'</span>...more</span>':$result['description'])) !!}</span>
 										@endif
+									@if(empty($result['type']) || $result['type'] !== 'fake')
 										<p class="result-url">
 											{{ str_limit(html_entity_decode($result['url']),80) }}
 										</p>
+									@endif
 									</div>
 								</div>
 							</div>

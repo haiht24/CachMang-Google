@@ -22,12 +22,15 @@
 						@endif
                                 </h3>
                                 </p>
+								
+								@if(empty($result['type']) || $result['type'] !== 'fake')
                                 <p class="result-url">
                                     {{--@if($k<3)--}}
                                     {{--<span class="ad">Ad</span>--}}
                                     {{--@endif--}}
                                     {{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}
                                 </p>
+								@endif
                                 @if(!empty($result['description']))
                                     <p class="result-description rs-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['description'])) !!}</p>
                                 @endif
