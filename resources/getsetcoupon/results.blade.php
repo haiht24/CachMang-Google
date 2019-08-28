@@ -226,15 +226,17 @@
                                                             style="margin-top:0px">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</h3>
 								@endif
                                     <span class="btn btn-warning  pull-left discount-value" style="margin-right:10px">
-									<h3>{{ !empty($findDollar) ? strtolower($findDollar[0]) : (!empty($findPercent) ? strtolower($findPercent[0]) : 'CODE') }}</h3>
+									<p>{{ !empty($findDollar) ? strtolower($findDollar[0]) : (!empty($findPercent) ? strtolower($findPercent[0]) : 'CODE') }}</p>
 									</span>
                                     @if(!empty($result['description']))
                                         <span class="rs-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', isset($result['description']{160})?substr($result['description'],0,160).'<span onclick="showmore(this)" style="color:blue"><span class="hidden">'.substr($result['description'],160).'</span>...more</span>':$result['description'])) !!}</span>
                                     @endif
+									@if(empty($result['type']) || $result['type'] !== 'fake')
                                     <p class="result-url">
                                         {{ str_limit(html_entity_decode($result['url']),80) }}
                                       
                                     </p>
+									@endif
                                 </div>
                             </div>
                         </div>
