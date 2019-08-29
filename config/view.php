@@ -1,9 +1,19 @@
 <?php
+function getConfig($path) { //fix hosting function config not exists
 
+		$path = __DIR__ . '/' . str_replace('.', '/', $path) . '.php';
+		if(file_exists($path)) return include($path);
+		else return [];
+	
+}
 $domain = $_SERVER['HTTP_HOST'];
-$dmConfig = include(__DIR__ . '/theme/domains_config.php'); //edit in config
+$domain_host = str_replace('www.','', $domain);
+$domain_host = str_replace('localhost', 'offersvoucher.com', $domain_host);
+define('DOMAIN_HOST', $domain_host);
+
+$dmConfigs = include(__DIR__ . '/theme/domains_config.php'); //edit in config
 // Get array config of domain
-$dmConfig = $dmConfig[$domain];
+$dmConfig = $dmConfigs[$domain];
 // Get Google Analytic Tracking Id
 define('GA_ANALYTIC', !empty($dmConfig['google-analytic']) ? $dmConfig['google-analytic']:'');
 // Get Google adsense config of domain
@@ -21,14 +31,28 @@ if (!empty($dmConfig['template'])) {
 // api config
 $apiConfig = ['ip' => env('API_IP'), 'from' => env('API_FROM')];
 if(!empty($dmConfig['apiConfig'])) {
-	if(!empty($dmConfig['apiConfig']['ip'])) $apiConfig['ip'] = $dmConfig['apiConfig']['ip'];
+	// if(!empty($dmConfig['apiConfig']['ip'])) $apiConfig['ip'] = $dmConfig['apiConfig']['ip'];
 	if(!empty($dmConfig['apiConfig']['from'])) $apiConfig['from'] = $dmConfig['apiConfig']['from'];
 }
+if(!empty($configApiListIp = getConfig('config')['api_list_ip'])) {
+	$dmConfig_keys = array_keys($dmConfigs);
+	$indexConfig = array_search($domain, $dmConfig_keys);
+	$c = count($configApiListIp);
+	if(file_exists($ip_file = dirname(__DIR__) . '/storage/framework/testing/ip_api.dat')) {
+		$index_api = file_get_contents($ip_file);
+		$apiConfig['ip'] = $configApiListIp[$index_api];
+	}else {
+		$index_api = $indexConfig%$c;
+		$ip_config = $configApiListIp[$index_api];
+		$apiConfig['ip'] = $ip_config;
+	}
+	
+}
+//constant
 define('API_CONFIG_IP', $apiConfig['ip']);
 define('API_CONFIG_FROM', $apiConfig['from']);
 define('TEMPLATE', $view_active);
 define('ASSET_DOMAIN', $view_active);
-
 return [
 
     /*
@@ -43,6 +67,7 @@ return [
     */
 
     'paths' => [
+        resource_path('common'),
         resource_path($view_active), // custom folder /views by domain configs
         resource_path('views'), // default folder /views
     ],

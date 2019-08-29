@@ -1,14 +1,14 @@
 <?php
 /*
 template name in /resources:
-1. getsetcoupon
-2. searchforany
-3. startnewjobs
-4. updatecoupons
-5. newtemplate_1
-6. newtemplate_2
-7. newtemplate_3
-8. newtemplate_4
+1. getsetcoupon //site box
+2. searchforany //site search
+3. startnewjobs //site search
+4. updatecoupons //site box
+5. newtemplate_1 //site search
+6. newtemplate_2 //site box - sidebar
+7. newtemplate_3 //site box - sidebar
+8. newtemplate_4 //site box - sidebar
 
 'apiConfig' => [
             'ip' => '',
@@ -44,14 +44,24 @@ $public_ads = [
 			
 return [
     'localhost' => [
-        'enableSearchBox' => 0,
-        'template' => 'searchforany',
+        'enableSearchBox' => 1,
+        'template' => 'newtemplate_1',
         'apiConfig' => [
             'ip' => '',
             'from' => 'google.com,bing.com,yahoo.com,duckduckgo.com'
         ]
     ],
     'localhost:8080' => [
+        'enableSearchBox' => 1,
+        'template' => 'newtemplate_4',
+        'google-adsense' => [
+            'data-ad-client' => 'ca-pub-0350851762030337',
+            'data-ad-slot' => '2320133743'
+        ],
+        'google-analytic' => 'UA-141818063-1',
+        
+    ],
+    '127.0.0.1:8000' => [
         'enableSearchBox' => 1,
         'template' => 'newtemplate_4',
         'google-adsense' => [
@@ -138,7 +148,7 @@ return [
         
     ],
     'couponou.com' => [
-        'enableSearchBox' => 0,
+        'enableSearchBox' => 1,
         'template' => 'getsetcoupon',
         'apiConfig' => [
             'ip' => $api_02,
@@ -416,6 +426,160 @@ return [
         'google-analytic' => '',
         
     ],
+	'offersvoucher.com' => [
+        'enableSearchBox' => 1,
+        'template' => 'getsetcoupon',
+		'enable_ads' => 0,
+        'apiConfig' => [
+            'ip' => $api_02,
+            'from' => 'google.com,bing.com,yahoo.com,duckduckgo.com'
+        ],
+	],
+	'macysfree.com' => [
+        'enableSearchBox' => 1,
+        'template' => 'newtemplate_2',
+		'enable_ads' => 0,
+		'disable_cat_home' => 1,
+        'apiConfig' => [
+            'ip' => $api_02,
+            'from' => 'google.com,bing.com,yahoo.com,duckduckgo.com'
+        ],
+	],
+	'thekohlscoupon.com' => [
+        'enableSearchBox' => 1,
+        'template' => 'newtemplate_2',
+		'enable_ads' => 0,
+		'disable_cat_home' => 1,
+        'apiConfig' => [
+            'ip' => $api_02,
+            'from' => 'google.com,bing.com,yahoo.com,duckduckgo.com'
+        ],
+	],
+	'thecouponholiday.com' => [
+        'enableSearchBox' => 1,
+        'template' => 'searchforany',
+		'enable_ads' => 0,
+		'disable_cat_home' => 1,
+        'apiConfig' => [
+            'ip' => $api_02,
+            'from' => 'google.com,bing.com,yahoo.com,duckduckgo.com'
+        ],
+	],
+	'cybersmonday.com' => [
+        'enableSearchBox' => 1,
+        'template' => 'searchforany',
+		'enable_ads' => 0,
+		'disable_cat_home' => 1,
+        'apiConfig' => [
+            'ip' => $api_02,
+            'from' => 'google.com,bing.com,yahoo.com,duckduckgo.com'
+        ],
+	],
+	'promocodeads.com' => [
+        'enableSearchBox' => 1,
+        'template' => 'updatecoupons',
+		'enable_ads' => 0,
+        'apiConfig' => [
+            'ip' => $api_02,
+            'from' => 'google.com,bing.com,yahoo.com,duckduckgo.com'
+        ],
+	],
+	'promocodeslove.com' => [
+        'enableSearchBox' => 1,
+        'template' => 'newtemplate_3',
+		'enable_ads' => 0,
+        'apiConfig' => [
+            'ip' => $api_02,
+            'from' => 'google.com,bing.com,yahoo.com,duckduckgo.com'
+        ],
+	],
+	'promocodesweb.com' => [
+        'enableSearchBox' => 1,
+        'template' => 'newtemplate_4',
+		'enable_ads' => 0,
+        'apiConfig' => [
+            'ip' => $api_02,
+            'from' => 'google.com,bing.com,yahoo.com,duckduckgo.com'
+        ],
+	],
+	'buycoupondeals.com' => [
+        'enableSearchBox' => 1,
+        'template' => 'getsetcoupon',
+		'enable_ads' => 0,
+        'apiConfig' => [
+            'ip' => $api_02,
+            'from' => 'google.com,bing.com,yahoo.com,duckduckgo.com'
+        ],
+	],
+	'coupondealsbonus.com' => [
+        'enableSearchBox' => 1,
+        'template' => 'newtemplate_3',
+		'enable_ads' => 0,
+        'apiConfig' => [
+            'ip' => $api_02,
+            'from' => 'google.com,bing.com,yahoo.com,duckduckgo.com'
+        ],
+	],
+	'coupondeals247.com' => [
+        'enableSearchBox' => 1,
+        'template' => 'newtemplate_4',
+		'enable_ads' => 0,
+	],
+	'coupondealsus.com' => [
+        'enableSearchBox' => 1,
+        'template' => 'updatecoupons',
+		'enable_ads' => 0,
+	],
+	'ecouponscodes.com' => [
+        'enableSearchBox' => 1,
+        'template' => 'getsetcoupon',
+		'enable_ads' => 0,
+	],
+	'deal-promo.com' => [
+        'enableSearchBox' => 1,
+        'template' => 'newtemplate_2',
+		'enable_ads' => 0,
+	],
+	'couponcodesfree.com' => [
+        'enableSearchBox' => 1,
+        'template' => 'newtemplate_3',
+		'enable_ads' => 0,
+	],
+	'couponpolicies.com' => [
+        'enableSearchBox' => 1,
+        'template' => 'newtemplate_4',
+		'enable_ads' => 0,
+	],
+	'couponpuzzles.com' => [
+        'enableSearchBox' => 1,
+        'template' => 'getsetcoupon',
+		'enable_ads' => 0,
+	],
+	'cbdscoupons.com' => [
+        'enableSearchBox' => 1,
+        'template' => 'getsetcoupon',
+		'enable_ads' => 0,
+	],
+	'thesuncoupon.com' => [
+        'enableSearchBox' => 1,
+        'template' => 'newtemplate_4',
+		'enable_ads' => 0,
+	],
+	'thenorthfaceblackfriday.us' => [
+        'enableSearchBox' => 1,
+        'template' => 'updatecoupons',
+		'enable_ads' => 0,
+	],
+	'mycouponsearcher.com' => [
+        'enableSearchBox' => 1,
+        'template' => 'newtemplate_2',
+		'enable_ads' => 0,
+	],
+	'searchdealtoday.com' => [
+        'enableSearchBox' => 1,
+        'template' => 'view',
+		'enable_ads' => 1,
+	],
 ];
 
 ?>

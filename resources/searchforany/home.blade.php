@@ -34,6 +34,7 @@ html,body {height:100% !important}
 {{--Body--}}
 <div class="body-content">
     <div class="container parent">
+	<div style="margin:auto;width: 100%;text-align: center"><img src="{{ asset('/images/logo/'. DOMAIN_HOST . '.png') }}" class="logo" alt="logo find coupon"/></div>
 			<div class="row home-box-search">
 				<div class="container">
 					<div class="input-group search-box">

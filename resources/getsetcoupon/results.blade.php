@@ -3,7 +3,7 @@
     <div class="row">
         <div class="row">
             <div class="col-md-4 col-xs-12">
-            @include('Google.adsense')
+            {{-- @include('Google.adsense') --}}
             <!-- google ads -->
             </div>
             <div class="col-md-8 col-xs-12">
@@ -56,10 +56,10 @@
                     </form>
                 @endif
 
-                <br>
+                @if(!empty($related))
+                <h2>Searches related to <b>{{ $q }}</b></h2>
                 <div class="row">
                     {{--Related keywords--}}
-                    @if(!empty($related))
                         <div class="col-xs-12 npd-lr">
                             @foreach($related as $r)
                                 @if(!empty($r))
@@ -98,11 +98,11 @@
                                 @endif
                             @endforeach
                         </div>
-                    @endif
                 </div>
+                    @endif
             </div>
         </div>
-        <h3 class="text-primary npd-lr col-xs-12"> Listing Websites about {{ ucwords($q) }}</h3>
+        <h2 class="text-primary npd-lr col-xs-12"> Listing Websites about {{ ucwords($q) }}</h2>
         <div class="col-md-12 col-xs-12 npd-lr row" style="margin-bottom:5px">
             <div class="col-xs-12">
                 <strong class="filtertype">Filter Type:</strong>
@@ -119,91 +119,14 @@
         </div>
 
         {{--Result search--}}
-        <div class=""><?php $from = 'DB'; ?>
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
 
             @include('custom-ads.ads-head')
             @if(count($results) > 0)
-                @if($from === 'ASK')
                     @foreach($results as $k=>$result)
-                        @if($k === 2 || $k === 6 || $k === 9)
+                        @if(0) if($k === 2 || $k === 6 || $k === 9)
                             <div class="search-result col-md-6 col-xs-12">
-                                <div class="panel panel-default" style="height:180px;overflow:hidden">
-                                    <div class="panel-body">
-                                        @include('Google.adsense')
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
-                        @if($result && !empty($result['url']))
-                            <?php
-                            preg_match('/\$([0-9]+[\.]*[0-9]*) off|\$([0-9]+[\.]*[0-9]*) Off|\$([0-9]+[\.]*[0-9]*)/', $result['title'], $findDollar);
-                            preg_match('/([0-9]+[\.]*[0-9]*)\% Off|([0-9]+[\.]*[0-9]*)\% off|([0-9]+[\.]*[0-9]*)\%/', $result['title'], $findPercent);
-                            ?>
-                            <div class="search-result col-md-6 col-xs-12">
-                                <div class="panel panel-default" style="height:180px;overflow:hidden">
-                                    <div class="panel-body"><h3 class="text-primary"
-                                                                style="margin-top:0px">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</h3>
-                                        <span class="btn btn-warning  pull-left discount-value"
-                                              style="margin-right:10px">
-									<h3>{{ !empty($findDollar) ? strtolower($findDollar[0]) : (!empty($findPercent) ? strtolower($findPercent[0]) : 'CODE') }}</h3>
-									</span>
-                                        @if(!empty($result['description']))
-                                            <span class="rs-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['description'])) !!}</span>
-                                        @endif
-                                        <p class="result-url">
-                                            {{ str_limit(html_entity_decode($result['url']),80) }}
-                                            <sup><a {!! $rel_ex !!} href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}"
-                                                    target="_blank"><span
-                                                            class="fa fa-external-link"></span></a></sup>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
-                    @endforeach
-                    <input type="hidden" id="isFromSERP" value="1">
-                @elseif($from === 'SERP')
-                    @foreach($results as $k=>$result)
-                        @if($k === 2 || $k === 6 || $k === 9)
-                            <div class="search-result col-md-6 col-xs-12">
-                                <div class="panel panel-default" style="height:180px;overflow:hidden">
-                                    <div class="panel-body">
-                                        @include('Google.adsense')
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
-                        {{--@if($result->is('classical'))--}}
-                        <?php
-                        preg_match('/\$([0-9]+[\.]*[0-9]*) off|\$([0-9]+[\.]*[0-9]*) Off|\$([0-9]+[\.]*[0-9]*)/', $result['title'], $findDollar);
-                        preg_match('/([0-9]+[\.]*[0-9]*)\% Off|([0-9]+[\.]*[0-9]*)\% off|([0-9]+[\.]*[0-9]*)\%/', $result['title'], $findPercent);
-                        ?>
-                        <div class="search-result col-md-6 col-xs-12">
-                            <div class="panel panel-default" style="height:180px;overflow:hidden">
-                                <div class="panel-body"><h3 class="text-primary"
-                                                            style="margin-top:0px">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</h3>
-                                    <span class="btn btn-warning  pull-left discount-value" style="margin-right:10px">
-									<h3>{{ !empty($findDollar) ? strtolower($findDollar[0]) : (!empty($findPercent) ? strtolower($findPercent[0]) : 'CODE') }}</h3>
-									</span>
-                                    @if(!empty($result['description']))
-                                        <span class="rs-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['description'])) !!}</span>
-                                    @endif
-                                    <p class="result-url">
-                                        {{ str_limit(html_entity_decode($result['url']),80) }}
-                                        <sup><a {!! $rel_ex !!} href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}"
-                                                target="_blank"><span class="fa fa-external-link"></span></a></sup>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        {{--@endif--}}
-                    @endforeach
-                    <input type="hidden" id="isFromSERP" value="1">
-                @elseif($from === 'DB')
-                    @foreach($results as $k=>$result)
-                        @if($k === 2 || $k === 6 || $k === 9)
-                            <div class="search-result col-md-6 col-xs-12">
-                                <div class="panel panel-default" style="height:180px;overflow:hidden">
+                                <div class="panel panel-default" style="overflow:hidden">
                                     <div class="panel-body">
                                         @include('Google.adsense')
                                     </div>
@@ -214,8 +137,8 @@
                         preg_match('/\$([0-9]+[\.]*[0-9]*) off|\$([0-9]+[\.]*[0-9]*) Off|\$([0-9]+[\.]*[0-9]*)/', $result['title'], $findDollar);
                         preg_match('/([0-9]+[\.]*[0-9]*)\% Off|([0-9]+[\.]*[0-9]*)\% off|([0-9]+[\.]*[0-9]*)\%/', $result['title'], $findPercent);
                         ?>
-                        <div class="search-result col-md-6 col-xs-12">
-                            <div class="panel panel-default" style="height:180px;overflow:hidden">
+                        <div class="search-result col-md-12 col-xs-12">
+                            <div class="panel panel-default" style="overflow:hidden">
                                 <div class="panel-body">
 								@if(empty($result['type']) || $result['type'] !== 'fake')
 								<a {!! $rel_ex !!} href="{{ strpos($result['url'],'http') === false ? 'http://'.$result['url'] : $result['url'] }}"
@@ -241,7 +164,6 @@
                             </div>
                         </div>
                     @endforeach
-                @endif
             @endif
 
             <input type="hidden" id="isFromSERP" value="1">
@@ -249,30 +171,9 @@
         </div>
 
         {{--Right side bar--}}
-        <div class="col-md-4 col-xs-12">
-            {{--Discount upto--}}
-            {{--<div class="list-group">--}}
-            {{--<h3 style="margin-top:0px" class="list-group-item active">--}}
-            {{--Filter--}}
-            {{--</h3>--}}
-            {{--<p class="list-group-item">--}}
-            {{--<button class="btn btn-default" name="filterValue" value="$">--}}
-            {{--<input type="radio" name="raCheck"> <strong>$ Off</strong>--}}
-            {{--</button>--}}
-            {{--<button class="btn btn-default" name="filterValue" value="%">--}}
-            {{--<input type="radio" name="raCheck"> <strong>% Off</strong>--}}
-            {{--</button>--}}
-            {{--<button class="btn btn-default" name="filterValue" value="all">--}}
-            {{--<input type="radio" name="raCheck" checked> All--}}
-            {{--</button>--}}
-            {{--</p>--}}
-            {{--</div>--}}
-
-            <div class="list-group">
-                @include('Google.adsense')
-            </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
             {{--Last search 24h--}}
-            @if(!empty($lastSearch24h))
+            @if(0&&!empty($lastSearch24h))
                 <div class="list-group">
                     <h3 class="list-group-item active" style="margin-top: 0 !important;">Past 24 hours</h3>
                     @foreach($lastSearch24h as $k=>$rs)
@@ -289,15 +190,13 @@
                 </div>
             @endif
             {{--Top search--}}
-            <div class="list-group">
-                @include('Google.adsense')
-            </div>
-            @if(!empty($topSearch))
+            @if(!empty($popularSearch))
                 <div class="list-group">
-                    <h3 class="list-group-item active">Trending now</h3>
-                    @foreach($topSearch as $rs)
-                        <a href="{{ url('/' . $rs->kw_slug) }}" title="{{ $rs->keyword_text }}" class="list-group-item">
-                            <h4 class="text-primary">{{ ucwords($rs->keyword_text) }}</h4>
+                    <h2 class="list-group-item active">Popular Searched</h3>
+                    @foreach($popularSearch as $k)
+					<?php $rs = detect_keywords($sitemap_keyword[$k]); ?>
+                        <a href="{{ url('/' . str_slug($rs)) }}" title="{{ ucwords($rs) }}" class="list-group-item">
+                            <span class="text-primary">{{ ucwords($rs) }}</span>
                         </a>
                     @endforeach
                 </div>
@@ -306,21 +205,35 @@
             {{--Recently search--}}
             @if(!empty($recentlySearch))
                 <div class="list-group">
-                    <h3 class="list-group-item active">Recently Searched</h3>
-                    @foreach($recentlySearch as $rs)
-                        <a href="{{ url('/' . $rs->kw_slug) }}" title="{{ $rs->keyword_text }}" class="list-group-item">
-                            <h4 class="text-primary">{{ ucwords($rs->keyword_text) }}</h4>
+                    <h2 class="list-group-item active">Recently Searched</h3>
+                    @foreach($recentlySearch as $k)
+					<?php $rs = detect_keywords($sitemap_keyword[$k]); ?>
+                        <a href="{{ url('/' . str_slug($rs)) }}" title="{{ ucwords($rs) }}" class="list-group-item">
+                            <span class="text-primary">{{ ucwords($rs) }}</span>
                         </a>
                     @endforeach
                 </div>
             @endif
-            <div class="list-group">
-                @include('Google.adsense')
-            </div>
         </div>
     </div>
     </div>
     <input type="hidden" class="keyword" data-value="{{ $q }}">
+	
+	    <div class="row">
+        <h2>Trending searches</h2>
+        @if(!empty($trendingSearch))
+            @foreach($trendingSearch as $ki)
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    @foreach($ki as $k)<?php $v = $sitemap_keyword[$k]; ?>
+                        <?php $item = detect_keywords($v, ' coupon'); ?>
+                        <p>
+                            <a href="{{ url('/' . str_slug($item)) }}">{{ str_limit(ucwords($item), 25) }} </a>
+                        </p>
+                    @endforeach
+                </div>
+            @endforeach
+        @endif
+    </div>
 @endsection
 @section('js')
     <script>

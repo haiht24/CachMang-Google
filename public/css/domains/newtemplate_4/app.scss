@@ -244,10 +244,10 @@ body{
 }
 
 .search-result {
-  min-height:130px;
+  min-height:90px;
   border: 1px solid #cdc;
   margin-top: 10px;
-  padding: 10px;
+  padding: 8px;
   padding-left:36px;
   position: relative;
   text-align: left;
@@ -298,4 +298,11 @@ body{
 }
 .pnel .rl-row {
   padding: 5px;
+}
+
+h2 {
+  font-size: 20px !important;
+}
+h3 {
+  font-size: 17px !important;
 }

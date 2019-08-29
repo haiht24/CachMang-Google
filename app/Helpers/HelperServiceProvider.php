@@ -24,3 +24,24 @@ function get_timeago( $ptime )
         }
     }
 }
+
+
+
+
+
+function have_detect_keywords($kw) {
+	$filters = ['coupon','discount','voucher','promo','offer','deal','code','off','sale','free','bonus','%','percent','$','blackfriday','cybermoday','christmas','newyear','laborday','buy2get1','buy1get1','giftcard'];
+	$finded = 0;
+	foreach($filters as $find) {
+		if(stripos($kw, $find)!==false) {
+			$finded = 1;break;
+		}
+	}
+	return $finded;
+}
+
+function detect_keywords($kw, $add=' coupon') {
+	$finded = have_detect_keywords($kw, $add);
+	if($finded===0) $kw .= $add;
+	return $kw;
+}

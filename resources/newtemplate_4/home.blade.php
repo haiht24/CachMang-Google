@@ -29,7 +29,7 @@
 {{--Body--}}
 <div class="">
 
-    <div class="top-title">
+    <div class="top-title"><img src="{{ asset('/images/logo/'. DOMAIN_HOST . '.png') }}" class="logo" alt="logo find coupon"/>
         <h1>Search any you want...</h1>
     </div>
 

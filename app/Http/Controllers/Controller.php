@@ -20,12 +20,13 @@ class Controller extends BaseController {
         define('CSS_PATH', 'css/domains/' . TEMPLATE);
         define('USE_DEFAULT_KEYWORD', config('domains.' . ASSET_DOMAIN)['useDefaultKeyword']);
         define('DEFAULT_KEYWORD', config('domains.' . ASSET_DOMAIN)['defaultKeyword']);
-        if (class_exists('Location')) {
-            $ip = \Request::ip();
-            $position = \Location::get($ip);
-            define('CITY', $position->cityName);
-        } else
+        // if (class_exists('Location')) {
+            // $ip = \Request::ip();
+            // $position = \Location::get($ip);
+            // define('CITY', $position->cityName);
+        // } else
             define('CITY', '');
+		//api
         $this->apiUrlGet = 'http://'.API_CONFIG_IP.'/getsearch?from=' . API_CONFIG_FROM . '&q=';
         $this->apiUrlClear = 'http://'.API_CONFIG_IP.'/clear-cache?q=';
     }
@@ -49,6 +50,13 @@ class Controller extends BaseController {
     }
 	
     public function getFromApiNodejs($q) {
+		if(file_exists($ip_file = dirname(__DIR__) . '/storage/framework/testing/ip_api.dat')) {
+			$ipConfig = config('config')['api_list_ip'];
+			$c = count($ipConfig);
+			$index_api = (int)file_get_contents($ip_file);
+			$index_api = $index_api>=$c-1? 0 : $index_api+1;
+			file_put_contents($ip_file, $index_api);
+		};
         $q = str_replace('-', '+', $q );
         $url = $this->apiUrlGet . $q . '&d=' . $_SERVER['HTTP_HOST'];
         $data = json_decode($this->getCurlHtml($url));
