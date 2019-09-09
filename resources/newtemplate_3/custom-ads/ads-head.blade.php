@@ -6,7 +6,7 @@
 				<div class="search-content search-{{ $searchklass }}">
 					<div class="search-body">
 						<a href="{{ $v['domain'] }}" target="_blank">
-							<h3 class="text-primary" style="margin:auto">{{ $v['title'] }}</h3>
+							<h3 class="text-primary">{{ $v['title'] }}</h3>
 						</a>
 						<span class="btn btn-warning  pull-left discount-value" style="margin-right:10px">
 					<h3> <span class="ad">Ad</span></h3>

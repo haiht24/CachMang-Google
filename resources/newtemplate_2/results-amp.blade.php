@@ -7,15 +7,6 @@
                 @if(count($results) > 0)
                     @foreach($results as $k=>$result)
                         <?php  $sk = $k%3; $searchklass = $sk==0?1:($sk==1?2:3); ?>
-                        @if($k === 2 || $k === 6 || $k === 9)
-                            <div class="search-result col-md-6 col-xs-12 col-lg-6 col-sm-12">
-                                <div class="panel panel-default search-{{ $searchklass }}">
-                                    <div class="panel-body">
-                                        @include('GA.google-adsense')
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
                         <?php
                         preg_match('/\$([0-9]+[\.]*[0-9]*) off|\$([0-9]+[\.]*[0-9]*) Off|\$([0-9]+[\.]*[0-9]*)/', $result['title'], $findDollar);
                         preg_match('/([0-9]+[\.]*[0-9]*)\% Off|([0-9]+[\.]*[0-9]*)\% off|([0-9]+[\.]*[0-9]*)\%/', $result['title'], $findPercent);
@@ -30,9 +21,19 @@
 						@else
 							          <h3 class="text-primary">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', $result['title'])) !!}</h3>
 						@endif
-                                    <span class="btn btn-warning  pull-left discount-value" style="margin-right:10px">
-									<h3>{{ !empty($findDollar) ? strtolower($findDollar[0]) : (!empty($findPercent) ? strtolower($findPercent[0]) : 'CODE') }}</h3>
-									</span>
+                            @if(!empty($findDollar))
+                                <span class="btn btn-warning  pull-left discount-value">
+                                                <h3>{{strtolower($findDollar[0])}}</h3>
+                                            </span>
+                            @elseif(!empty($findPercent))
+                                <span class="btn btn-warning  pull-left discount-value">
+                                                <h3>{{strtolower($findPercent[0])}}</h3>
+                                            </span>
+                            @else
+                                <span class="btn btn-warning  pull-left discount-value-code">
+                                                 <h3>CODE</h3>
+                                            </span>
+                            @endif
                                     @if(!empty($result['description']))
                                         <span class="rs-description">{!! html_entity_decode(str_ireplace($q, '<b>'.$q.'</b>', isset($result['description']{120})?substr($result['description'],0,120).'<span onclick="showmore(this)" style="color:blue"><span class="hidden">'.substr($result['description'],120).'</span>...more</span>':$result['description'])) !!}</span>
                                     @endif
