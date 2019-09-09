@@ -13,7 +13,7 @@
                 </ul>
                 <ul>
                     <li>
-                        © 2019 BOGO
+                        © {{ date('Y') }} BOGO
                     </li>
                 </ul>
             </div>
