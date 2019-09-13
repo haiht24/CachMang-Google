@@ -50,13 +50,13 @@ class Controller extends BaseController {
     }
 	
     public function getFromApiNodejs($q) {
-		if(file_exists($ip_file = dirname(__DIR__) . '/storage/framework/testing/ip_api.dat')) {
+		if(0) if(file_exists($ip_file = base_path() . '/storage/framework/testing/ip_api.dat')) {
 			$ipConfig = config('config')['api_list_ip'];
 			$c = count($ipConfig);
 			$index_api = (int)file_get_contents($ip_file);
 			$index_api = $index_api>=$c-1? 0 : $index_api+1;
 			file_put_contents($ip_file, $index_api);
-		};
+		}
         $q = str_replace('-', '+', $q );
         $url = $this->apiUrlGet . $q . '&d=' . $_SERVER['HTTP_HOST'];
         $data = json_decode($this->getCurlHtml($url));

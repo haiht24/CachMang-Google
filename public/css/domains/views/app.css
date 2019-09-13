@@ -1,6 +1,15 @@
 body {
   height: auto;
   font-family: 'Roboto', sans-serif; }
+h1 {
+	font-size: 28px;
+}
+h2 {
+	font-size: 24px;
+}
+.head-results h1,.head-results h2{
+	padding-left: 15px;
+}
 
 #btnSearch {
   border: none; }

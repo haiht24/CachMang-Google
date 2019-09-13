@@ -1,0 +1,38 @@
+
+	'' => [
+		'cpd' => [
+			'url' => '',
+			'title' => '',
+			'description' => '',
+			'extend_url' => [
+				[
+					'title' => '',
+					'description' => ''
+				],
+				[
+					'title' => '',
+					'description' => ''
+				],
+				[
+					'title' => '',
+					'description' => ''
+				],
+				[
+					'title' => '',
+					'description' => ''
+				],
+			]
+		],
+		'cpd_1' => [
+			'url' => '',
+			'title' => '',
+			'description' => '',
+		],
+		'cpd_2' => [
+			'url' => '',
+			'title' => '',
+			'description' => ''
+		],
+	],
+	
+	

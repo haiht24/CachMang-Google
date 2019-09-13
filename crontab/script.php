@@ -139,6 +139,12 @@ if(isset($_GET['build'])!==false) {
 	$user = basename(dirname(dirname(getcwd())));
 	$htaccess = str_replace('[user]', $user, $htaccess);
 	file_put_contents($dirOfNewCode . '/public/.htaccess', $htaccess);
+	
+	unlink($dirOfNewCode . '/public/index.php');
+	unlink($dirOfNewCode . '/server.php');
+	@copy(__DIR__.'/public/index.php', dirname(__DIR__).'/index.php');
+	@copy(__DIR__.'/public/server.php', dirname(__DIR__).'/server.php');
+	
 }else {
 	unlink($dirOfNewCode . '/public/index.php');
 	unlink($dirOfNewCode . '/public/.htaccess');

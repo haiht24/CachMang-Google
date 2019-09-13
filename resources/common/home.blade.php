@@ -6,8 +6,9 @@
         <a class="navbar-brand" href="{{ url('/') }}" style="padding:0"><img src="{{ asset('/images/logo/'. DOMAIN_HOST . '.png') }}" class="logo" alt="{{$_SERVER['HTTP_HOST']}}"/></a>
     </div>
     <div class="col-lg-9">
+	@if(!empty($desc_search))
         <h1>{{ $desc_search }}</h1>
-
+	@endif
         <div class="input-group search-box">
             <form id="frmSearch" autocomplete="off" style="display: inherit" action="{{ url('/query') }}" method="get">
                 <input type="text" class="form-control input-search" placeholder="" id="q">

@@ -1,4 +1,7 @@
 @extends('app')
+@section('amp-page')
+<link rel="amphtml" href="{{ route('search', ['q'=> str_slug($q)]) }}">
+@endsection
 @section('content')
     <div class="row">
         <div class="row">
@@ -18,28 +21,28 @@
                 </div>
                 <p>Share:
                     <a target="_blank"
-                       href="https://www.facebook.com/sharer.php?u={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}"
+                       href="https://www.facebook.com/sharer.php?u={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] }}"
                        title="Facebook Share"><img src="{{ url('/') }}/images/fb.png"></a>
                     <a target="_blank"
-                       href="https://plus.google.com/share?url={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}"
+                       href="https://plus.google.com/share?url={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] }}"
                        title="Google Plus Share"><img src="{{ url('/') }}/images/gp.png"></a>
                     <a target="_blank"
-                       href="https://twitter.com/share?url={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}"
+                       href="https://twitter.com/share?url={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] }}"
                        title="Twitter Share"><img src="{{ url('/') }}/images/tw.png"></a>
                     <a target="_blank"
-                       href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}"
+                       href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] }}"
                        title="LinkedIn Share"><img src="{{ url('/') }}/images/in.png"></a>
                     <a target="_blank"
-                       href="https://pinterest.com/pin/create/button/?url={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}"
+                       href="https://pinterest.com/pin/create/button/?url={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] }}"
                        title="Pinterest Share"><img src="{{ url('/') }}/images/pin.png"></a>
                     <a target="_blank"
-                       href="http://www.stumbleupon.com/badge/?url={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}"
+                       href="http://www.stumbleupon.com/badge/?url={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] }}"
                        title="StumbleUpon Share"><img src="{{ url('/') }}/images/su.png"></a>
                     <a target="_blank"
-                       href="https://www.reddit.com/submit?url={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}"
+                       href="https://www.reddit.com/submit?url={{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] }}"
                        title="Reddit Share"><img src="{{ url('/') }}/images/rt.png"></a>
                     <a target="_blank"
-                       href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site {{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'] }}"
+                       href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site {{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] }}"
                        title="E-Mail Share"><img src="{{ url('/') }}/images/mail.png"></a>
                 </p>
                 @if(ENABLE_SEARCH_BOX)
@@ -219,7 +222,7 @@
     </div>
     <input type="hidden" class="keyword" data-value="{{ $q }}">
 	
-	    <div class="row">
+	    <div class="row" style="margin-left: 0; margin-right:0">
         <h2>Trending searches</h2>
         @if(!empty($trendingSearch))
             @foreach($trendingSearch as $ki)

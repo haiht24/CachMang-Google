@@ -6,7 +6,7 @@
     <title>{{ !empty($seo['title']) ? $seo['title'] : '' }}</title>
     <meta name="description" content="{{ !empty($seo) ? $seo['description'] : 'description' }}">
     <link rel="icon" href="{{ asset('/images/'.ASSET_DOMAIN.'/favicon.ico') }}">
-
+	@yield('amp-page')
     <!-- Styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 

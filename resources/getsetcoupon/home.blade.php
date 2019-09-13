@@ -1,8 +1,8 @@
 @extends('app')
 @section('content')
-    <div class="col-xs-12" style="padding-bottom: 10px;padding-top: 10px">
+{{--    <div class="col-xs-12" style="padding-bottom: 10px;padding-top: 10px">
         @include('Google.adsense')
-    </div>
+</div>--}}
     <?php $_keyword = env('KEYWORD') ? '-'.env('KEYWORD'):''; ?>
     <div class="col-xs-12 npd-lr popular-kws">
         <div>

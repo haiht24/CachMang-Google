@@ -34,12 +34,15 @@ class CachMangController extends Controller
 	public function chiaKeywords($arr, $col) {
 		$lenSitemap = count($arr);
 		$splitSitemap = (Int)($lenSitemap/$col);
-		if($splitSitemap>0)
+		if($splitSitemap>0) {
+			$du = $lenSitemap%$col;
+			if($du>0) $arr = array_slice($arr, 0, $lenSitemap-$du);
 			return array_chunk($arr, $splitSitemap);
-		else return $arr;
+		}else return $arr;
 	}
     public function index() {
 		$seoConfig = $this->getSeoConfig();
+		if(!empty($_GET['q'])) return redirect('/' . str_slug($_GET['q'])); //for amp page
 		try {
 			if(empty($seoConfig)) {
 				$seo = [
@@ -48,6 +51,7 @@ class CachMangController extends Controller
 				];
 			}else {
 				$seo = $seoConfig['home'];
+				$seo['description'] = str_replace("\n", ' ', $seo['description']);
 			}
         $data['seo'] = $seo;
 
@@ -94,23 +98,82 @@ class CachMangController extends Controller
         $q = $this->cleanSpecialChars($q);
         return redirect('/' . $q);
     }
+	public function remove_duplicate($str)
+		{
+			$a = explode(" ",$str);
+			$b = count($a);
 
-    public function query($q, Request $request) {
-		$rq = $request->all();
-		
-        if(empty($q))
-            return redirect('/' . $q);
+			$j = strtolower($a[0]);
+			$k="";
+
+			for ($i=1;$i<=$b;$i++)
+			{
+			if (strtolower($j)!=strtolower($a[$i])) { $k .= $j." "; }
+			$j = $a[$i];
+			}
+
+			return $k;
+		}
+	public function remove_repeat($str) {
+		return preg_replace("/\b([\w'-]+)(\s+\\1)+/i", "$1", $str);
+	}
+	public function invalid_search($q) {
+		if(empty($q))
+            return $q;
 		if(env('KEYWORD') && !have_detect_keywords($q)){
 			$q = str_slug($q . ' ' . env('KEYWORD'));
-			return redirect('/' . $q);
+			return $q;
 		}
+		$q = urldecode($q);
+		if(str_slug($q) != $q) {
+			$q = str_slug($q);
+			return $q;
+		}
+		return 0;
+		
+	}
+	public function view_search($q, Request $request) {
+
+		if($redirect = $this->invalid_search($q)) return redirect('/' . $redirect);
+		$data = $this->query($q, $request);
+		
+		// $agent = new Agent();
+        // $isPhone = $agent->isPhone();
+        // $isTablet = $agent->isTablet();
+		// if($isPhone || $isTablet){
+            // return view('results-amp')->with($data);
+        // }
+        return view('results')->with($data);
+	}
+	public function view_amp_search($q, Request $request) {
+		if($redirect = $this->invalid_search($q)) return redirect('/amp/' . $redirect);
+		$data = $this->query($q, $request);
+		return view('results-amp')->with($data);
+	}
+    public function query($q, $request) {
+		$rq = $request->all();
+		
+		$q = urldecode($q);
+
         $q = $this->cleanSpecialChars($q);
 		
-		$store_name = ucwords(str_replace(['-','coupon'],[' ',''], $q));
+		$store_name = ucwords(str_replace(['-'],[' '], $q));
 		
 		//domain config
-		$domain = $_SERVER['HTTP_HOST'];
+		$domain = str_replace('www.','',$_SERVER['HTTP_HOST']);
         $dmConfig = config('theme.domains_config')[$domain];
+		//$ads = [];
+		// foreach($dmConfig as $dm => $v) {
+			// $enable_ads = 1;
+			// if(isset($v['enable_ads'])) $enable_ads = $v['enable_ads'];
+			// if($enable_ads) {
+				// if(empty($v['ads'])) $ads[$dm] = 1;
+				// else $ads[$dm] = 2;
+				
+			// }
+			
+		// }
+		// dd($ads);
 
         /* insert custom results */
         $customSearch = config('custom-search.config');
@@ -135,10 +198,17 @@ class CachMangController extends Controller
             Cache::forget($cacheKey);
             $this->getCurlHtml($this->apiUrlClear . str_replace('-', '+', $q));
         }
-        $data = Cache::remember('kw_' . $q, 60*24, function() use ($q){
+		try {
+			$data = Cache::remember('kw_' . $q, 60*24, function() use ($q){
+				return $this->getFromSearchEngine($q);
+			});
+		}catch(Exception $e) {
 			$exitCode = \Artisan::call('cache:clear');
-            return $this->getFromSearchEngine($q);
-        });
+			$exitCode = \Artisan::call('config:cache');
+			$data = Cache::remember('kw_' . $q, 60*24, function() use ($q){
+				return $this->getFromSearchEngine($q);
+			});
+		}
         /* End using Laravel cache */
 
         /* Using API Nightmare cache */
@@ -167,31 +237,43 @@ class CachMangController extends Controller
 		}
         /* SEO */
 		$seoConfig = $this->getSeoConfig();
-		if(empty($seoConfig)) {
-			$seo = [
-				'title' => $store_name,
-				'description' => 'Search results for keyword ' . $q
-			];
-		}else {
-			$seoConfig = $seoConfig['results'];
-			$seoTitle = $seoConfig['title'][rand(0, count($seoConfig['title'])-1)];
-			$seoDescription = $seoConfig['description'];
-			
-			//remove duplicate "coupon"
-			$cp_in_store = stripos($store_name, 'coupon');
-			$cp_in_title = stripos($seoTitle, 'coupon');
-			if($cp_in_store!==false) $seoTitle = str_ireplace(['coupon'],[''], $seoTitle);
-			
-			$seoTitle = str_replace('[storename]', $store_name, $seoTitle);
-			$seoDescription = str_replace('[storename]', $store_name, $seoDescription);
-			$seo = [
-				'title' => $seoTitle,
-				'description' => $seoDescription
-			];
-		}
-        if(!empty($data[0])){
-            $seo['description'] .= ' ' . $data[0]['description'];
-        }
+			if(empty($seoConfig)) {
+				$seo = [
+					'title' => $store_name,
+					'description' => 'Search results for keyword ' . $q
+				];
+			}else {
+				$seoConfig = $seoConfig['results'];
+				$seoTitle = $seoConfig['title'][rand(0, count($seoConfig['title'])-1)];
+				$seoDescription = $seoConfig['description'];
+				$seoTitle = str_ireplace('[storename] coupon', '[storename]', $seoTitle);
+				$seoDescription = str_ireplace('[storename] coupon', '[storename]', $seoDescription);
+				
+				//remove duplicate "coupon" or keywords similar
+				
+				$store_name_desc = $store_name_title = $store_name;
+				$store_ngach = !empty($dmConfig['store_ngach'])?1:0;
+				if(0&&$store_ngach) {
+					$detect_storename = have_detect_keywords($store_name);
+					$detect_description = have_detect_keywords($seoDescription);
+					$detect_title = have_detect_keywords($seoTitle);
+					if($detect_storename) {
+						$store_chinh = str_ireplace([' coupons',' coupon'],['',''], $store_name);
+						if($detect_description) $store_name_desc = $store_chinh;
+						if($detect_title) $store_name_title = $store_chinh;
+					}
+				}
+				
+				$seoTitle = str_replace('[storename]', $store_name_title, $seoTitle);
+				$seoDescription = str_replace('[storename]', $store_name_desc, $seoDescription);
+				$seo = [
+					'title' => $seoTitle,
+					'description' => $seoDescription
+				];
+			}
+			if(!empty($data[0])){
+				$seo['description'] .= ' ' . $data[0]['description'];
+			}
 
         $data['seo'] = $seo;
         /* Get recently search keywords */
@@ -240,14 +322,7 @@ class CachMangController extends Controller
 		}
 		
 		
-        $agent = new Agent();
-        $isPhone = $agent->isPhone();
-        $isTablet = $agent->isTablet();
-        //if(0) 
-		if($isPhone || $isTablet){
-            return view('results-amp')->with($data);
-        }
-        return view('results')->with($data);
+		return $data;
     }
 //func help
 	public function render_rand_rs($arr, $limit = 10) {

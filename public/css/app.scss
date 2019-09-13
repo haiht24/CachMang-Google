@@ -104,7 +104,6 @@ body {
     .con-header {
         padding-bottom: 15px;
         padding-top: 15px;
-        padding-left: 0;
     }
 }
 
@@ -174,6 +173,7 @@ body {
 
 .box-result {
     padding-bottom: 15px;
+    padding-left: 0;
     .ad {
         margin-right: 7px;
         background-color: #fff;
@@ -202,13 +202,14 @@ body {
     .result-url {
         color: #006621;
         font-size: 14px;
+        word-break: break-word;
     }
     .result-description {
         color: #545454;
     }
     .ext-result {
         padding-top: 10px;
-        min-height: 76px;
+        min-height: 83px;
         .ext-title {
             a {
                 color: $color-link;
@@ -223,10 +224,6 @@ body {
             }
         }
     }
-}
-
-.container-padding-left {
-    padding-left: 6%;
 }
 
 //.col-lg-
@@ -253,9 +250,6 @@ body {
         justify-content: center;
         align-items: center;
         padding: 13px 0;
-    }
-    .frmSearch-home {
-        max-width: 90%;
     }
     .con-results {
         padding-left: 7px;
@@ -304,5 +298,8 @@ body {
         .con-header {
             padding-top: 0;
         }
+    }
+    .head-results{
+        text-align: center;
     }
 }
