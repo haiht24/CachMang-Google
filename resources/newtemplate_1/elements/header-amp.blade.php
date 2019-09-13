@@ -4,7 +4,7 @@
 			<div class="col-md-3 col-sm-5 col-lg-2" style="padding:10px">
 				{{--<div class="col-md-2 col-sm-5 col-lg-3">
 				<a href="{{ url('/') }}">
-						<img src="{{ asset('/images/'.ASSET_DOMAIN.'/logo.png') }}" class="logo">
+						<img src="{{ asset('/images/logo/'. DOMAIN_HOST . '.png') }}" class="logo" alt="logo find coupon"/>
 				</a>
 				</div>--}}
 				<a class="logo" href="/">{{ $_SERVER['HTTP_HOST'] }}</a>

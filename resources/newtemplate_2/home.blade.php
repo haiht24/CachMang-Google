@@ -39,7 +39,7 @@
         <div class="top-logo-wrap">
         <div class="top-logo">
             <div class="text-logo insetshadow">
-               {{ $_SERVER['HTTP_HOST'] }}
+               <img src="{{ asset('/images/logo/'. DOMAIN_HOST . '.png') }}" class="logo" alt="logo find coupon" style="width: 140px;"/>
             </div>
         </div>
         </div>

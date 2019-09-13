@@ -18,23 +18,55 @@ use Cache;
 
 class CachMangController extends Controller
 {
+	
+
+	private $seo_config;
+	public function getSeoConfig() {
+		if(empty($this->seo_config)) {
+			$domain = DOMAIN_HOST;
+			$seoConfig = config('seo.domains_config');
+			if(empty($seoConfig[$domain])) $seoConfig = [];
+			else $seoConfig = $seoConfig[$domain];
+			$this->seo_config = $seoConfig;
+		}
+		return $this->seo_config;
+	}
+	public function chiaKeywords($arr, $col) {
+		$lenSitemap = count($arr);
+		$splitSitemap = (Int)($lenSitemap/$col);
+		if($splitSitemap>0)
+			return array_chunk($arr, $splitSitemap);
+		else return $arr;
+	}
     public function index() {
+		$seoConfig = $this->getSeoConfig();
 		try {
-        $seo = [
-            'title' => "Search anything with " . url('/'),
-            'description' => ""
-        ];
+			if(empty($seoConfig)) {
+				$seo = [
+					'title' => "Search anything with " . url('/'),
+					'description' => ""
+				];
+			}else {
+				$seo = $seoConfig['home'];
+			}
         $data['seo'] = $seo;
 
-        $domain = $_SERVER['HTTP_HOST'];
-        $dmConfig = config('home.domains_config')[$domain];
-        if(!empty($dmConfig['sitemap_keyword'])) {
-            $sitemapKeyword = $dmConfig['sitemap_keyword'];
-            $data['allKeywords'] = $sitemapKeyword;
-            $lenSitemap = count($sitemapKeyword);
-            $splitSitemap = (Int)($lenSitemap/4);
-            $data['sitemap_keyword'] = array_chunk($sitemapKeyword, $splitSitemap+1);
-        }
+        $domain = DOMAIN_HOST;
+		//$siteSetting = config('theme.domains_config')[$domain];
+		//if(empty($siteSetting['disable_cat_home'])) {
+			$dmConfig = config('home.domains_config')[$domain];
+			if(!empty($dmConfig['sitemap_keyword'])) {
+				$sitemapKeyword = $dmConfig['sitemap_keyword'];
+				$data['allKeywords'] = $sitemapKeyword;
+				$lenSitemap = count($sitemapKeyword);
+				$splitSitemap = (Int)($lenSitemap/4);
+				$data['sitemap_keyword'] = array_chunk($sitemapKeyword, $splitSitemap+1);
+				
+				$data['top_keywords'] = $this->chiaKeywords(array_slice($sitemapKeyword, 0, 48), 6);
+				$data['second_keywords'] = $this->chiaKeywords(array_slice($sitemapKeyword, 47, 20), 4);
+				$data['desc_search'] = !empty($dmConfig['desc_search'])? $dmConfig['desc_search']:'';
+			}
+		//}
 
         $data['cityName'] = CITY;
         $data['hiddenSearchHeader'] = 1;
@@ -65,9 +97,13 @@ class CachMangController extends Controller
 
     public function query($q, Request $request) {
 		$rq = $request->all();
-
+		
         if(empty($q))
             return redirect('/' . $q);
+		if(env('KEYWORD') && !have_detect_keywords($q)){
+			$q = str_slug($q . ' ' . env('KEYWORD'));
+			return redirect('/' . $q);
+		}
         $q = $this->cleanSpecialChars($q);
 		
 		$store_name = ucwords(str_replace(['-','coupon'],[' ',''], $q));
@@ -117,14 +153,44 @@ class CachMangController extends Controller
             }
         }
         $data['results'] = array_merge($customResults, $data['results']);
+		//use for popular or recently
+		
+        $domain = DOMAIN_HOST;
+		$dmHomeConfig = config('home.domains_config')[$domain];
+		if(!empty($dmHomeConfig['sitemap_keyword'])) {
+			$data['sitemap_keyword'] = $dmHomeConfig['sitemap_keyword'];
+			$arrKeys = array_keys($dmHomeConfig['sitemap_keyword']);
+			$data['popularSearch'] = array_rand($arrKeys, 5);
+			$arrKeys_diff = array_diff($arrKeys, $data['popularSearch']);
+			$data['recentlySearch'] = array_rand($arrKeys_diff, 5);
+			$data['trendingSearch'] = $this->chiaKeywords(array_slice($arrKeys, -20), 4);
+		}
         /* SEO */
-		$title = $store_name;
-        $seo = [
-            'title' => $title,
-            'description' => 'Search results for keyword ' . $q
-        ];
+		$seoConfig = $this->getSeoConfig();
+		if(empty($seoConfig)) {
+			$seo = [
+				'title' => $store_name,
+				'description' => 'Search results for keyword ' . $q
+			];
+		}else {
+			$seoConfig = $seoConfig['results'];
+			$seoTitle = $seoConfig['title'][rand(0, count($seoConfig['title'])-1)];
+			$seoDescription = $seoConfig['description'];
+			
+			//remove duplicate "coupon"
+			$cp_in_store = stripos($store_name, 'coupon');
+			$cp_in_title = stripos($seoTitle, 'coupon');
+			if($cp_in_store!==false) $seoTitle = str_ireplace(['coupon'],[''], $seoTitle);
+			
+			$seoTitle = str_replace('[storename]', $store_name, $seoTitle);
+			$seoDescription = str_replace('[storename]', $store_name, $seoDescription);
+			$seo = [
+				'title' => $seoTitle,
+				'description' => $seoDescription
+			];
+		}
         if(!empty($data[0])){
-            $seo['description'] = $data[0]['description'];
+            $seo['description'] .= ' ' . $data[0]['description'];
         }
 
         $data['seo'] = $seo;
@@ -147,10 +213,10 @@ class CachMangController extends Controller
 			$data['ads'] = $dmConfig['ads'];
 			$data['ads_count'] = 10;
 		}
-//		dd($data['ads']);
-//		foreach($data['ads'] as $k=>$v) {
-//			$data['ads'][$k]['title'] = str_replace('[store_name]', $store_name, $v['title']);
-//		}
+		
+		if(!empty($data['ads'])) foreach($data['ads'] as $k=>$v) {
+			$data['ads'][$k]['title'] = str_replace('[store_name]', $store_name, $v['title']);
+		}
 		//rel link extenal
 		$data['rel_ex'] = 'rel="nofollow"';
 		//limit item result search engine

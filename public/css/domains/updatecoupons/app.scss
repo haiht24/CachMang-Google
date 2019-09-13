@@ -14,7 +14,6 @@ body {
     }
     .panel-default {
         border-radius: 0;
-        height: 180px;
     }
 
     .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
@@ -301,6 +300,9 @@ textarea, input {
 
 //.col-md-
 @media (max-width: 991px) {
+  .body-content {
+	margin-top:120px;
+  }
 }
 
 //.col-sm-

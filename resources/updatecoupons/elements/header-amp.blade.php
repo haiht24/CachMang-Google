@@ -5,7 +5,7 @@
                 {{--Nav bar--}}
                 <div class="navbar-header col-sm-6 npd-lr">
                     {{--<a href="{{ url('/') }}">
-                            <img src="{{ asset('/images/'.ASSET_DOMAIN.'/logo.png') }}" class="logo">
+                            <img src="{{ asset('/images/logo/'. DOMAIN_HOST . '.png') }}" class="logo" alt="logo find coupon"/>
                     </a>--}}
                 </div>
                 <ul class="nav navbar-nav col-xs-6 npd-lr">

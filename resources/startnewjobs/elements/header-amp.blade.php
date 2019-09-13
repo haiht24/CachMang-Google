@@ -3,7 +3,7 @@
         <form id="frmSearch" autocomplete="off" action="{{ url('/query') }}">
             {{--<div class="col-sm-2 col-xs-12 logo-search">
 			<a href="{{ url('/') }}">
-                    <img src="{{ asset('/images/'.ASSET_DOMAIN.'/logo.png') }}" alt="" class="img-logo-search">
+                    <img src="{{ asset('/images/logo/'. DOMAIN_HOST . '.png') }}" alt="" class="img-logo-search">
 			</a>
             </div>--}}
             <div class="col-sm-4 col-xs-12 col-search">

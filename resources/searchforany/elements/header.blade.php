@@ -1,11 +1,11 @@
 <div class="home-box-search head text-center">
 <div class=" container">
         <div class="input-group search-box" style="width: 80%;margin:auto">
-            {{--<div class="col-md-3 col-sm-6 npd-lr">
+            <div class="col-md-3 col-sm-6 npd-lr">
 			<a href="{{ url('/') }}">
-                    <img src="{{ asset('/images/'.ASSET_DOMAIN.'/logo.png') }}" class="logo">
+                    <img src="{{ asset('/images/logo/'. DOMAIN_HOST . '.png') }}" class="logo" alt="logo find coupon"/>
 			</a>
-            </div>--}}
+            </div>
             {{--<div class=" col-md-9 col-sm-6 npd-lr">--}}
 			@if(ENABLE_SEARCH_BOX)
                 <form id="frmSearch" autocomplete="off" style="display: inherit;margin:auto">

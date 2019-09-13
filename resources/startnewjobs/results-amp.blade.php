@@ -52,7 +52,7 @@
 				<?php $from = 'DB'; ?>
                 @if($from === 'ASK')
                     @foreach($results as $k=>$result)
-                            @if($k === 2 || $k === 6 || $k === 9)
+                            @if(0) if($k === 2 || $k === 6 || $k === 9)
                                 <div class="alert col-xs-12">
                                     @include('Google.adsense')
                                 </div>
@@ -82,7 +82,7 @@
                     <input type="hidden" id="isFromSERP" value="1">
                 @elseif($from === 'SERP')
                     @foreach($results as $k=>$result)
-                            @if($k === 2 || $k === 6 || $k === 9)
+                            @if(0) if($k === 2 || $k === 6 || $k === 9)
                                 <div class="alert col-xs-12">
                                     @include('Google.adsense')
                                 </div>
@@ -105,7 +105,7 @@
                     <input type="hidden" id="isFromSERP" value="1">
                 @elseif($from === 'DB')
                     @foreach($results as $k=>$result)
-                            @if($k === 2 || $k === 6 || $k === 9)
+                            @if(0) if($k === 2 || $k === 6 || $k === 9)
                                 <div class="alert col-xs-12">
                                     @include('Google.adsense')
                                 </div>

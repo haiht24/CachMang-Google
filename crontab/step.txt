@@ -1,0 +1,3 @@
+zip /crontab /vendor
+upload unzip
+connect website build

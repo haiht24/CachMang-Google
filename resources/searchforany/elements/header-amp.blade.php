@@ -2,7 +2,7 @@
         <div class="input-group search-box" style="width: 80%;margin:auto">
             {{--<div class="col-md-3 col-sm-6 npd-lr">
 			<a href="{{ url('/') }}">
-                    <img src="{{ asset('/images/'.ASSET_DOMAIN.'/logo.png') }}" class="logo">
+                    <img src="{{ asset('/images/logo/'. DOMAIN_HOST . '.png') }}" class="logo" alt="logo find coupon"/>
 			</a>
             </div>--}}
             {{--<div class=" col-md-9 col-sm-6 npd-lr">--}}

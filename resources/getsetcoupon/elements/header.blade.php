@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ url('/') }}">{{ $_SERVER['HTTP_HOST'] }}</a>
+            <a class="navbar-brand" href="{{ url('/') }}" style="padding:0"><img src="{{ asset('/images/logo/'. DOMAIN_HOST . '.png') }}" class="logo" alt="{{$_SERVER['HTTP_HOST']}}"/></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">

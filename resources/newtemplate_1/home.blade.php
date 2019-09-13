@@ -43,7 +43,7 @@
     <div id="wrap">
       <div id="srch">
         <div id="srch-in">
-          <div id="logo"><h1>{{ $_SERVER['HTTP_HOST'] }}</h1><div class="ai"></div></div>
+          <div id="logo"><h1><img src="{{ asset('/images/logo/'. DOMAIN_HOST . '.png') }}" class="logo" alt="logo find coupon"/></h1><div class="ai"></div></div>
           
           <div id="form" method="get" class="">
             <form name="f" id="frmSearch" autocomplete="off" style="display: inherit" action="{{ url('/query') }}" method="get">

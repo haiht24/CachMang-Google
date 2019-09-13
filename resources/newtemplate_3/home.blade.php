@@ -29,6 +29,7 @@
 {{--Body--}}
 <div class="s006">
     <div class="wrap-search-box">
+	<div style="text-align:center;margin: auto"><img src="{{ asset('/images/logo/'. DOMAIN_HOST . '.png') }}" class="logo" alt="logo find coupon"/></div>
     <form name="f" id="frmSearch" autocomplete="off" style="display: inherit" action="{{ url('/query') }}" method="get">
         <fieldset>
             <legend>What are you looking for?</legend>

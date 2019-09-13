@@ -134,8 +134,15 @@ if($nameNewDir) $dirOfNewCode = __DIR__.'/extract/' . $nameNewDir;
 if(!file_exists($dirOfNewCode)) die('fail!!! dir new code not exists '.$dirOfNewCode);
 //step 3 (ignore) delete file not need update:
 unlink($dirOfNewCode . '/.env');
-unlink($dirOfNewCode . '/public/index.php');
-unlink($dirOfNewCode . '/public/.htaccess');
+if(isset($_GET['build'])!==false) {
+	$htaccess = file_get_contents(__DIR__.'/htaccess/lock.htaccess');
+	$user = basename(dirname(dirname(getcwd())));
+	$htaccess = str_replace('[user]', $user, $htaccess);
+	file_put_contents($dirOfNewCode . '/public/.htaccess', $htaccess);
+}else {
+	unlink($dirOfNewCode . '/public/index.php');
+	unlink($dirOfNewCode . '/public/.htaccess');
+}
 //file env config:
 $envHost = $dirOfNewCode . '/env/' . $_SERVER['HTTP_HOST'] . '.env';
 $envCommon = $dirOfNewCode . '/.env.common';

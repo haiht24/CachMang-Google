@@ -6,7 +6,7 @@
                 @if(count($results) > 0)
                     @foreach($results as $k=>$result)
                         @if(!empty($result['url']))
-                        @if($k === 2 || $k === 6 || $k === 9)
+                        @if(0) if($k === 2 || $k === 6 || $k === 9)
                             {{--<div class="alert search-result col-xs-12">--}}
                                 {{--@include('Google.adsense')--}}
                             {{--</div>--}}
