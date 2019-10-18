@@ -282,5 +282,12 @@ body {
     text-align: center;
   }
 }
+h1 {
+  font-size: 22px;
+}
+
+h2 {
+  font-size: 20px;
+}
 
 /*# sourceMappingURL=app.css.map */
