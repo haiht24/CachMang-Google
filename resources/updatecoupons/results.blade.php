@@ -1,4 +1,7 @@
 @extends('app')
+@section('amp-page')
+<link rel="amphtml" href="{{ route('search', ['q'=> str_slug($q)]) }}">
+@endsection
 @section('content')
     <div class="main">
         <div class="col-xs-12"><h1 class="text-primary keyword"
@@ -53,7 +56,7 @@
                     @endforeach
                 </div>
             @endif
-            <h3 class="text-primary npd-lr col-xs-12"> Listing Websites about {{ ucwords($q) }}</h3>
+            <h2 class="text-primary npd-lr col-xs-12"> Listing Websites about {{ ucwords($q) }}</h2>
             <div class="row" style="margin-bottom:10px">
                 <div class="col-xs-12">
                     <strong class="filter-type">Filter Type:</strong>
@@ -155,7 +158,7 @@
     </div>
     <input type="hidden" class="keyword" data-value="{{ $q }}">
 	
-	    <div class="row">
+	    <div class="row" style="margin-left: 0; margin-right:0">
         <h2>Trending searches</h2>
         @if(!empty($trendingSearch))
             @foreach($trendingSearch as $ki)

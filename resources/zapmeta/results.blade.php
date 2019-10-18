@@ -1,4 +1,7 @@
 @extends('app')
+@section('amp-page')
+<link rel="amphtml" href="{{ route('search', ['q'=> str_slug($q)]) }}">
+@endsection
 @section('content')
     <div class="container container-search" id="container_search " style="visibility: visible">
         <div class="row">
@@ -50,7 +53,7 @@
                                                 ?>
                                                 <ul>
                                                     <li>
-                                                        <a title="{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $r )) !!}"
+                                                        <a title="{!! strip_tags($r) !!}"
                                                            href="{{ $href }}">{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $r )) !!}</a>
                                                     </li>
                                                 </ul>
@@ -105,7 +108,7 @@
                                                 ?>
                                                 <ul>
                                                     <li>
-                                                        <a title="{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $r )) !!}"
+                                                        <a title="{!! strip_tags($r) !!}"
                                                            href="{{ $href }}">{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $r )) !!}</a>
                                                     </li>
                                                 </ul>
@@ -135,7 +138,7 @@
                                             ?>
                                             <ul>
                                                 <li>
-                                                    <a title="{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $r )) !!}"
+                                                    <a title="{!! strip_tags($r) !!}"
                                                        href="{{ $href }}">{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $r )) !!}</a>
                                                 </li>
                                             </ul>

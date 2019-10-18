@@ -1,4 +1,7 @@
 @extends('app')
+@section('amp-page')
+<link rel="amphtml" href="{{ route('search', ['q'=> str_slug($q)]) }}">
+@endsection
 @section('content')
     <?php $col_left = '8'; ?>
     <div class="row" style="margin-left:0px;margin-right:0px">
@@ -67,7 +70,7 @@
                                 $href = url('/') . '/' . str_slug($r);
 
                                 ?>
-                                <a title="{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $r )) !!}"
+                                <a title="{!! strip_tags($r) !!}"
                                    class="related_keywords"
                                    href="{{ $href }}">{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $r )) !!}</a>
                             </div>

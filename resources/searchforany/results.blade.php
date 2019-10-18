@@ -1,4 +1,7 @@
 @extends('app')
+@section('amp-page')
+<link rel="amphtml" href="{{ route('search', ['q'=> str_slug($q)]) }}">
+@endsection
 @section('content')
     <div class="">
         <div class="row" style="margin-left:0px;margin-right:0px">
@@ -46,24 +49,6 @@
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="padding:10px">
-                @if(!empty($related))
-                    <div class="pnel">
-                        <h2 style="font-size: 25px">Searches related to <b>{{ $q }}</b></h2>
-                        @foreach($related as $r)
-                            @if(!empty($r))
-                                <div class="rl-row">
-                                    <?php
-                                    $href = url('/') . '/' . str_ireplace(' ', '-', str_ireplace('%', '', strtolower($r)));
-
-                                    ?>
-                                    <a title="{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $r )) !!}"
-                                       class="related_keywords"
-                                       href="{{ $href }}">{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $r )) !!}</a>
-                                </div>
-                            @endif
-                        @endforeach
-                    </div>
-                @endif
 
                 {{--Top search--}}
                 @if(!empty($popularSearch))
@@ -80,7 +65,24 @@
                 @endif
 
                 {{--Recently search--}}
-                @if(!empty($recentlySearch))
+                @if(!empty($related))
+                    <div class="list-group">
+                        <h2 class="list-group-item active">Searches related to <b>{{ $q }}</b></h2>
+                        @foreach($related as $r)
+                            @if(!empty($r))
+                                <div class="rl-row">
+                                    <?php
+                                    $href = url('/') . '/' . str_ireplace(' ', '-', str_ireplace('%', '', strtolower($r)));
+
+                                    ?>
+                                    <a title="{!! strip_tags($r) !!}"
+                                       class="list-group-item related_keywords"
+                                       href="{{ $href }}">{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $r )) !!}</a>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                @elseif (!empty($recentlySearch))
                     <div class="list-group">
                         <h2 class="list-group-item active">Recently Searched</h3>
                             @foreach($recentlySearch as $k)

@@ -29,25 +29,30 @@ if (!empty($dmConfig['template'])) {
     $view_active = 'views';
 }
 // api config
-$apiConfig = ['ip' => env('API_IP'), 'from' => env('API_FROM')];
-if(!empty($dmConfig['apiConfig'])) {
-	// if(!empty($dmConfig['apiConfig']['ip'])) $apiConfig['ip'] = $dmConfig['apiConfig']['ip'];
-	if(!empty($dmConfig['apiConfig']['from'])) $apiConfig['from'] = $dmConfig['apiConfig']['from'];
-}
-if(!empty($configApiListIp = getConfig('config')['api_list_ip'])) {
-	$dmConfig_keys = array_keys($dmConfigs);
-	$indexConfig = array_search($domain, $dmConfig_keys);
-	$c = count($configApiListIp);
-	if(file_exists($ip_file = dirname(__DIR__) . '/storage/framework/testing/ip_api.dat')) {
-		$index_api = file_get_contents($ip_file);
-		$apiConfig['ip'] = $configApiListIp[$index_api];
-	}else {
-		$index_api = $indexConfig%$c;
-		$ip_config = $configApiListIp[$index_api];
-		$apiConfig['ip'] = $ip_config;
-	}
+$apiConfig = [
+	'ip' => '206.189.41.95',//env('API_IP'), 
+	'from' => env('API_FROM')
+];
+// if(!empty($dmConfig['apiConfig'])) {
+	//// if(!empty($dmConfig['apiConfig']['ip'])) $apiConfig['ip'] = $dmConfig['apiConfig']['ip'];
+	// if(!empty($dmConfig['apiConfig']['from'])) $apiConfig['from'] = $dmConfig['apiConfig']['from'];
+// }
+// if(!empty($configApiListIp = getConfig('config')['api_list_ip'])) {
+	// $dmConfig_keys = array_keys($dmConfigs);
+	// $indexConfig = array_search($domain, $dmConfig_keys);
+	// $c = count($configApiListIp);
+	// if(file_exists($ip_file = base_path() . '/storage/framework/testing/ip_api.dat')) {
+		// $index_api = file_get_contents($ip_file);
+		// if(isset($configApiListIp[$index_api])) $apiConfig['ip'] = $configApiListIp[$index_api];
+		// else unlink($ip_file);
+	// }else {
+		// $index_api = $indexConfig%$c;
+		// $ip_config = $configApiListIp[$index_api];
+		// $apiConfig['ip'] = $ip_config;
+		// file_put_contents($ip_file, $index_api);
+	// }
 	
-}
+// }
 //constant
 define('API_CONFIG_IP', $apiConfig['ip']);
 define('API_CONFIG_FROM', $apiConfig['from']);

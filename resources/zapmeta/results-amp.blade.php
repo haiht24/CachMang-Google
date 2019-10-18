@@ -50,7 +50,7 @@
                                                 ?>
                                                 <ul>
                                                     <li>
-                                                        <a title="{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $r )) !!}"
+                                                        <a title="{!! strip_tags($r) !!}"
                                                            href="{{ $href }}">{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $r )) !!}</a>
                                                     </li>
                                                 </ul>
@@ -105,7 +105,7 @@
                                                 ?>
                                                 <ul>
                                                     <li>
-                                                        <a title="{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $r )) !!}"
+                                                        <a title="{!! strip_tags($r) !!}"
                                                            href="{{ $href }}">{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $r )) !!}</a>
                                                     </li>
                                                 </ul>
@@ -135,7 +135,7 @@
                                             ?>
                                             <ul>
                                                 <li>
-                                                    <a title="{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $r )) !!}"
+                                                    <a title="{!! strip_tags($r) !!}"
                                                        href="{{ $href }}">{!! html_entity_decode(str_ireplace($q, '<strong>'.$q.'</strong>', $r )) !!}</a>
                                                 </li>
                                             </ul>

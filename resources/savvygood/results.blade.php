@@ -1,4 +1,7 @@
 @extends('app')
+@section('amp-page')
+<link rel="amphtml" href="{{ route('search', ['q'=> str_slug($q)]) }}">
+@endsection
 @section('content')
     <div class="store">
         <div class="store-content">

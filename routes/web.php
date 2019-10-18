@@ -13,4 +13,5 @@ Route::post('/save', 'CachMangController@save');
 Route::post('/save/save-many', 'CachMangController@saveMany');
 Route::get('/api/{q}', 'CachMangController@api');
 Route::get('/query', 'CachMangController@searchMobile');
-Route::get('/{q}', 'CachMangController@query');
+Route::get('/{q}', 'CachMangController@view_search')->name('search');
+Route::get('/amp/{q}', 'CachMangController@view_amp_search')->name('amp-search');

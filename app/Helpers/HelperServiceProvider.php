@@ -28,9 +28,11 @@ function get_timeago( $ptime )
 
 
 
-
+function get_detect_keywords() {
+	return ['coupon','discount','voucher','promo','offer','deal','code','off','sale','free','bonus','%','percent','$','blackfriday','cybermoday','christmas','newyear','laborday','buy2get1','buy1get1','giftcard',' coupons','discounts','vouchers','promos','offers','deals','codes','off','sales','free','bonus','%','percents','$','blackfridays','cybermodays','christmas','newyears','labordays','buy2get1','buy1get1','giftcards'];
+}
 function have_detect_keywords($kw) {
-	$filters = ['coupon','discount','voucher','promo','offer','deal','code','off','sale','free','bonus','%','percent','$','blackfriday','cybermoday','christmas','newyear','laborday','buy2get1','buy1get1','giftcard'];
+	$filters = get_detect_keywords();
 	$finded = 0;
 	foreach($filters as $find) {
 		if(stripos($kw, $find)!==false) {
